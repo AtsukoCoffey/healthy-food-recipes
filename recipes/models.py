@@ -7,6 +7,9 @@ class Recipe(models.Model):
     """
     Stores a single recipe entry related to :model:`auth.User`
     """
+    user = models.ForeignKey(
+        User, related_name="recipe_owner", on_delete=models.CASCADE
+    )
     title = models.CharField(max_length=100, unique=True, null=False, blank=False)
     slug = models.SlugField(max_length=200, unique=True, default='title')
     description = models.CharField(max_length=400, null=False, blank=False)
@@ -34,12 +37,26 @@ class Recipe(models.Model):
     highfiber = models.BooleanField()
     highprotein = models.BooleanField()
     nutfree = models.BooleanField()
+    prep_time = models.IntegerField(default="15")
+    cook_time = models.IntegerField(default="40")
+
+    def average_rating(self) -> float:
+        return Rating.objects.filter(post=self).aggregate(Avg("rating"))["rating__avg"] or 0
 
     class Meta:
         ordering = ["-posted_date"]
 
     def __str__(self):
         return str(self.title)
+
+
+class Rating(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    recipe = models.ForeignKey(Recipe, on_delete=models.CASCADE)
+    rating = models.IntegerField(default=0)
+    
+    def __str__(self):
+        return f"{self.post.header}: {self.rating}"
 
     
 
