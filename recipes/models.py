@@ -7,7 +7,8 @@ class Recipe(models.Model):
     """
     Stores a single recipe entry related to :model:`auth.User`
     """
-    title = models.CharField(max_length=100, null=False, blank=False)
+    title = models.CharField(max_length=100, unique=True, null=False, blank=False)
+    slug = models.SlugField(max_length=200, unique=True, default='title')
     description = models.CharField(max_length=400, null=False, blank=False)
     ingredients = models.TextField(
         max_length=10000, null=False, blank=False, default="Ingredients"
