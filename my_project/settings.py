@@ -28,7 +28,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = 'DEVELOPMENT' in os.environ
 
-ALLOWED_HOSTS = ['8000-atsukocoffe-healthyfood-qnzedz86ujk.ws.codeinstitute-ide.net']
+ALLOWED_HOSTS = ['8000-atsukocoffe-healthyfood-qnzedz86ujk.ws.codeinstitute-ide.net', 'https://healthy-food-c44b0f8f09a5.herokuapp.com']
 
 
 # Application definition
