@@ -8,7 +8,7 @@ class Recipe(models.Model):
     Stores a single recipe entry related to :model:`auth.User`
     """
     user = models.ForeignKey(
-        User, related_name="recipe_owner", on_delete=models.CASCADE
+        User, related_name="recipe_owner", on_delete=models.CASCADE, default='0'
     )
     title = models.CharField(max_length=100, unique=True, null=False, blank=False)
     slug = models.SlugField(max_length=200, unique=True, default='title')
