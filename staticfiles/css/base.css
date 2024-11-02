@@ -1,0 +1,45 @@
+/* Google fonts import */
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Poiret+One&display=swap');
+
+:root {
+    /** Fonts */
+    --title: 'Poiret One', sans-serif;
+    --main-font: 'Josefin Sans', sans-serif;
+
+    /* Colours */
+    --logo-green: rgb(59, 115, 57);
+    --mos-green: rgb(87, 105, 75);
+    --light-green: #A9E560;
+    --white-green: rgb(239, 255, 239);
+    --white-orange: rgb(253, 236, 211);
+    --strong-orange: rgb(230, 87, 5);
+    --dark-orange: rgb(85, 32, 1);
+    --white: #fff;
+    --dark-green: rgb(24, 48, 24);
+    --black: #000;
+
+    /* Shadows */
+    --small-shadow: 1px -1px 7px rgb(24, 48, 24);
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    font-family: var(--main-font);
+}
+
+main {
+    flex: 1 0 auto;
+    background-color: var(--white);
+}
+
+/* Footer */
+footer {
+    flex-shrink: 0;
+    display: flex;
+    background-color: var(--mos-green);
+    color: var(--white);
+    font-weight: 100;
+    padding-left: 0.5rem;
+}
