@@ -1,3 +1,11 @@
-from django.shortcuts import render
+from django.views.generic import ListView
+from recipes.models import Recipe
 
-# Create your views here.
+
+class Index(ListView):
+    template_name = 'home/index.html'
+    model = Recipe
+    context_object_name = 'home'
+
+    def get_queryset(self):
+        return self.model.objects.all()
