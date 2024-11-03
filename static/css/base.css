@@ -36,6 +36,7 @@ main {
 
 
 /*---------------------------------------------------------- Header */
+
 .navbar {
     background-color: var(--logo-green);
 }
@@ -67,7 +68,7 @@ main {
 }
 
 .navbar-nav .nav-link.active {
-    color: var(--light-green);
+    color: var(--white-green);
     border-bottom: 2px solid var(--light-green);
     font-weight: 500;
 }
@@ -89,6 +90,9 @@ main {
     background-color: var(--white-green);
 }
 
+.dropdown-item.active {
+    background-color: var(--light-green);
+}
 
 /*---------------------------------------------------------- Footer */
 footer {
@@ -111,43 +115,6 @@ footer {
 #social-networks a {
     color: var(--white-green);
 }
-
-/* Header */
-.navbar {
-    background-color: var(--logo-green);
-}
-
-.logo {
-    color: var(--white-green);
-    /* Title logo font */
-    font-family: var(--title);
-    font-size: 1.8rem;
-    font-weight: 500;
-    font-style: normal;
-}
-
-.community-top {
-    color: var(--white-green);
-    font-size: 1.1rem;
-}
-
-.nav-item>a {
-    color: var(--white-green);
-}
-
-.navbar-brand:focus,
-.navbar-brand:hover,
-.nav-link:focus,
-.nav-link:hover {
-    color: var(--light-green);
-}
-
-.navbar-nav .nav-link.active {
-    color: var(--light-green);
-    border-bottom: 2px solid var(--light-green);
-    font-weight: 500;
-}
-
 
 /* Media query: General smart phone (768px and up) */
 @media screen and (min-width:768px) {
