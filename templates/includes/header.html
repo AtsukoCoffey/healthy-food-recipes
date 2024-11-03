@@ -44,18 +44,21 @@
                     </li>
                     {% if request.user.is_authenticated %}
                     <li class="nav-item">
-                        <a class="nav-link{% if url_name == 'accounts_logout' %} active" aria-current="page{% endif %}" href="/accounts/logout"
-                            aria-label="Log-out button" title="Log-out"><i class="fa-solid fa-right-from-bracket"></i>
+                        <a class="nav-link{% if url_name == 'accounts_logout' %} active" aria-current="page{% endif %}"
+                            href="/accounts/logout" aria-label="Log-out button" title="Log-out"><i
+                                class="fa-solid fa-right-from-bracket"></i>
                             Log-out</a>
                     </li>
                     {% else %}
                     <li class="nav-item">
-                        <a class="nav-link{% if url_name == 'accounts_signup' %} active" aria-current="page{% endif %}" href="/accounts/signup"
-                            aria-label="Sign-Up button" title="Sign-up"><i class="fa-solid fa-user-pen"></i> Sign-up</a>
+                        <a class="nav-link{% if url_name == 'accounts_signup' %} active" aria-current="page{% endif %}"
+                            href="/accounts/signup" aria-label="Sign-Up button" title="Sign-up"><i
+                                class="fa-solid fa-user-pen"></i> Sign-up</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link{% if url_name == 'accounts_login' %} active" aria-current="page{% endif %}" href="/accounts/login"
-                            aria-label="Log-in button" title="Log-in"><i class="fa-solid fa-right-to-bracket"></i>
+                        <a class="nav-link{% if url_name == 'accounts_login' %} active" aria-current="page{% endif %}"
+                            href="/accounts/login" aria-label="Log-in button" title="Log-in"><i
+                                class="fa-solid fa-right-to-bracket"></i>
                             Log-in</a>
                     </li>
                     {% endif %}
