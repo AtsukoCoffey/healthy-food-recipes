@@ -18,13 +18,15 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto mb-2">
                     <li class="nav-item">
-                        <a class="nav-link{% if url_name == 'home' %} active" aria-current="page{% endif %}" href="{% url 'home' %}" aria-label="Home (Top-page)" title="Home"><i
+                        <a class="nav-link{% if url_name == 'home' %} active" aria-current="page{% endif %}"
+                            href="{% url 'home' %}" aria-label="Home (Top-page)" title="Home"><i
                                 class="fa-solid fa-house"></i> Home</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link{% if url_name == 'home' %} active" aria-current="page{% endif %}" href="{% url 'home' %}" aria-label="Posts list page" title="Posts"><i
+                    <!-- <li class="nav-item">
+                        <a class="nav-link{% if url_name == 'home' %} active" aria-current="page{% endif %}"
+                            href="{% url 'home' %}" aria-label="Posts list page" title="Posts"><i
                                 class="fa-solid fa-newspaper"></i> Posts</a>
-                    </li>
+                    </li> -->
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
                             aria-expanded="false" aria-label="New Create (Recipe or Post)"
@@ -32,24 +34,31 @@
                             NEW
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item{% if url_name == 'home' %} active" aria-current="page{% endif %}" href="{% url 'home' %}" aria-label="Create Recipe"
+                            <li><a class="dropdown-item{% if url_name == 'home' %} active"
+                                    aria-current="page{% endif %}" href="{% url 'home' %}" aria-label="Create Recipe"
                                     title="Create Recipe"> Create Recipe</a></li>
-                            <li><a class="dropdown-item{% if url_name == 'home' %} active" aria-current="page{% endif %}" href="{% url 'home' %}" aria-label="Crate Post"
+                            <li><a class="dropdown-item{% if url_name == 'home' %} active"
+                                    aria-current="page{% endif %}" href="{% url 'home' %}" aria-label="Crate Post"
                                     title="Create Post"> Create Post</a></li>
                         </ul>
                     </li>
+                    {% if request.user.is_authenticated %}
                     <li class="nav-item">
-                        <a class="nav-link{% if url_name == 'home' %} active" aria-current="page{% endif %}" href="#" aria-label="Log-out button" title="Log-out"><i
-                                class="fa-solid fa-right-from-bracket"></i> Log-out</a>
+                        <a class="nav-link{% if url_name == 'accounts_logout' %} active" aria-current="page{% endif %}" href="/accounts/logout"
+                            aria-label="Log-out button" title="Log-out"><i class="fa-solid fa-right-from-bracket"></i>
+                            Log-out</a>
+                    </li>
+                    {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link{% if url_name == 'accounts_signup' %} active" aria-current="page{% endif %}" href="/accounts/signup"
+                            aria-label="Sign-Up button" title="Sign-up"><i class="fa-solid fa-user-pen"></i> Sign-up</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link{% if url_name == 'home' %} active" aria-current="page{% endif %}" href="#" aria-label="Sign-Up button" title="Sign-up"><i
-                                class="fa-solid fa-user-pen"></i> Sign-up</a>
+                        <a class="nav-link{% if url_name == 'accounts_login' %} active" aria-current="page{% endif %}" href="/accounts/login"
+                            aria-label="Log-in button" title="Log-in"><i class="fa-solid fa-right-to-bracket"></i>
+                            Log-in</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link{% if url_name == 'home' %} active" aria-current="page{% endif %}" href="#" aria-label="Log-in button" title="Log-in"><i
-                                class="fa-solid fa-right-to-bracket"></i> Log-in</a>
-                    </li>
+                    {% endif %}
                 </ul>
             </div>
         </div>
