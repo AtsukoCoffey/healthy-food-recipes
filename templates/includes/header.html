@@ -1,7 +1,7 @@
 {% load static %}
 
 <header>
-    <nav class="navbar navbar-expand-lg">
+    <nav class="navbar navbar-expand-md">
         <div class="container-fluid">
             <!-- Logo -->
             <a class="navbar-brand logo" href="https://atsukocoffey.github.io/healthy-food-club/" target="_blank"
@@ -15,24 +15,39 @@
             </button>
             <!-- Navigation bar -->
             <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav me-auto mb-2">
+                <ul class="navbar-nav ms-auto mb-2">
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'home' %}">HOME</a>
+                        <a class="nav-link" href="{% url 'home' %}" aria-label="Home (Top-page)" title="Home"><i
+                                class="fa-solid fa-house"></i> Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'home' %}">RECIPES</a>
+                        <a class="nav-link" href="{% url 'home' %}" aria-label="Posts list page" title="Posts"><i
+                                class="fa-solid fa-newspaper"></i> Posts</a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                            aria-expanded="false">
+                            aria-expanded="false" aria-label="New Create (Recipe or Post)"
+                            title="New Create Recipe, Post">
                             NEW
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item"
-                                    aria-current="page" href="{% url 'home' %}">Recipe</a></li>
-                            <li><a class="dropdown-item"
-                                    aria-current="page" href="{% url 'home' %}">Post</a></li>
+                            <li><a class="dropdown-item" href="{% url 'home' %}" aria-label="Create Recipe"
+                                    title="Create Recipe"> Create Recipe</a></li>
+                            <li><a class="dropdown-item" href="{% url 'home' %}" aria-label="Crate Post"
+                                    title="Create Post"> Create Post</a></li>
                         </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" aria-label="Log-out button" title="Log-out"><i
+                                class="fa-solid fa-right-from-bracket"></i> Log-out</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" aria-label="Sign-Up button" title="Sign-up"><i
+                                class="fa-solid fa-user-pen"></i> Sign-up</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" aria-label="Log-in button" title="Log-in"><i
+                                class="fa-solid fa-right-to-bracket"></i> Log-in</a>
                     </li>
                 </ul>
             </div>

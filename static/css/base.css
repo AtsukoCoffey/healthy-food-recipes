@@ -34,7 +34,63 @@ main {
     background-color: var(--white);
 }
 
-/* Footer */
+
+/*---------------------------------------------------------- Header */
+.navbar {
+    background-color: var(--logo-green);
+}
+
+.logo {
+    color: var(--white-green);
+    /* Title logo font */
+    font-family: var(--title);
+    font-size: 1.8rem;
+    font-weight: 500;
+    font-style: normal;
+}
+
+.community-top {
+    color: var(--white-green);
+    font-size: 1.1rem;
+}
+
+.nav-item>a,
+.dropdown-item {
+    color: var(--white-green);
+}
+
+.navbar-brand:focus,
+.navbar-brand:hover,
+.nav-link:focus,
+.nav-link:hover {
+    color: var(--light-green);
+}
+
+.navbar-nav .nav-link.active {
+    color: var(--light-green);
+    border-bottom: 2px solid var(--light-green);
+    font-weight: 500;
+}
+
+.navbar-toggler:hover {
+    background-color: var(--light-green);
+}
+.navbar-toggler>span:focus {
+    border: none;
+}
+
+.dropdown-menu {
+    background-color: var(--logo-green);
+}
+
+.dropdown-item:hover,
+.dropdown-item:active {
+    color: var(--logo-green);
+    background-color: var(--white-green);
+}
+
+
+/*---------------------------------------------------------- Footer */
 footer {
     flex-shrink: 0;
     display: flex;
@@ -42,4 +98,87 @@ footer {
     color: var(--white);
     font-weight: 100;
     padding-left: 0.5rem;
+}
+
+#social-networks {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    list-style-type: none;
+    width: 100%;
+    max-width: 250px;
+}
+#social-networks a {
+    color: var(--white-green);
+}
+
+/* Header */
+.navbar {
+    background-color: var(--logo-green);
+}
+
+.logo {
+    color: var(--white-green);
+    /* Title logo font */
+    font-family: var(--title);
+    font-size: 1.8rem;
+    font-weight: 500;
+    font-style: normal;
+}
+
+.community-top {
+    color: var(--white-green);
+    font-size: 1.1rem;
+}
+
+.nav-item>a {
+    color: var(--white-green);
+}
+
+.navbar-brand:focus,
+.navbar-brand:hover,
+.nav-link:focus,
+.nav-link:hover {
+    color: var(--light-green);
+}
+
+.navbar-nav .nav-link.active {
+    color: var(--light-green);
+    border-bottom: 2px solid var(--light-green);
+    font-weight: 500;
+}
+
+
+/* Media query: General smart phone (768px and up) */
+@media screen and (min-width:768px) {
+
+    .logo {
+        font-size: 2.2rem;
+    }
+    .community-top {
+        font-size: 1.5rem;
+    }
+    
+    .dropdown:hover .dropdown-menu {
+        display: block;
+    }
+}
+
+/* Media query: General smart phone (1024px and up) */
+@media screen and (min-width:1024px) {
+
+    .main-title {
+        width: 65%;
+    }
+
+    .logo {
+        font-size: 2.7rem;
+    }
+    .community-top {
+        font-size: 1.8rem;
+    }
+
+    footer {
+        padding: 0 10%;
+    }
 }
