@@ -103,3 +103,24 @@ For the site's basic font, I was considering using "Quicksand" for the best read
 # EXISTING FEATURES
 
 ## The Header And Navigation Bar
+
+
+# CREDIT
+
+## Code Referenses 
+* Bootstrap Navbar toggle screen beakpoint `navbar-expand`  
+Adjustment the size that screen's breakpoint. Default was `-lg` change into `-md`  
+ ![Bootstrap Navbar expand](readme-img/credit-code-css-navbar-expand.png "Bootstrap Navbar expand")  
+
+ * `request.resolver_match`  
+ request.resolver_match to check if the current URL matches a specific pattern or path.  
+ ![Medium-How to Get the Current URL within a Django Template](readme-img/credit-code-request.resolver_match.png "Medium-How to Get the Current URL within a Django Template")  
+ [Medium-How to Get the Current URL within a Django Template](https://medium.com/@iamalisaleh/how-to-get-the-current-url-within-a-django-template-8270b977f280 "Medium-How to Get the Current URL within a Django Template")
+
+* Medium - Django: Implementing Star Rating  
+How to set the star rating system  
+[Medium-How to Implementing Star Rating](https://medium.com/geekculture/django-implementing-star-rating-e1deff03bb1c "Medium-How to Implementing Star Rating")  
+using `aggregation`  
+[Django-Aggregation](https://docs.djangoproject.com/en/5.0/topics/db/aggregation/ "Django-Aggregation")  
+
+* 
