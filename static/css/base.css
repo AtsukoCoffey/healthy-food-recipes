@@ -91,7 +91,7 @@ h1 {
 .dropdown-item:hover,
 .dropdown-item:active {
     color: var(--light-green);
-    background-color: var(--white-green);
+    background-color: var(--dark-green);
 }
 
 .dropdown-item.active {
