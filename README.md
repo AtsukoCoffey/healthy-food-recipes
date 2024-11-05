@@ -120,7 +120,74 @@ Adjustment the size that screen's breakpoint. Default was `-lg` change into `-md
 * Medium - Django: Implementing Star Rating  
 How to set the star rating system  
 [Medium-How to Implementing Star Rating](https://medium.com/geekculture/django-implementing-star-rating-e1deff03bb1c "Medium-How to Implementing Star Rating")  
-using `aggregation`  
-[Django-Aggregation](https://docs.djangoproject.com/en/5.0/topics/db/aggregation/ "Django-Aggregation")  
 
-* 
+* `DEFAULT_FILE_STORAGE`  
+In Django media files are storing in the media directory in default, using `DEFAULT_FILE_STORAGE` we can store the image files into the outside server like Cloudinary.  
+[`DEFAULT_FILE_STORAGE`](https://docs.djangoproject.com/en/4.2/ref/settings/#default-file-storage "DEFAULT_FILE_STORAGE")  
+
+* Resizing images  
+Using Django resized and pillow. Resizing images for user to upload their images into specified size and quality.    
+['Resizing images'](https://www.codu.co/articles/resizing-images-and-converting-formats-in-django-1rj9kdho "Resizing images")  
+
+* Integrating Summernote Rich Text Editor  
+I was planning to use Django RichTextField but changed my mind to summernote, these are the really good sites I referenced.  
+[django-summernote](https://summernote.org/getting-started/#run-summernote "django-summernote")  
+[django-summernote GitHub page](https://github.com/lqez/django-summernote "django-summernote GitHub page")  
+[Integrating Summernote Rich Text Editor](https://medium.com/@vineetaneekhra4/integrating-summernote-rich-text-editor-into-your-django-project-fa8b3f331c97 "Integrating Summernote Rich Text Editor")   
+
+
+* `slug` field   
+I wanted to fill the slug field automatically with title value. These links are some references.  
+[Add default to slug field in model django](https://pleypot.com/blog/add-default-to-slug-field-in-model-django/ "Add default to slug field in model django")  
+[How to generate slug based on title](https://stackoverflow.com/questions/64374947/how-to-generate-slug-based-on-title-of-post-in-django "How to generate slug based on title")   
+![How to generate slug based on title](readme-img/credit-code-slug-generate-from-title.png "How to generate slug based on titl")  
+
+
+* How to Get the Current URL within a Django Template  
+[How to Get the Current URL within a Django Template](https://medium.com/@iamalisaleh/how-to-get-the-current-url-within-a-django-template-8270b977f280 "How to Get the Current URL within a Django Template")  
+
+* Securing Django Views from Unauthorized Access | by Daisy McGirr
+`UserPassesTestMixin` To secure the data from the view as well by doing checks before content to load.
+`LoginRequiredMixin` If non-authenticated users send request, that will be redirect to login page.
+[Securing Django Views](https://www.codu.co/articles/securing-django-views-from-unauthorized-access-npyb3to_ "Securing Django Views")
+
+*
+
+[]( "")
+
+*
+[]( "")
+
+
+*
+[]( "")
+
+* `With`  
+Using `with`, we can hold the complex variables under the simple names.  
+[Using `with`](https://docs.djangoproject.com/en/5.1/ref/templates/builtins/#with "Using `with`")  
+![Using `with`](readme-img/credit-code-django-with.png "Using `with`") 
+
+* using `aggregation`   
+[Django-Aggregation](https://docs.djangoproject.com/en/5.0/topics/db/aggregation/ "Django-Aggregation")   
+
+* django-crispy-forms Layouts  
+This website is showing how to layout the crispy forms  
+[django-crispy-forms Layouts](https://django-crispy-forms.readthedocs.io/en/latest/layouts.html "django-crispy-forms Layouts")   
+https://django-crispy-forms.readthedocs.io/en/latest/layouts.html  
+
+* Encoding format   
+I think this is really important information for security.  
+![Encoding format](readme-img/credit-code-encoding-format1.png "Encoding format")  
+![Encoding format2](readme-img/credit-code-encoding-format2.png "Encoding format2")  
+
+Credit referenced projects
+* Django Recipe Sharing | Dee Mc - Youtube tutorial
+[Django Recipe Sharing | Dee Mc](https://www.youtube.com/watch?v=dCvkAVN5uas&list=PLXuTq6OsqZjYSa-lrjd5wMGl23zpnhvln "Django Recipe Sharing | Dee Mc")
+
+* NicoleJackson89 | pp4-recipe-share
+[NicoleJackson89 | pp4-recipe-share](https://github.com/NicoleJackson89/pp4-recipe-share "NicoleJackson89 | pp4-recipe-share")
+
+
+Technology
+* Mermaid
+[JavaScript-based diagramming and charting tool](https://github.com/mermaid-js/mermaid/blob/develop/README.md "JavaScript-based diagramming and charting tool")
