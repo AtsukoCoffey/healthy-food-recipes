@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django_resized import ResizedImageField
+from django.utils.text import slugify
 
 
 class Recipe(models.Model):
@@ -11,7 +12,7 @@ class Recipe(models.Model):
         User, related_name="recipe_owner", on_delete=models.CASCADE, default='0'
     )
     title = models.CharField(max_length=100, unique=True, null=False, blank=False)
-    slug = models.SlugField(max_length=200, unique=True, default='title')
+    slug = models.SlugField()
     description = models.CharField(max_length=400, null=False, blank=False)
     ingredients = models.TextField(
         max_length=10000, null=False, blank=False, default="Ingredients"
@@ -48,6 +49,10 @@ class Recipe(models.Model):
 
     def __str__(self):
         return str(self.title)
+        
+    def save(self,*args,**kwargs):
+        self.slug=slugify(self.title)
+        super(Recipe,self).save(*args,**kwargs)
 
 
 class Rating(models.Model):
