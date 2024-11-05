@@ -5,7 +5,13 @@ from .models import Recipe
 
 @admin.register(Recipe)
 class RecipeAdmin(SummernoteModelAdmin):
-    list_display = ('image', 'title', 'ingredients')
+    list_display = (
+        'image',
+        'title',
+        'user',
+        'slug',
+        'posted_date'
+        )
     search_fields = ['title', 'ingredients']
     prepopulated_fields = {'slug': ('title',)}
     summernote_fields = ('ingredients', 'instructions')
