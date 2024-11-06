@@ -29,7 +29,22 @@
 
 <body>
     {% include 'includes/header.html' %}
+    <!-- displaying Django messages -->
+    {% if messages %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 offset-md-2">
+                {% for message in messages %}
+                <ul class="messages alert">
+                    <li{% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message|safe }}</li>
+                </ul>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    {% endif %}
 
+    <!-- Main content -->
     <main>
         {% block content %}
         {% endblock %}
@@ -46,5 +61,5 @@
 </body>
 {% endblock %}
 </body>
- 
+
 </html>

@@ -107,7 +107,7 @@ For the site's basic font, I was considering using "Quicksand" for the best read
 
 # CREDIT
 
-## Code Referenses 
+## Code References 
 * Bootstrap Navbar toggle screen beakpoint `navbar-expand`  
 Adjustment the size that screen's breakpoint. Default was `-lg` change into `-md`  
  ![Bootstrap Navbar expand](readme-img/credit-code-css-navbar-expand.png "Bootstrap Navbar expand")  
