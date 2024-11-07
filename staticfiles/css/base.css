@@ -162,6 +162,16 @@ a.img-container:hover {
     height: auto;
 }
 
+.category {
+    color: #3a3a3a;
+    font-size: large;
+    letter-spacing: 0.8rem;
+}
+
+.rating {
+    color: #3a3a3a;
+}
+
 /*---------------------------------------------------------- Footer */
 footer {
     flex-shrink: 0;
