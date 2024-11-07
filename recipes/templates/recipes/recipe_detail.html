@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Recipe Detail - {{recipe.title}}{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row mt-3 p-1">
+        <div class="col-md-8 col-lg-6">
+            <img src="{{ recipe.image.url }}" alt="{{ recipe.image_alt }}" class="recipe-pic">
+        </div>
+        <div class="col-md-4 col-lg-6">
+            <h1 class="text-center">{{recipe.title}}</h1>
+            <p class="text-center">Posted by {{recipe.user}} on {{recipe.posted_date}}</p>
+            <hr>
+            <p><strong>Average Rating:</strong>
+                <span class="fa fa-star {% if recipe.average_rating > 0 %} checked {% endif %}"></span>
+                <span class="fa fa-star {% if recipe.average_rating > 1 %} checked {% endif %}"></span>
+                <span class="fa fa-star {% if recipe.average_rating > 2 %} checked {% endif %}"></span>
+                <span class="fa fa-star {% if recipe.average_rating > 3 %} checked {% endif %}"></span>
+                <span class="fa fa-star {% if recipe.average_rating > 4 %} checked {% endif %}"></span>
+            </p>
+            <p>{{ recipe.description }} </p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4 p-3">
+            <h2>Ingredients</h2><hr>
+            <p class="card-text">{{recipe.ingredients|safe}}</p>
+        </div>
+        <div class="col-md-8 p-3">
+            <h2>Instructions</h2><hr>
+            <p class="card-text">{{recipe.instructions|safe}}</p>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

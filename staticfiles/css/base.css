@@ -155,6 +155,13 @@ a.img-container:hover {
     transform: translate(-50%, -50%);
 }
 
+/*---------------------------------------------------------- Recipe detail */
+
+.recipe-pic {
+    width: 100%;
+    height: auto;
+}
+
 /*---------------------------------------------------------- Footer */
 footer {
     flex-shrink: 0;
@@ -178,7 +185,7 @@ footer {
     color: var(--white-green);
 }
 
-/* Media query: General smart phone (768px and up) */
+/*------------------------------- Media query: General smart phone (768px and up) */
 @media screen and (min-width:768px) {
 
     .logo {
@@ -196,6 +203,7 @@ footer {
         padding: 3% 10%;
         max-width: 935px;
     }
+    /* Media query: (768px and up) ----------------------- Home index*/
 
     .recipe-cont {
         flex-direction: row;
@@ -205,11 +213,9 @@ footer {
         flex-direction: row;
         width: 29%;
     }
-
-
 }
 
-/* Media query: General smart phone (1024px and up) */
+/*------------------------ Media query: General smart phone (1024px and up) */
 @media screen and (min-width:1024px) {
 
     .main-title {

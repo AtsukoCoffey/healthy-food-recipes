@@ -1,5 +1,5 @@
 # from django.shortcuts import render, redirect
-from django.views.generic import CreateView
+from django.views.generic import CreateView, DetailView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.messages.views import SuccessMessageMixin
 from .models import Recipe
@@ -7,7 +7,7 @@ from .forms import RecipeForm
 
 
 class AddRecipe(LoginRequiredMixin, SuccessMessageMixin, CreateView):
-    """Add recipe view"""
+    """Add - create new - recipe view"""
 
     template_name = "recipes/add_recipe.html"
     model = Recipe
@@ -24,5 +24,13 @@ class AddRecipe(LoginRequiredMixin, SuccessMessageMixin, CreateView):
     def form_valid(self, form):
         form.instance.user = self.request.user
         return super(AddRecipe, self).form_valid(form)
+
+
+class RecipeDetail(DetailView):
+    """View a single recipe page"""
+
+    template_name = "recipes/recipe_detail.html"
+    model = Recipe
+    context_object_name = "recipe"
 
 

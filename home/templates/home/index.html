@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block title %}Home{% endblock %}
 
@@ -12,7 +13,7 @@
     </section>
     <div class="recipe-cont">
         {% for recipe in recipes %}
-            <a href="#" class="img-container">
+            <a href="{% url 'recipe_detail' recipe.id %}" class="img-container">
                 <img src="{{recipe.image.url}}" alt="{{recipe.image_alt}}" style="width: 100%">
                 <div class="centerd"><h2>{{recipe.title}}</h2>
                     <p class="author">
