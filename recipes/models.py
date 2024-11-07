@@ -1,4 +1,5 @@
 from django.db import models
+from django.db.models import Avg
 from django.contrib.auth.models import User
 from django_resized import ResizedImageField
 from django.utils.text import slugify
@@ -42,13 +43,13 @@ class Recipe(models.Model):
     cook_time = models.IntegerField(default="40")
 
     def average_rating(self) -> float:
-        return Rating.objects.filter(post=self).aggregate(Avg("rating"))["rating__avg"] or 0
+        return Rating.objects.filter(recipe=self).aggregate(Avg("rating"))["rating__avg"] or 0
 
     class Meta:
         ordering = ["-posted_date"]
 
     def __str__(self):
-        return str(self.title)
+        return f" {self.average_rating()}"
         
     def save(self,*args,**kwargs):
         self.slug=slugify(self.title)

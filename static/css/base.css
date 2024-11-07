@@ -129,7 +129,7 @@ h1 {
 a.img-container {
     position: relative;
     text-align: center;
-    color: var(--white);
+    color: var(--white-green);
     margin: 2%;
     overflow: hidden;
     text-decoration: none;
@@ -153,6 +153,37 @@ a.img-container:hover {
     bottom: 0%;
     left: 50%;
     transform: translate(-50%, -50%);
+    padding: 0.2rem;
+}
+
+.centerd p {
+    color: gray;
+}
+
+/*---------------------------------------------------------- Star rating */
+
+.rating-list li {
+    float: right;
+    color: #ddd;
+    padding: 3px 5px;
+}
+
+.rating-list li:hover,
+.rating-list li:hover ~ li {
+color: orange;
+}
+
+.rating-list {
+display: inline-block;
+list-style: none;
+}
+
+.checked {
+    color: orange;
+}
+
+.checked:hover {
+color: orange;
 }
 
 /*---------------------------------------------------------- Footer */
