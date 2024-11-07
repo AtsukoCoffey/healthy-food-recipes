@@ -1,6 +1,6 @@
 # from django.shortcuts import render, redirect
-from django.views.generic import CreateView, DetailView
-from django.contrib.auth.mixins import LoginRequiredMixin
+from django.views.generic import CreateView, DetailView, UpdateView
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.contrib.messages.views import SuccessMessageMixin
 from .models import Recipe
 from .forms import RecipeForm
@@ -34,3 +34,12 @@ class RecipeDetail(DetailView):
     context_object_name = "recipe"
 
 
+class EditRecipe(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
+    """Edit a recipe"""
+    template_name ='recipes/edit_recipe.html'
+    model = Recipe
+    form_class = RecipeForm
+    success_url = '/'
+
+    def test_func(self):
+        return self.request.user == self.get_object().user

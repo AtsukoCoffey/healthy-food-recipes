@@ -13,6 +13,7 @@
             <h1 class="text-center">{{recipe.title}}</h1>
             <p class="text-center">Posted by {{recipe.user}} on {{recipe.posted_date}}</p>
             <hr>
+            <p><strong>Preparing:</strong>{{ recipe.prep_time }}min. <strong>Cooking:</strong>{{ recipe.cook_time }}min.</p>
             <p>{{ recipe.description }} </p>
             <p>
                 <i class="fa-solid fa-cubes-stacked category{% if not recipe.lowsugar %} success{% endif %}"></i>
@@ -34,7 +35,7 @@
             <!-- If recipe's user display Edit/Delete button -->
             {% if request.user == recipe.user %}
             <div class="text-center">
-                <a href="{% url 'add_recipe' %}" class="btn btn-primary w-25">Edit</a>
+                <a href="{% url 'edit_recipe' recipe.id %}" class="btn btn-primary w-25">Edit</a>
                 <a href="{% url 'add_recipe' %}" class="btn btn-danger w-25">Delete</a>
             </div>
             {% endif %}
