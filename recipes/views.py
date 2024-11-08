@@ -53,10 +53,11 @@ class EditRecipe(LoginRequiredMixin, UserPassesTestMixin, SuccessMessageMixin, U
             return reverse('home')
 
 
-class DeleteRecipe(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
+class DeleteRecipe(LoginRequiredMixin, UserPassesTestMixin, SuccessMessageMixin, DeleteView):
     """Delete a recipe"""
     model = Recipe
     success_url = '/'
+    success_message = "Recipe was deleted successfully"
 
     def test_func(self):
         return self.request.user == self.get_object().user
