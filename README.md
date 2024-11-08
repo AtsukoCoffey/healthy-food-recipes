@@ -146,17 +146,20 @@ I wanted to fill the slug field automatically with title value. These links are 
 * How to Get the Current URL within a Django Template  
 [How to Get the Current URL within a Django Template](https://medium.com/@iamalisaleh/how-to-get-the-current-url-within-a-django-template-8270b977f280 "How to Get the Current URL within a Django Template")  
 
-* Securing Django Views from Unauthorized Access | by Daisy McGirr
-`UserPassesTestMixin` To secure the data from the view as well by doing checks before content to load.
-`LoginRequiredMixin` If non-authenticated users send request, that will be redirect to login page.
+* Securing Django Views from Unauthorized Access | by Daisy McGirr  
+`UserPassesTestMixin` To secure the data from the view as well by doing checks before content to load.  
+`LoginRequiredMixin` If non-authenticated users send request, that will be redirect to login page.  
 [Securing Django Views](https://www.codu.co/articles/securing-django-views-from-unauthorized-access-npyb3to_ "Securing Django Views")
 
-*
+* Success message from class based view  
+As a part of the relevant responses to user actions for UX design, I wanted to implement the `message`. I learned the `Django contrib messages` in LMS learning but class based views has a different one called `SuccessMessageMixin`.
+[Success message from class based view](readme-img/credit-code-message-mixin.png "Success message from class based view")  
 
-[]( "")
+* Setting `success_url` in the UpdateView   
+After the editing the recipe, I wanted to go back to the detail's page, so that user don't need to click the recipe to check the updated details.
+I found the function `get_success_url` and using this `reverse` 
+[Setting `success_url` in the UpdateView](readme-img/credit-code-setting-successurl.png "Setting `success_url` in the UpdateView")
 
-*
-[]( "")
 
 
 *
