@@ -34,12 +34,13 @@ class RecipeDetail(DetailView):
     context_object_name = "recipe"
 
 
-class EditRecipe(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
+class EditRecipe(LoginRequiredMixin, UserPassesTestMixin, SuccessMessageMixin, UpdateView):
     """Edit a recipe"""
     template_name ='recipes/edit_recipe.html'
     model = Recipe
     form_class = RecipeForm
     success_url = '/'
+    success_message = "Recipe was updated successfully"
 
     def test_func(self):
         return self.request.user == self.get_object().user
