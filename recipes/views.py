@@ -1,5 +1,5 @@
 # from django.shortcuts import render, redirect
-from django.views.generic import CreateView, DetailView, UpdateView
+from django.views.generic import CreateView, DetailView, UpdateView, DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.contrib.messages.views import SuccessMessageMixin
 from django.urls import reverse
@@ -51,3 +51,12 @@ class EditRecipe(LoginRequiredMixin, UserPassesTestMixin, SuccessMessageMixin, U
             return reverse('recipe_detail', args=[self.object.id])
         else:
             return reverse('home')
+
+
+class DeleteRecipe(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
+    """Delete a recipe"""
+    model = Recipe
+    success_url = '/'
+
+    def test_func(self):
+        return self.request.user == self.get_object().user
