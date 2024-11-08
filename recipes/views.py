@@ -2,6 +2,7 @@
 from django.views.generic import CreateView, DetailView, UpdateView
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.contrib.messages.views import SuccessMessageMixin
+from django.urls import reverse
 from .models import Recipe
 from .forms import RecipeForm
 
@@ -39,8 +40,14 @@ class EditRecipe(LoginRequiredMixin, UserPassesTestMixin, SuccessMessageMixin, U
     template_name ='recipes/edit_recipe.html'
     model = Recipe
     form_class = RecipeForm
-    success_url = '/'
     success_message = "Recipe was updated successfully"
 
     def test_func(self):
         return self.request.user == self.get_object().user
+
+    # Return to the detail's page using 'get_success_url' and 'reverse'
+    def get_success_url(self, **kwargs):
+        if self.object.id != None:
+            return reverse('recipe_detail', args=[self.object.id])
+        else:
+            return reverse('home')
