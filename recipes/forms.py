@@ -42,7 +42,10 @@ class RecipeForm(forms.ModelForm):
                 'nutfree',
                 css_class='flex-row-form'
             ),
-            Submit('submit', 'Save', css_class='btn btn-success mt-2')
+            Div(
+                Submit('submit', 'Save', wrapper_class='flex-row-form', css_class='btn btn-success col-4'),
+                css_class='text-center'
+            )
         )
         
     class Meta:

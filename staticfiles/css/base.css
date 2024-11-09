@@ -107,6 +107,10 @@ h1 {
     background-color: var(--white-orange);
 }
 
+.messages li {
+    text-decoration: none;
+}
+
 /*---------------------------------------------------------- form */
 
 .form {
@@ -117,6 +121,15 @@ h1 {
     border-radius: 5px;
 }
 
+.flex-row-form {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+}
+
+.button-center {
+    margin: 0 auto;
+}
 
 /*----------------------------------------------------------  Home */
 
@@ -129,7 +142,7 @@ h1 {
 a.img-container {
     position: relative;
     text-align: center;
-    color: var(--white);
+    color: var(--white-green);
     margin: 2%;
     overflow: hidden;
     text-decoration: none;
@@ -153,23 +166,37 @@ a.img-container:hover {
     bottom: 0%;
     left: 50%;
     transform: translate(-50%, -50%);
+    padding: 0.2rem;
 }
 
-/*---------------------------------------------------------- Recipe detail */
-
-.recipe-pic {
-    width: 100%;
-    height: auto;
+.centerd p {
+    color: gray;
 }
 
-.category {
-    color: #3a3a3a;
-    font-size: large;
-    letter-spacing: 0.8rem;
+/*---------------------------------------------------------- Star rating */
+
+.rating-list li {
+    float: right;
+    color: #ddd;
+    padding: 3px 5px;
 }
 
-.rating {
-    color: #3a3a3a;
+.rating-list li:hover,
+.rating-list li:hover ~ li {
+color: orange;
+}
+
+.rating-list {
+display: inline-block;
+list-style: none;
+}
+
+.checked {
+    color: orange;
+}
+
+.checked:hover {
+color: orange;
 }
 
 /*---------------------------------------------------------- Footer */
@@ -195,7 +222,7 @@ footer {
     color: var(--white-green);
 }
 
-/*------------------------------- Media query: General smart phone (768px and up) */
+/* Media query: General smart phone (768px and up) */
 @media screen and (min-width:768px) {
 
     .logo {
@@ -211,9 +238,8 @@ footer {
 
     .form {
         padding: 3% 10%;
-        max-width: 935px;
+        max-width: 700px;
     }
-    /* Media query: (768px and up) ----------------------- Home index*/
 
     .recipe-cont {
         flex-direction: row;
@@ -223,9 +249,11 @@ footer {
         flex-direction: row;
         width: 29%;
     }
+
+
 }
 
-/*------------------------ Media query: General smart phone (1024px and up) */
+/* Media query: General smart phone (1024px and up) */
 @media screen and (min-width:1024px) {
 
     .main-title {
@@ -240,9 +268,13 @@ footer {
     }
     
     .form {
-        width: 50%;
+        padding: 5% 20%;
+        max-width: 935px;
     }
 
+    .flex-row-form>.mb-3 {
+        width: 45%;
+    }
 
     footer {
         padding-right: 10%;

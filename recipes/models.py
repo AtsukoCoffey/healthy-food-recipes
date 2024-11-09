@@ -49,7 +49,8 @@ class Recipe(models.Model):
         e.g. Avocado, Artichoke, Lentils, Apple, Beans, Chickpea etc..')
     highprotein = models.BooleanField(default=False, help_text='e.g. Fish,\
         Seafood, White-meat poultry, Lean beef, Dairy, Eggs, Nuts etc..')
-    nutfree = models.BooleanField(default=False, help_text='nutfree')
+    nutfree = models.BooleanField(default=False, help_text='All kind of Nuts.\
+        Not include seeds: sesame, sunflower pumpkin, macadamia nut, pine nut')
 
 
     def average_rating(self) -> float:
