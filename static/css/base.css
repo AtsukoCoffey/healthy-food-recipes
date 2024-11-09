@@ -107,6 +107,10 @@ h1 {
     background-color: var(--white-orange);
 }
 
+.messages li {
+    text-decoration: none;
+}
+
 /*---------------------------------------------------------- form */
 
 .form {
@@ -225,7 +229,7 @@ footer {
 
     .form {
         padding: 3% 10%;
-        max-width: 935px;
+        max-width: 700px;
     }
 
     .recipe-cont {
@@ -255,7 +259,8 @@ footer {
     }
     
     .form {
-        width: 50%;
+        padding: 5% 20%;
+        max-width: 935px;
     }
 
 
