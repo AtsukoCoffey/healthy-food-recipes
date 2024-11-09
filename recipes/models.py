@@ -15,6 +15,8 @@ class Recipe(models.Model):
     title = models.CharField(max_length=100, unique=True, null=False, blank=False)
     slug = models.SlugField()
     description = models.CharField(max_length=400, null=False, blank=False)
+    prep_time = models.IntegerField(default="15")
+    cook_time = models.IntegerField(default="40")
     ingredients = models.TextField(
         max_length=10000, null=False, blank=False, default="Ingredients"
     )
@@ -31,16 +33,24 @@ class Recipe(models.Model):
     )
     image_alt = models.CharField(max_length=100, null=False, blank=False)
     posted_date = models.DateTimeField(auto_now=True)
-    lowsugar = models.BooleanField()
-    glutenfree = models.BooleanField()
-    dairyfree = models.BooleanField()
-    vegan = models.BooleanField()
-    vegitarian = models.BooleanField()
-    highfiber = models.BooleanField()
-    highprotein = models.BooleanField()
-    nutfree = models.BooleanField()
-    prep_time = models.IntegerField(default="15")
-    cook_time = models.IntegerField(default="40")
+    lowsugar = models.BooleanField(
+        default=False, help_text='e.g. sucrose, glucose, fructose, maltose,\
+        fruit juice, molasses, hydrolysed starch, invert sugar, corn syrup,\
+        honey etc.')
+    glutenfree = models.BooleanField(default=False, help_text='e.g. Wheat,\
+        Varieties and derivatives of wheat such as: Rye, Barley, Triticale.')
+    dairyfree = models.BooleanField(default=False, help_text='Dairyfree,\
+        e.g. Milk, Yogurt, Cheese, lactose-free milk')
+    vegitarian = models.BooleanField(default=False, help_text='Pescatarian,\
+        Vegitarian, no animal meat except sea-food, eggs and dairy')
+    vegan = models.BooleanField(default=False, help_text='Vegan,\
+        no animal meat, no exception')
+    highfiber = models.BooleanField(default=False, help_text='High-Fiber Food,\
+        e.g. Avocado, Artichoke, Lentils, Apple, Beans, Chickpea etc..')
+    highprotein = models.BooleanField(default=False, help_text='e.g. Fish,\
+        Seafood, White-meat poultry, Lean beef, Dairy, Eggs, Nuts etc..')
+    nutfree = models.BooleanField(default=False, help_text='nutfree')
+
 
     def average_rating(self) -> float:
         return Rating.objects.filter(recipe=self).aggregate(Avg("rating"))["rating__avg"] or 0

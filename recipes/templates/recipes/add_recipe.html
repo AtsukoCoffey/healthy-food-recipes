@@ -6,12 +6,12 @@
 <div class="container"></div>
     <form method="POST" enctype="multipart/form-data" class="p-4 form">
         <h1 class="text-center">Add Recipe</h1>
+        {% load crispy_forms_tags %}
         {% csrf_token %}
-        {{ form.media }}
-        {{ form|crispy }}
-        <div class="text-center">
+        {% crispy form %}
+        <!-- <div class="text-center">
             <button type="submit" class="btn btn-success mt-2">Create Recipe</button>
-        </div>
+        </div> -->
     </form>
 </div>
 {% endblock %}
