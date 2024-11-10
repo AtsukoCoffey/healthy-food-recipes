@@ -60,7 +60,7 @@ class Recipe(models.Model):
         ordering = ["-posted_date"]
 
     def __str__(self):
-        return f" {self.average_rating()}"
+        return f" {self.title}"
         
     def save(self,*args,**kwargs):
         self.slug=slugify(self.title)
@@ -73,7 +73,7 @@ class Rating(models.Model):
     rating = models.IntegerField(default=0)
     
     def __str__(self):
-        return f"{self.post.header}: {self.rating}"
+        return f"{self.recipe.title}: {self.rating}"
 
     
 

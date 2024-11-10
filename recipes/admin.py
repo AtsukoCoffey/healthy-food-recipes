@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django_summernote.admin import SummernoteModelAdmin
 
-from .models import Recipe
+from .models import Recipe, Rating
 
 @admin.register(Recipe)
 class RecipeAdmin(SummernoteModelAdmin):
@@ -17,6 +17,5 @@ class RecipeAdmin(SummernoteModelAdmin):
     summernote_fields = ('ingredients', 'instructions')
 
 
-
-
+admin.site.register(Rating)
 
