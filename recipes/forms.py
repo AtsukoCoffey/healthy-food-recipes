@@ -14,11 +14,11 @@ class RecipeForm(forms.ModelForm):
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-
         self.helper = FormHelper()
         self.helper.form_method = 'post'
         self.helper.layout = Layout(
             Fieldset(
+                "Create New Recipe!!",
                 "title",
                 "description",
                 "ingredients",
@@ -50,5 +50,20 @@ class RecipeForm(forms.ModelForm):
         
     class Meta:
         model = Recipe
-        exclude = ['user', 'slug', 'posted_date']  # Exclude these fields
+        fields = ["title",
+                "description",
+                "ingredients",
+                "instructions",
+                "image",
+                "image_alt",
+                "prep_time",
+                "cook_time",
+                'lowsugar',
+                'glutenfree',
+                'dairyfree',
+                'vegan',
+                'vegitarian',
+                'highfiber',
+                'highprotein',
+                'nutfree',] 
         
