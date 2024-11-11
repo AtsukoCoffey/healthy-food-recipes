@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, get_object_or_404
 from django.views.generic import CreateView, DetailView, UpdateView, DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.contrib.messages.views import SuccessMessageMixin
@@ -27,7 +27,7 @@ class AddRecipe(LoginRequiredMixin, SuccessMessageMixin, CreateView):
         )
 
 
-class RecipeDetail(DetailView):
+def RecipeDetail(request: HttpRequest, slug) -> HttpResponse:
     """
     Display a single recipe page :model:`recipes.Recipe`
     **Context**
@@ -35,24 +35,23 @@ class RecipeDetail(DetailView):
     ``rating`` An instance of :model:`recipes.Rating`
     ``comments`` All comments related to the recipe.
     """
-    template_name = "recipes/recipe_detail.html"
-    model = Recipe
-    context_object_name = "recipe"
-
-
-def update_rating(request: HttpRequest) -> HttpResponse:
     recipes = Recipe.objects.all()
+    recipe = get_object_or_404(recipes, slug=slug)
     for recipe in recipes:
         rating = Rating.objects.filter(recipe=recipe, user=request.user).first()
-        recipe.user_rating = rating.rating if rating else 0
-    return render(request, "recipes/recipe_detail.html", {"recipes": recipes})
+        user_rating = rating.rating if rating else 0
+    return render(request, "recipes/recipe_detail.html", 
+    {
+        "recipe": recipe,
+        "user_rating": user_rating
+        })
 
 
 def rate(request: HttpRequest, recipe_id: int, rating: int) -> HttpResponse:
     recipe = Recipe.objects.get(id=recipe_id)
     Rating.objects.filter(recipe=recipe, user=request.user).delete()
     recipe.rating_set.create(user=request.user, rating=rating)
-    return update_rating(request)
+    return RecipeDetail(request)
 
 
 class EditRecipe(LoginRequiredMixin, UserPassesTestMixin, SuccessMessageMixin, UpdateView):

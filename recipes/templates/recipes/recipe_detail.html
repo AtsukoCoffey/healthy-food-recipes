@@ -13,7 +13,8 @@
             <h1 class="text-center">{{recipe.title}}</h1>
             <p class="text-center">Posted by {{recipe.user}} on {{recipe.posted_date}}</p>
             <hr>
-            <p><strong>Preparing:</strong>{{ recipe.prep_time }}min. <strong>Cooking:</strong>{{ recipe.cook_time }}min.</p>
+            <p><strong>Preparing:</strong>{{ recipe.prep_time }}min. <strong>Cooking:</strong>{{ recipe.cook_time }}min.
+            </p>
             <p>{{ recipe.description }} </p>
             <p>
                 <i class="fa-solid fa-cubes-stacked category{% if not recipe.lowsugar %} success{% endif %}"></i>
@@ -44,33 +45,54 @@
     <!-- Recipe's ingredients and instructions -->
     <div class="row">
         <div class="col-md-4 p-3">
-            <h2>Ingredients</h2><hr>
+            <h2>Ingredients</h2>
+            <hr>
             <p class="card-text">{{recipe.ingredients|safe}}</p>
         </div>
         <div class="col-md-8 p-3">
-            <h2>Instructions</h2><hr>
+            <h2>Instructions</h2>
+            <hr>
             <p class="card-text">{{recipe.instructions|safe}}</p>
         </div>
     </div>
     <!-- User Rating and comments -->
     <div class="row">
         <div class="col-md-8 p-3">
-            <h3>Rate this recipe</h3><hr>
+            <h3>Rate this recipe</h3>
+            <hr>
             <ul class="btn btn-light list-inline rating-list">
-                <li onclick="rate(5, recipeid)">
-                    <i class="fa fa-star {% if recipe.user_rating > 4 %} checked {% endif %}" title="Rate 5"></i></li>
-                <li onclick="rate(4, recipeid)">
-                    <i class="fa fa-star {% if recipe.user_rating > 3 %} checked {% endif %}" title="Rate 4"></i></li>
-                <li onclick="rate(3, recipeid)">
-                    <i class="fa fa-star {% if recipe.user_rating > 2 %} checked {% endif %}" title="Rate 3"></i></li>
-                <li onclick="rate(2, recipeid)">
-                    <i class="fa fa-star {% if recipe.user_rating > 1 %} checked {% endif %}" title="Rate 2"></i></li>
-                <li onclick="rate(1, recipeid)">
-                    <i class="fa fa-star {% if recipe.user_rating > 0 %} checked {% endif %}" title="Rate 1"></i></li>
-              </ul>
+                <li data-recipe-id="" onclick="rate(5, {{ recipe.id }})">
+                    <i class="fa fa-star {% if recipe.user_rating > 4 %} checked {% endif %}" title="Rate 5"></i>
+                </li>
+                <li data-recipe-id="{{ recipe.id }}" onclick="rate(4, {{ recipe.id }})">
+                    <i class="fa fa-star {% if recipe.user_rating > 3 %} checked {% endif %}" title="Rate 4"></i>
+                </li>
+                <li data-recipe-id="{{ recipe.id }}" onclick="rate(3, {{ recipe.id }})">
+                    <i class="fa fa-star {% if recipe.user_rating > 2 %} checked {% endif %}" title="Rate 3"></i>
+                </li>
+                <li data-recipe-id="{{ recipe.id }}" onclick="rate(2, {{ recipe.id }})">
+                    <i class="fa fa-star {% if recipe.user_rating > 1 %} checked {% endif %}" title="Rate 2"></i>
+                </li>
+                <li data-recipe-id="{{ recipe.id }}" onclick="rate(1, {{ recipe.id }})">
+                    <i class="fa fa-star {% if recipe.user_rating > 0 %} checked {% endif %}" title="Rate 1"></i>
+                </li>
+            </ul>
         </div>
         <div class="col-md-4 p-3"></div>
-    </div> 
+    </div>
 </div>
+<script>
+    const rate = (rating, recipe_id) => {
+        console.log(rating, recipe_id);
+        fetch(`/recieps/rate/${recipe_id}/${rating}/`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+        }).then(rest => {
+            window.location.reload();
+        })
+    }
+</script>
 <script src="{% static 'js/rating.js' recipe.id %}"></script>
 {% endblock %}
