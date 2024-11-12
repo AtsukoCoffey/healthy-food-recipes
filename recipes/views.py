@@ -40,6 +40,17 @@ def RecipeDetail(request: HttpRequest, slug) -> HttpResponse:
     for recipe in recipes:
         rating = Rating.objects.filter(recipe=recipe, user=request.user).first()
         user_rating = rating.rating if rating else 0
+
+    # Update or create the rating for this unique user and recipe
+    if request.method == "POST":
+        rate_value = request.POST.get("rate")
+
+        Rating.objects.update_or_create(
+            recipe=recipe,
+            user=request.user,
+            defaults={"rating": rate_value}
+        )
+
     return render(request, "recipes/recipe_detail.html", 
     {
         "recipe": recipe,
