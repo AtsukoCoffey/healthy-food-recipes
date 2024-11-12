@@ -5,46 +5,104 @@
 
 {% block content %}
 <div class="container flex-column pt-3">
-    <section class="text-center">
-        <h1 class="main-title mx-auto">Welcome to the Community Area of Healthy Food Club!</h1>
-        <p class="pt-4">This is where we share healthy recipes, information and tips & tricks for a better food
-            lifestyle. We aim to generate positive discussion for all those interested in becoming more aware of what we
-            eat. Join us today and share your favorite recipes! We also have a useful search and filter option. Give it
-            a try!</p>
-    </section>
-    <h2>Recipes</h2>
-    <div class="search-button"><button class="ms-auto btn btn-success">Search <i class="fa-solid fa-magnifying-glass"></i></button>
-    </div> 
-    <hr>
-    <div class="recipe-cont">
-        {% for recipe in recipes %}
-        <a href="{% url 'recipe_detail' recipe.slug %}" class="img-container">
-            <img src="{{recipe.image.url}}" alt="{{recipe.image_alt}}" style="width: 100%">
-            <div class="centerd">
-                <h2>{{recipe.title}}</h2>
-                <p class="author">
-                    <span class="fa fa-star {% if recipe.average_rating > 0 %} checked {% endif %}"></span>
-                    <span class="fa fa-star {% if recipe.average_rating > 1 %} checked {% endif %}"></span>
-                    <span class="fa fa-star {% if recipe.average_rating > 2 %} checked {% endif %}"></span>
-                    <span class="fa fa-star {% if recipe.average_rating > 3 %} checked {% endif %}"></span>
-                    <span class="fa fa-star {% if recipe.average_rating > 4 %} checked {% endif %}"></span>
-                </p>
-            </div>
-        </a>
-        {% endfor %}
+  <section class="text-center">
+    <h1 class="main-title mx-auto">Welcome to the Community Area of Healthy Food Club!</h1>
+    <p class="pt-4">This is where we share healthy recipes, information and tips & tricks for a better food
+      lifestyle. We aim to generate positive discussion for all those interested in becoming more aware of what we
+      eat. Join us today and share your favorite recipes! We also have a useful search and filter option. Give it
+      a try!</p>
+  </section>
+  <h2>Recipes</h2>
+  <div class="search-button"><!-- Button trigger modal -->
+    <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal">
+      Search <i class="fa-solid fa-magnifying-glass"></i>
+    </button>
+  </div>
+  <hr>
+  <div class="recipe-cont">
+    {% for recipe in recipes %}
+    <a href="{% url 'recipe_detail' recipe.slug %}" class="img-container">
+      <img src="{{recipe.image.url}}" alt="{{recipe.image_alt}}" style="width: 100%">
+      <div class="centerd">
+        <h2>{{recipe.title}}</h2>
+        <p class="author">
+          <span class="fa fa-star {% if recipe.average_rating > 0 %} checked {% endif %}"></span>
+          <span class="fa fa-star {% if recipe.average_rating > 1 %} checked {% endif %}"></span>
+          <span class="fa fa-star {% if recipe.average_rating > 2 %} checked {% endif %}"></span>
+          <span class="fa fa-star {% if recipe.average_rating > 3 %} checked {% endif %}"></span>
+          <span class="fa fa-star {% if recipe.average_rating > 4 %} checked {% endif %}"></span>
+        </p>
+      </div>
+    </a>
+    {% endfor %}
+  </div>
+  </section>
+  {% if is_paginated %}
+  <nav aria-label="Page navigation">
+    <ul class="pagination justify-content-center">
+      {% if page_obj.has_previous %}
+      <li><a href="?page={{ page_obj.previous_page_number }}" class="page-link">&laquo; PREV </a></li>
+      {% endif %}
+      {% if page_obj.has_next %}
+      <li><a href="?page={{ page_obj.next_page_number }}" class="page-link"> NEXT &raquo;</a></li>
+      {% endif %}
+    </ul>
+  </nav>
+  {% endif %}
+</div>
+<!-- Modal - for search options -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Search options</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form id="search-option" role="search" method="GET" action="{% url 'home'  %}">
+          <fieldset>
+            <legend>Quick serch</legend>
+            <ul class="d-flex flex-wrap list-unstyled">
+              <li><input type="checkbox" id="lowsugar" name="lowsugar"><i class="fa-solid fa-cubes-stacked p-2"
+                  title="Low-Sugar"></i><label for="Low-Sugar" class="me-4">Low-Sugar</label></li>
+              <li><input type="checkbox" id="glutenfree" name="glutenfree"><i
+                  class="fa-solid fa-wheat-awn-circle-exclamation p-2" title="Gluten-Free"></i><label
+                  for="glutenfree" class="me-4">Gluten-Free</label></li>
+              <li><input type="checkbox" id="dairyfree" name="dairyfree"><i class="fa-solid fa-cow p-2"
+                  title="Dairy-Free"></i><label for="dairyfree" class="me-4">Dairy-Free</label></li>
+              <li><input type="checkbox" id="vegan" name="vegan"><i class="fa-solid fa-carrot p-2" title="Vegan"></i><label
+                  for="vegan" class="me-4">Vegan</label></li>
+              <li><input type="checkbox" id="vegitarian" name="vegitarian"><i class="fa-solid fa-egg p-2"
+                  title="Vegitarian"></i><label for="vegitarian" class="me-4">Vegitarian</label></li>
+              <li><input type="checkbox" id="highfiber" name="highfiber"><i class="fa-solid fa-apple-whole p-2"
+                  title="High-Fiber"></i><label for="highfiber" class="me-4">High-Fiber</label></li>
+              <li><input type="checkbox" id="highprotein" name="highprotein"><i class="fa-solid fa-fish p-2"
+                  title="High-Protein"></i><label for="highprotein" class="me-4">High-Protein</label></li>
+              <li><input type="checkbox" id="nutfree" name="nutfree"><i class="fa-solid fa-tablets p-2"
+                  title="Nut-Free"></i><label for="nutfree" class="me-4">Nut-Free</label></li>
+            </ul>
+          </fieldset>
+          <fieldset>
+            <legend>Free search</legend>
+            <label for="avoid-search">Avoid ingredients</label>
+            <input id="avoid-search" class="form-control me-2 p-2 mb-2" name="q-avoid" type="search" placeholder="Input avoid ingredients" aria-label="Input avoid ingredients">
+            <label for="include-search">Include ingredients</label>
+            <input id="include-search" class="form-control me-2 p-2 mb-2" name="q-incl" type="search" placeholder="Prefer ingredients" aria-label="Prefer ingredients">
+            <label for="owner-search">Recipe's Owner search</label>
+            <input id="owner-search" list="owner-list" class="form-control me-2 p-2" name="q-owner" placeholder="Owner Search" aria-label="Owner Search">
+              <datalist id="owner-list">
+                <option value="User name ?">
+              </datalist>
+            <label for="free-search">Free search</label>
+            <input id="free-search" class="form-control me-2 p-2" name="q-free" type="search" placeholder="Free Search" aria-label="Free Search">
+          </fieldset>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-success" form="search-option">Search</button>
+      </div>
     </div>
-    </section>
-    {% if is_paginated %}
-    <nav aria-label="Page navigation">
-        <ul class="pagination justify-content-center">
-            {% if page_obj.has_previous %}
-            <li><a href="?page={{ page_obj.previous_page_number }}" class="page-link">&laquo; PREV </a></li>
-            {% endif %}
-            {% if page_obj.has_next %}
-            <li><a href="?page={{ page_obj.next_page_number }}" class="page-link"> NEXT &raquo;</a></li>
-            {% endif %}
-        </ul>
-    </nav>
-    {% endif %}
+  </div>
 </div>
 {% endblock %}
