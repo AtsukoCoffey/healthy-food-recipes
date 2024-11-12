@@ -37,7 +37,7 @@ def RecipeDetail(request: HttpRequest, slug) -> HttpResponse:
     """
     recipes = Recipe.objects.all()
     recipe = get_object_or_404(recipes, slug=slug)
-    for recipe in recipes:
+    if request.user.is_authenticated:
         rating = Rating.objects.filter(recipe=recipe, user=request.user).first()
         user_rating = rating.rating if rating else 0
 

@@ -15,6 +15,7 @@
     --strong-orange: rgb(230, 87, 5);
     --dark-orange: rgb(85, 32, 1);
     --white: #fff;
+    --star-gray: #ddd;
     --dark-green: rgb(24, 48, 24);
     --black: #000;
 
@@ -156,7 +157,8 @@ a.img-container:hover {
 
 .img-container img {
     width: 100%;
-    height: auto;
+    max-height: 300px;
+    object-fit: cover;
 }
 
 .centerd {
@@ -165,25 +167,33 @@ a.img-container:hover {
     position: absolute;
     bottom: 0%;
     left: 50%;
-    transform: translate(-50%, -50%);
-    padding: 0.2rem;
+    transform: translate(-50%, -20%);
+    padding: 0.5rem;
 }
 
 .centerd p {
-    color: gray;
+    color: var(--star-gray);
 }
 
+.rating,
+.category {
+    color: var(--star-gray);
+}
+
+.rating>strong {
+    color: var(--black);
+}
 /*---------------------------------------------------------- Star rating */
 
 .rating-list li {
     float: right;
-    color: #ddd;
+    color: var(--star-gray);
     padding: 3px 5px;
 }
 
 .rating-list li:hover,
 .rating-list li:hover ~ li {
-color: orange;
+color: var(--strong-orange);
 }
 
 .rating-list {
@@ -192,11 +202,11 @@ list-style: none;
 }
 
 .checked {
-    color: orange;
+    color: var(--strong-orange);
 }
 
 .checked:hover {
-color: orange;
+color: var(--strong-orange);
 }
 
 /*---------------------------------------------------------- Footer */
