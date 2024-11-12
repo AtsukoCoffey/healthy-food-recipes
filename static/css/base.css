@@ -175,15 +175,31 @@ a.img-container:hover {
     color: var(--star-gray);
 }
 
+/*---------------------------------------------------------- Recipe detail page */
+
 .rating,
 .category {
     color: var(--star-gray);
 }
 
+.category>i {
+    font-size: 140%;
+    padding: 0.4rem;
+}
+
+.category-on {
+    color: var(--mos-green);
+}
+
+.category>strong,
 .rating>strong {
     color: var(--black);
 }
 /*---------------------------------------------------------- Star rating */
+
+li>input:checked ~ label {
+    color: var(--strong-orange);
+}
 
 .rating-list li {
     float: right;
@@ -193,20 +209,17 @@ a.img-container:hover {
 
 .rating-list li:hover,
 .rating-list li:hover ~ li {
-color: var(--strong-orange);
-}
-
-.rating-list {
-display: inline-block;
-list-style: none;
-}
-
-.checked {
     color: var(--strong-orange);
 }
 
-.checked:hover {
-color: var(--strong-orange);
+.rating-list {
+    display: inline-block;
+    list-style: none;
+}
+
+.checked:hover,
+.checked {
+    color: var(--strong-orange);
 }
 
 /*---------------------------------------------------------- Footer */

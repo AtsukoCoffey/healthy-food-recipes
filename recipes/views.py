@@ -35,34 +35,31 @@ def RecipeDetail(request: HttpRequest, slug) -> HttpResponse:
     ``rating`` An instance of :model:`recipes.Rating`
     ``comments`` All comments related to the recipe.
     """
-    recipes = Recipe.objects.all()
-    recipe = get_object_or_404(recipes, slug=slug)
+    recipe = get_object_or_404(Recipe.objects.all(), slug=slug)
+    # If user is authenticated and rated before display the rate, or 0 star
     if request.user.is_authenticated:
         rating = Rating.objects.filter(recipe=recipe, user=request.user).first()
-        user_rating = rating.rating if rating else 0
+    user_rating = rating.rating if rating else 0
 
     # Update or create the rating for this unique user and recipe
     if request.method == "POST":
         rate_value = request.POST.get("rate")
-
+        if rate_value == None:
+            rate_value = 0
         Rating.objects.update_or_create(
             recipe=recipe,
             user=request.user,
             defaults={"rating": rate_value}
         )
 
-    return render(request, "recipes/recipe_detail.html", 
-    {
-        "recipe": recipe,
-        "user_rating": user_rating
-        })
-
-
-def rate(request: HttpRequest, recipe_id: int, rating: int) -> HttpResponse:
-    recipe = Recipe.objects.get(id=recipe_id)
-    Rating.objects.filter(recipe=recipe, user=request.user).delete()
-    recipe.rating_set.create(user=request.user, rating=rating)
-    return RecipeDetail(request)
+    return render(
+        request, 
+        "recipes/recipe_detail.html",
+        {
+            "recipe": recipe,
+            "user_rating": user_rating
+        }
+    )
 
 
 class EditRecipe(LoginRequiredMixin, UserPassesTestMixin, SuccessMessageMixin, UpdateView):
