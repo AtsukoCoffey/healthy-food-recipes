@@ -39,7 +39,9 @@ def RecipeDetail(request: HttpRequest, slug) -> HttpResponse:
     # If user is authenticated and rated before display the rate, or 0 star
     if request.user.is_authenticated:
         rating = Rating.objects.filter(recipe=recipe, user=request.user).first()
-    user_rating = rating.rating if rating else 0
+        user_rating = rating.rating if rating else 0
+    else: 
+        user_rating = 0
 
     # Update or create the rating for this unique user and recipe
     if request.method == "POST":
