@@ -114,12 +114,22 @@ h1 {
 
 /*---------------------------------------------------------- form */
 
+.modal-button {
+    border-bottom: solid 1px var(--star-gray);
+    text-align: right;
+}
+
 .form {
     width: 100%;
     padding: 2% 4%;
     margin: 3% auto;
     box-shadow: var(--small-shadow);
     border-radius: 5px;
+}
+
+#search-option input {
+    border-radius: 7px;
+    border: solid 1px var(--star-gray);
 }
 
 .flex-row-form {

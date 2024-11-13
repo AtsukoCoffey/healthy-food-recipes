@@ -56,9 +56,9 @@
 <!-- Modal - for search options -->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
-    <div class="modal-content">
+    <div class="modal-content p-4">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Search options</h5>
+        <h5 class="modal-title" id="search-option-title">Search options</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
@@ -66,25 +66,28 @@
           <fieldset>
             <legend>Quick serch</legend>
             <ul class="d-flex flex-wrap list-unstyled">
-              <li><input type="checkbox" id="lowsugar" name="lowsugar"><i class="fa-solid fa-cubes-stacked p-2"
-                  title="Low-Sugar"></i><label for="Low-Sugar" class="me-4">Low-Sugar</label></li>
-              <li><input type="checkbox" id="glutenfree" name="glutenfree"><i
-                  class="fa-solid fa-wheat-awn-circle-exclamation p-2" title="Gluten-Free"></i><label for="glutenfree"
-                  class="me-4">Gluten-Free</label></li>
-              <li><input type="checkbox" id="dairyfree" name="dairyfree"><i class="fa-solid fa-cow p-2"
-                  title="Dairy-Free"></i><label for="dairyfree" class="me-4">Dairy-Free</label></li>
-              <li><input type="checkbox" id="vegan" name="vegan"><i class="fa-solid fa-carrot p-2"
-                  title="Vegan"></i><label for="vegan" class="me-4">Vegan</label></li>
-              <li><input type="checkbox" id="vegitarian" name="vegitarian"><i class="fa-solid fa-egg p-2"
-                  title="Vegitarian"></i><label for="vegitarian" class="me-4">Vegitarian</label></li>
-              <li><input type="checkbox" id="highfiber" name="highfiber"><i class="fa-solid fa-apple-whole p-2"
-                  title="High-Fiber"></i><label for="highfiber" class="me-4">High-Fiber</label></li>
-              <li><input type="checkbox" id="highprotein" name="highprotein"><i class="fa-solid fa-fish p-2"
-                  title="High-Protein"></i><label for="highprotein" class="me-4">High-Protein</label></li>
-              <li><input type="checkbox" id="nutfree" name="nutfree"><i class="fa-solid fa-tablets p-2"
-                  title="Nut-Free"></i><label for="nutfree" class="me-4">Nut-Free</label></li>
+              <li><input type="checkbox" id="lowsugar" name="lowsugar"><label for="Low-Sugar" class="me-4"><i
+                    class="fa-solid fa-cubes-stacked p-2" title="Low-Sugar"></i> Low-Sugar</label></li>
+              <li><input type="checkbox" id="glutenfree" name="glutenfree"><label for="glutenfree" class="me-4"><i
+                    class="fa-solid fa-wheat-awn-circle-exclamation p-2" title="Gluten-Free"></i> Gluten-Free</label>
+              </li>
+              <li><input type="checkbox" id="dairyfree" name="dairyfree"><label for="dairyfree" class="me-4"><i
+                    class="fa-solid fa-cow p-2" title="Dairy-Free"></i> Dairy-Free</label></li>
+              <li><input type="checkbox" id="vegan" name="vegan"><label for="vegan" class="me-4"><i
+                    class="fa-solid fa-carrot p-2" title="Vegan"></i> Vegan</label></li>
+              <li><input type="checkbox" id="vegitarian" name="vegitarian"><label for="vegitarian" class="me-4"><i
+                    class="fa-solid fa-egg p-2" title="Vegitarian"></i> Vegitarian</label></li>
+              <li><input type="checkbox" id="highfiber" name="highfiber"><label for="highfiber" class="me-4"><i
+                    class="fa-solid fa-apple-whole p-2" title="High-Fiber"></i> High-Fiber</label></li>
+              <li><input type="checkbox" id="highprotein" name="highprotein"><label for="highprotein" class="me-4"><i
+                    class="fa-solid fa-fish p-2" title="High-Protein"></i> High-Protein</label></li>
+              <li><input type="checkbox" id="nutfree" name="nutfree"><label for="nutfree" class="me-4"><i
+                    class="fa-solid fa-tablets p-2" title="Nut-Free"></i> Nut-Free</label></li>
             </ul>
           </fieldset>
+          <div class="modal-button pb-2 mb-2">
+            <button type="submit" class="btn btn-success" form="search-option">Search</button>
+          </div>
           <fieldset>
             <legend>Free search</legend>
             <label for="avoid-search">Avoid ingredients</label>
@@ -93,21 +96,25 @@
             <label for="include-search">Include ingredients</label>
             <input id="include-search" class="form-control me-2 p-2 mb-2" name="q-incl" type="search"
               placeholder="Prefer ingredients" aria-label="Prefer ingredients">
-            <label for="owner-search">Recipe's Owner search</label>
-            <input id="owner-search" list="owner-list" class="form-control me-2 p-2" name="q-owner"
-              placeholder="Owner Search" aria-label="Owner Search">
-            <datalist id="owner-list">
-              <option value="User name ?">
-            </datalist>
-            <label for="free-search">Free search</label>
-            <input id="free-search" class="form-control me-2 p-2" name="q-free" type="search" placeholder="Free Search"
-              aria-label="Free Search">
           </fieldset>
+          <div class="modal-button pb-2 mb-2">
+            <button type="submit" class="btn btn-success" form="search-option">Search</button>
+          </div>
+          <label for="owner-search" class="d-block pt-3">Recipe's Owner search</label>
+          <input id="owner-search" list="owner-list" class="me-2 p-2" name="q-owner" type="text"
+            placeholder="Owner Search" aria-label="Owner Search">
+          <datalist id="owner-list">
+            <option value="User name ?">
+          </datalist>
+          <button type="submit" class="btn btn-success" form="search-option">Search</button>
+          <label for="free-search" class="d-block pt-3">Free search</label>
+          <input id="free-search" class="me-2 p-2" name="q-free" type="search" placeholder="Free Search"
+            aria-label="Free Search">
+          <button type="submit" class="btn btn-success" form="search-option">Search</button>
         </form>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="submit" class="btn btn-success" form="search-option">Search</button>
       </div>
     </div>
   </div>
