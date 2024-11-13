@@ -75,7 +75,7 @@ class EditRecipe(LoginRequiredMixin, UserPassesTestMixin, SuccessMessageMixin, U
     # Return to the detail's page using 'get_success_url' and 'reverse'
     def get_success_url(self, **kwargs):
         if self.object.id != None:
-            return reverse('recipe_detail', args=[self.object.id])
+            return reverse('recipe_detail', args=[self.object.slug])
         else:
             return reverse('home')
 

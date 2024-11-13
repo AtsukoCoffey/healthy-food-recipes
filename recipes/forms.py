@@ -66,4 +66,7 @@ class RecipeForm(forms.ModelForm):
                 'highfiber',
                 'highprotein',
                 'nutfree',] 
+        widgets = {
+          'description': forms.Textarea(attrs={'rows':4}),
+        }
         
