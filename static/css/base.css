@@ -133,6 +133,17 @@ h1 {
 }
 
 /*----------------------------------------------------------  Home */
+#hero-outer {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    background: url(/static/images/foods-on-the-table-pexels-ella.webp) center/cover no-repeat;
+}
+
+#hero-text {
+    z-index: 10;
+    counter-reset: var(--black);
+}
 .search-button{
     display: sticky;
     text-align: right;
