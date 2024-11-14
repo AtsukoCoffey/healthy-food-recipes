@@ -13,6 +13,7 @@ class Index(ListView):
     model = Recipe
     context_object_name = 'recipes'
     paginate_by = 9
+    recipes = Recipe.objects.all()
 
     def get_queryset(self, **kwargs):
         """
@@ -34,203 +35,45 @@ class Index(ListView):
         owner_query = self.request.GET.get('q-owner')
         free_query = self.request.GET.get('q-free')
         
-        # 8 checkboxs all the combination
-        recipes = Recipe.objects.all()
+        def lowsugar():
+            recipes = recipes.filter(lowsugar=True)
+        
+        def glutenfree():
+            recipes = recipes.filter(glutenfree=True)
+        
+        def dairyfree():
+            recipes = recipes.filter(dairyfree=True)
+        
+        def vegan():
+            recipes = recipes.filter(vegan=True)
+        
+        def vegitarian():
+            recipes = recipes.filter(vegitarian=True)
+        
+        def highfiber():
+            recipes = recipes.filter(highfiber=True)
+        
+        def highprotein():
+            recipes = recipes.filter(highprotein=True)
+        
+        def nutfree():
+            recipes = recipes.filter(nutfree=True)
+ 
         if lowsugar:
-            if glutenfree:
-                if dairyfree:
-                    if vegan:
-                        if vegitarian:
-                            if highfiber:
-                                if highprotein:
-                                    if nutfree:
-                                        recipes = recipes.filter(lowsugar=True
-                                        ).filter(glutenfree=True).filter(
-                                        dairyfree=True).filter(vegan=True
-                                        ).filter(vegitarian=True).filter(
-                                        highfiber=True).filter(
-                                        highprotein=True).filter(nutfree=True)
-                                    else:
-                                        recipes = recipes.filter(lowsugar=True
-                                        ).filter(glutenfree=True).filter(
-                                        dairyfree=True).filter(vegan=True
-                                        ).filter(vegitarian=True).filter(
-                                        highfiber=True).filter(
-                                        highprotein=True)
-                                else:
-                                    recipes = recipes.filter(lowsugar=True
-                                        ).filter(glutenfree=True).filter(
-                                        dairyfree=True).filter(vegan=True
-                                        ).filter(vegitarian=True).filter(
-                                        highfiber=True)
-                            else:
-                                recipes = recipes.filter(lowsugar=True
-                                        ).filter(glutenfree=True).filter(
-                                        dairyfree=True).filter(vegan=True
-                                        ).filter(vegitarian=True)
-                        else:
-                            recipes = recipes.filter(lowsugar=True
-                                        ).filter(glutenfree=True).filter(
-                                        dairyfree=True).filter(vegan=True
-                                        )
-                    else:
-                        recipes = recipes.filter(lowsugar=True
-                                        ).filter(glutenfree=True).filter(
-                                        dairyfree=True)
-                else:
-                    recipes = recipes.filter(lowsugar=True
-                                        ).filter(glutenfree=True)
-            else:
-                recipes = recipes.filter(lowsugar=True)
-        else:
-            if glutenfree:
-                if dairyfree:
-                    if vegan:
-                        if vegitarian:
-                            if highfiber:
-                                if highprotein:
-                                    if nutfree:
-                                        recipes = recipes.filter(
-                                        glutenfree=True).filter(dairyfree=True
-                                        ).filter(vegan=True).filter(
-                                        vegitarian=True).filter(
-                                        highfiber=True).filter(
-                                        highprotein=True).filter(nutfree=True)
-                                    else:
-                                        recipes = recipes.filter(
-                                        glutenfree=True).filter(
-                                        dairyfree=True).filter(vegan=True
-                                        ).filter(vegitarian=True).filter(
-                                        highfiber=True).filter(
-                                        highprotein=True)
-                                else:
-                                    recipes = recipes.filter(glutenfree=True
-                                    ).filter(dairyfree=True).filter(vegan=True
-                                    ).filter(vegitarian=True).filter(
-                                    highfiber=True)
-                            else:
-                                recipes = recipes.filter(glutenfree=True
-                                    ).filter(dairyfree=True).filter(vegan=True
-                                    ).filter(vegitarian=True)
-                        else:
-                            recipes = recipes.filter(glutenfree=True).filter(
-                                dairyfree=True).filter(vegan=True)
-                    else:
-                        recipes = recipes.filter(glutenfree=True).filter(
-                            dairyfree=True)
-                else:
-                    recipes = recipes.filter(glutenfree=True)
-            else:
-                if dairyfree:
-                    if vegan:
-                        if vegitarian:
-                            if highfiber:
-                                if highprotein:
-                                    if nutfree:
-                                        recipes = recipes.filter(
-                                        dairyfree=True).filter(vegan=True
-                                        ).filter(vegitarian=True).filter(
-                                        highfiber=True).filter(
-                                        highprotein=True).filter(nutfree=True)
-                                    else:
-                                        recipes = recipes.filter(
-                                        dairyfree=True).filter(vegan=True
-                                        ).filter(vegitarian=True).filter(
-                                        highfiber=True).filter(
-                                        highprotein=True)
-                                else:
-                                    recipes = recipes.filter(
-                                        dairyfree=True).filter(vegan=True
-                                        ).filter(vegitarian=True).filter(
-                                        highfiber=True)
-                            else:
-                                recipes = recipes.filter(dairyfree=True
-                                ).filter(vegan=True).filter(vegitarian=True)
-                        else:
-                            recipes = recipes.filter(dairyfree=True
-                                ).filter(vegan=True)
-                    else:
-                        recipes = recipes.filter(dairyfree=True)
-                else:
-                    if vegan:
-                        if vegitarian:
-                            if highfiber:
-                                if highprotein:
-                                    if nutfree:
-                                        recipes = recipes.filter(vegan=True
-                                        ).filter(vegitarian=True).filter(
-                                        highfiber=True).filter(
-                                        highprotein=True).filter(nutfree=True)
-                                    else:
-                                        recipes = recipes.filter(vegan=True
-                                        ).filter(vegitarian=True).filter(
-                                        highfiber=True).filter(
-                                        highprotein=True)
-                                else:
-                                    recipes = recipes.filter(vegan=True
-                                        ).filter(vegitarian=True).filter(
-                                        highfiber=True)
-                            else:
-                                recipes = recipes.filter(vegan=True).filter(
-                                    vegitarian=True)
-                        else:
-                            recipes = recipes.filter(vegan=True)
-                    else:
-                        if vegitarian:
-                            if highfiber:
-                                if highprotein:
-                                    if nutfree:
-                                        recipes = recipes.filter(
-                                        vegitarian=True).filter(
-                                        highfiber=True).filter(
-                                        highprotein=True).filter(nutfree=True)
-                                    else:
-                                        recipes = recipes.filter(
-                                        vegitarian=True).filter(
-                                        highfiber=True).filter(
-                                        highprotein=True)
-                                else:
-                                    recipes = recipes.filter(vegitarian=True
-                                    ).filter(highfiber=True)
-                            else:
-                                recipes = recipes.filter(vegitarian=True)
-                        else:
-                            if highfiber:
-                                if highprotein:
-                                    if nutfree:
-                                        recipes = recipes.filter(
-                                        highfiber=True).filter(
-                                        highprotein=True).filter(nutfree=True)
-                                    else:
-                                        recipes = recipes.filter(
-                                        highfiber=True).filter(
-                                        highprotein=True)
-                                else:
-                                    recipes = recipes.filter(
-                                        highfiber=True)
-                            else:
-                                if highprotein:
-                                    if nutfree:
-                                        recipes = recipes.filter(
-                                        highprotein=True).filter(nutfree=True)
-                                    else:
-                                        recipes = recipes.filter(highprotein=True)
-
-        # Avoid and include query
-        if avoid_query:
-            if include_query:
-                recipes = self.model.objects.all().exclude(
-                    ingredients__contains=avoid_query).filter(
-                    Q(ingredients__icontains=include_query))
-            else:
-                recipes = self.model.objects.all().exclude(
-                    ingredients__contains=avoid_query)
-        else:
-            if include_query:
-                recipes = self.model.objects.all().filter(
-                    Q(ingredients__icontains=include_query))
-
-
-        return recipes 
-
-
+            lowsugar()
+        if glutenfree:
+            glutenfree()
+        if dairyfree:
+            dairyfree()
+        if vegan:
+            vegan()
+        if vegitarian:
+            vegitarian()
+        if highfiber:
+            highfiber()
+        if highprotein:
+            highprotein()
+        if nutfree:
+            nutfree()
+        
+        return recipes
