@@ -1,5 +1,6 @@
 from django.views.generic import ListView
 from django.db.models import Q
+from  django.contrib.auth.models import User
 from recipes.models import Recipe
 
 
@@ -13,67 +14,44 @@ class Index(ListView):
     model = Recipe
     context_object_name = 'recipes'
     paginate_by = 9
-    recipes = Recipe.objects.all()
 
-    def get_queryset(self, **kwargs):
+    def get_queryset(self):
         """
         Search option modal's query
         8 checkboxes - on or None
         owner_query - int (foreign key)
         others are - string
         """
-        lowsugar = self.request.GET.get('lowsugar')
-        glutenfree = self.request.GET.get('glutenfree')
-        dairyfree = self.request.GET.get('dairyfree')
-        vegan = self.request.GET.get('vegan')
-        vegitarian = self.request.GET.get('vegitarian')
-        highfiber = self.request.GET.get('highfiber')
-        highprotein = self.request.GET.get('highprotein')
-        nutfree = self.request.GET.get('nutfree')
         avoid_query = self.request.GET.get('q-avoid')
         include_query = self.request.GET.get('q-incl')
         owner_query = self.request.GET.get('q-owner')
         free_query = self.request.GET.get('q-free')
+
+        queryset = Recipe.objects.all()
         
-        def lowsugar():
-            recipes = recipes.filter(lowsugar=True)
-        
-        def glutenfree():
-            recipes = recipes.filter(glutenfree=True)
-        
-        def dairyfree():
-            recipes = recipes.filter(dairyfree=True)
-        
-        def vegan():
-            recipes = recipes.filter(vegan=True)
-        
-        def vegitarian():
-            recipes = recipes.filter(vegitarian=True)
-        
-        def highfiber():
-            recipes = recipes.filter(highfiber=True)
-        
-        def highprotein():
-            recipes = recipes.filter(highprotein=True)
-        
-        def nutfree():
-            recipes = recipes.filter(nutfree=True)
- 
-        if lowsugar:
-            lowsugar()
-        if glutenfree:
-            glutenfree()
-        if dairyfree:
-            dairyfree()
-        if vegan:
-            vegan()
-        if vegitarian:
-            vegitarian()
-        if highfiber:
-            highfiber()
-        if highprotein:
-            highprotein()
-        if nutfree:
-            nutfree()
-        
-        return recipes
+        # 8 checkboxs all the combination query
+        # Save the "on" checkbox field in `filters` dictionary
+        filters = {}
+        for field in ['lowsugar', 'glutenfree', 'dairyfree', 'vegan', 'vegitarian', 'highfiber', 'highprotein', 'nutfree']:
+            if self.request.GET.get(field):
+                filters[field] = True
+        # The filter dictionary goes in the kwargs as like `lowsugar=True` 
+        if filters:
+            queryset = queryset.filter(**filters)
+        ## pagination issue ========================================================> address later
+
+        # Avoid and include Ingredients query
+        if avoid_query:
+            if include_query:
+                queryset = self.model.objects.all().exclude(
+                    ingredients__contains=avoid_query).filter(
+                    Q(ingredients__icontains=include_query))
+            else:
+                queryset = self.model.objects.all().exclude(
+                    ingredients__contains=avoid_query)
+        else:
+            if include_query:
+                queryset = self.model.objects.all().filter(
+                    Q(ingredients__icontains=include_query))
+
+        return queryset
