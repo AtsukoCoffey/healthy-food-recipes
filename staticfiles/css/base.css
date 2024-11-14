@@ -114,12 +114,22 @@ h1 {
 
 /*---------------------------------------------------------- form */
 
+.modal-button {
+    border-bottom: solid 1px var(--star-gray);
+    text-align: right;
+}
+
 .form {
     width: 100%;
     padding: 2% 4%;
     margin: 3% auto;
     box-shadow: var(--small-shadow);
     border-radius: 5px;
+}
+
+#search-option input {
+    border-radius: 7px;
+    border: solid 1px var(--star-gray);
 }
 
 .flex-row-form {
@@ -133,11 +143,29 @@ h1 {
 }
 
 /*----------------------------------------------------------  Home */
-.search-button{
-    display: sticky;
-    text-align: right;
+#hero-image {
     width: 100%;
+    background: url(/static/images/foods-on-the-table-pexels-ella.webp) center/cover no-repeat;
+}
+
+#hero-text {
+    counter-reset: var(--black);
+}
+
+.search-button{
+    position: relative;
+    width: 100%;
+}
+
+#search-btn {
+    position: absolute;
+    top: 0;
     right: 0;
+    color: var(--strong-orange);
+    background-color: var(--white-orange);
+    border: solid 1px var(--strong-orange);
+    box-shadow: var(--small-shadow);
+    font-weight: 700;
 }
 
 .recipe-cont {

@@ -62,7 +62,7 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <form id="search-option" role="search" method="GET" action="{% url 'home'  %}">
+        <form id="checkbox-filter" role="search" method="GET" action="{% url 'home'  %}">
           <fieldset>
             <legend>Quick serch</legend>
             <ul class="d-flex flex-wrap list-unstyled">
@@ -86,10 +86,12 @@
             </ul>
           </fieldset>
           <div class="modal-button pb-2 mb-2">
-            <button type="submit" class="btn btn-success" form="search-option">Search</button>
+            <button type="submit" class="btn btn-success" form="checkbox-filter">Search</button>
           </div>
+        </form>
+        <form id="ingre-search" role="search" method="GET" action="{% url 'home'  %}">
           <fieldset>
-            <legend>Free search</legend>
+            <legend>Ingredients search</legend>
             <label for="avoid-search">Avoid ingredients</label>
             <input id="avoid-search" class="form-control me-2 p-2 mb-2" name="q-avoid" type="search"
               placeholder="Input avoid ingredients" aria-label="Input avoid ingredients">
@@ -98,19 +100,23 @@
               placeholder="Prefer ingredients" aria-label="Prefer ingredients">
           </fieldset>
           <div class="modal-button pb-2 mb-2">
-            <button type="submit" class="btn btn-success" form="search-option">Search</button>
+            <button type="submit" class="btn btn-success" form="ingre-search">Search</button>
           </div>
+        </form>
+        <form id="free-search" role="search" method="GET" action="{% url 'home'  %}"></form>
+          <label for="free-search" class="d-block pt-3">Free search</label>
+          <input id="free-search" class="me-2 p-2" name="q-free" type="search" placeholder="Free Search"
+            aria-label="Free Search">
+          <button type="submit" class="btn btn-success" form="free-search">Search</button>
+        </form>
+        <form id="owner-search" role="search" method="GET" action="{% url 'home'  %}">
           <label for="owner-search" class="d-block pt-3">Recipe's Owner search</label>
           <input id="owner-search" list="owner-list" class="me-2 p-2" name="q-owner" type="text"
             placeholder="Owner Search" aria-label="Owner Search">
           <datalist id="owner-list">
             <option value="User name ?">
           </datalist>
-          <button type="submit" class="btn btn-success" form="search-option">Search</button>
-          <label for="free-search" class="d-block pt-3">Free search</label>
-          <input id="free-search" class="me-2 p-2" name="q-free" type="search" placeholder="Free Search"
-            aria-label="Free Search">
-          <button type="submit" class="btn btn-success" form="search-option">Search</button>
+          <button type="submit" class="btn btn-success" form="owner-search">Search</button>
         </form>
       </div>
       <div class="modal-footer">
