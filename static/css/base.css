@@ -244,30 +244,44 @@ a.img-container:hover {
 }
 /*---------------------------------------------------------- Star rating */
 
-li>input:checked ~ label {
-    color: var(--strong-orange);
-}
-
-.rating-list li {
-    float: right;
-    color: var(--star-gray);
-    padding: 3px 5px;
-}
-
-.rating-list li:hover,
-.rating-list li:hover ~ li {
-    color: var(--strong-orange);
-}
-
-.rating-list {
-    display: inline-block;
-    list-style: none;
-}
-
+/* Average rating */
 .checked:hover,
 .checked {
     color: var(--strong-orange);
 }
+
+/* User indivisual rating */
+.rating-list {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+    list-style: none;
+    width: fit-content;
+}
+
+.rating-list .fa-star {
+    color: var(--star-gray);
+    padding: 3px 5px;
+}
+
+/* Style for the hover color */
+label.fa-star:hover ~ label.fa-star,
+label.fa-star:hover + label.fa-star,
+label.fa-star:hover,
+label.fa-star:hover ~ label.fa-star {
+    color: var(--strong-orange);
+}
+
+
+/* Style for the checked color */
+input:checked ~ label.fa-star,
+input:checked + label.fa-star {
+    color: var(--strong-orange);
+}
+
+/* li>input:checked ~ label {
+    color: var(--strong-orange);
+} */
 
 /*---------------------------------------------------------- Footer */
 footer {
