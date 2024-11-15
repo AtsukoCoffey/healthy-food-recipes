@@ -21,7 +21,7 @@ class Index(ListView):
         context['all_users'] = User.objects.all()
         return context
 
-    def get_queryset(self):
+    def get_queryset(self, **kwargs):
         """
         Search option modal's query
         8 checkboxes - on or None
@@ -49,27 +49,28 @@ class Index(ListView):
         # Avoid and include Ingredients query
         if avoid_query:
             if include_query:
-                queryset = self.model.objects.all().exclude(
+                queryset = queryset.exclude(
                     ingredients__icontains=avoid_query).filter(
                     Q(ingredients__icontains=include_query))
             else:
-                queryset = self.model.objects.all().exclude(
+                queryset = queryset.exclude(
                     ingredients__icontains=avoid_query)
         else:
             if include_query:
-                queryset = self.model.objects.all().filter(
+                queryset = queryset.filter(
                     Q(ingredients__icontains=include_query))
         
-        # # Free search in Title, Description, Instruction
-        # print(free_query)
-        # if free_query:
-        #     print(free_query)
-        #     queryset = self.model.objects.all().filter(
-        #         Q(title__icontains=query) |
-        #         Q(description__icontains=query) |
-        #         Q(instructions__icontains=query)
-        #     )
+        # Free search in Title, Description, Instruction
+        if free_query:
+            queryset = queryset.filter(
+                Q(title__icontains=free_query) |
+                Q(description__icontains=free_query) |
+                Q(instructions__icontains=free_query)
+            )
 
+        # Owner search 
+        if owner_query:
+            queryset = queryset.filter(pk=owner_query)
         
 
         return queryset
