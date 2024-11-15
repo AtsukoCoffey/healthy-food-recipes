@@ -14,24 +14,23 @@ class Recipe(models.Model):
     )
     title = models.CharField(max_length=100, unique=True, null=False, blank=False)
     slug = models.SlugField()
-    description = models.TextField(max_length=400, null=False, blank=False)
-    prep_time = models.IntegerField(default="15")
-    cook_time = models.IntegerField(default="40")
+    description = models.TextField(max_length=400, null=False, blank=True)
+    prep_time = models.CharField()
+    cook_time = models.CharField()
     ingredients = models.TextField(
-        max_length=10000, null=False, blank=False, default="Ingredients"
+        max_length=10000, null=False, blank=False, default=""
     )
     instructions = models.TextField(
-        max_length=10000, null=False, blank=False, default="Instructions"
+        max_length=10000, null=False, blank=False, default=""
     )
     image = ResizedImageField(
         size=[400, None],
         quality=75,
         upload_to="recipes/",
         force_format="WEBP",
-        blank=False,
-        null=False,
+        default='https://res.cloudinary.com/dulfdtcut/image/upload/v1/recipes/recipe-image-placeholder_upjwg0'
     )
-    image_alt = models.CharField(max_length=100, null=False, blank=False)
+    image_alt = models.CharField()
     posted_date = models.DateTimeField(auto_now=True)
     lowsugar = models.BooleanField(
         default=False, help_text='e.g. sucrose, glucose, fructose, maltose,\
@@ -64,6 +63,7 @@ class Recipe(models.Model):
         
     def save(self,*args,**kwargs):
         self.slug=slugify(self.title)
+        self.image_alt=self.title
         super(Recipe,self).save(*args,**kwargs)
 
 

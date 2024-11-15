@@ -9,8 +9,8 @@ class RecipeForm(forms.ModelForm):
     """form to create a recipe"""
     ingredients = forms.CharField(widget=SummernoteWidget())
     instructions = forms.CharField(widget=SummernoteWidget())
-    prep_time = forms.IntegerField(label=(u'Preparation time (min)'))
-    cook_time = forms.IntegerField(label=(u'Cooking time (min)'))
+    prep_time = forms.CharField(label=(u'Preparation time (min)'), required=False)
+    cook_time = forms.CharField(label=(u'Cooking time (min)'), required=False)
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -24,7 +24,6 @@ class RecipeForm(forms.ModelForm):
                 "ingredients",
                 "instructions",
                 "image",
-                "image_alt",
             ),
             Div(
                 "prep_time",
@@ -55,7 +54,6 @@ class RecipeForm(forms.ModelForm):
                 "ingredients",
                 "instructions",
                 "image",
-                "image_alt",
                 "prep_time",
                 "cook_time",
                 'lowsugar',

@@ -112,12 +112,7 @@ h1 {
     text-decoration: none;
 }
 
-/*---------------------------------------------------------- form */
-
-.modal-button {
-    border-bottom: solid 1px var(--star-gray);
-    text-align: right;
-}
+/*---------------------------------------------------------- Add recipe form */
 
 .form {
     width: 100%;
@@ -125,11 +120,6 @@ h1 {
     margin: 3% auto;
     box-shadow: var(--small-shadow);
     border-radius: 5px;
-}
-
-#search-option input {
-    border-radius: 7px;
-    border: solid 1px var(--star-gray);
 }
 
 .flex-row-form {
@@ -140,6 +130,29 @@ h1 {
 
 .button-center {
     margin: 0 auto;
+}
+
+/*---------------------------------------------------------- Search option form */
+
+.modal-button {
+    border-bottom: solid 1px var(--star-gray);
+    text-align: right;
+}
+
+#free-search input,
+#owner-search select {
+    border-radius: 7px;
+    border: solid 1px var(--star-gray);
+    color: gray;
+}
+
+#checkbox-filter i {
+    color: var(--mos-green);
+    font-size: 170%;
+}
+
+#checkbox-filter li:hover {
+    color: var(--logo-green);
 }
 
 /*----------------------------------------------------------  Home */
@@ -324,6 +337,11 @@ footer {
         font-size: 1.8rem;
     }
     
+    #free-search input,
+    #owner-search select {
+        width: 70%;
+    }
+
     .form {
         padding: 3% 8%;
         max-width: 935px;
