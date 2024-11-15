@@ -104,18 +104,19 @@
           </div>
         </form>
         <form id="free-search" role="search" method="GET" action="{% url 'home'  %}"></form>
-          <label for="free-word-search" class="pt-3">Free search</label><br>
-          <input id="free-word-search" class="me-2 p-2" name="q-free" type="search" placeholder="Free Search"
-            aria-label="Free Search">
-          <button type="submit" class="btn btn-success" form="free-search">Search</button>
+        <label for="free-word-search" class="pt-3">Free search</label><br>
+        <input id="free-word-search" class="me-2 p-2" name="q-free" type="search" placeholder="Free Search"
+          aria-label="Free Search">
+        <button type="submit" class="btn btn-success" form="free-search">Search</button>
         </form>
         <form id="owner-search" role="search" method="GET" action="{% url 'home'  %}">
           <label for="owner-id-search" class="pt-3">Recipe's Owner search</label><br>
-          <input id="owner-id-search" list="owner-list" class="me-2 p-2" name="q-owner" type="text"
-            placeholder="Owner Search" aria-label="Owner Search">
-          <datalist id="owner-list">
-            <option value="User name ?">
-          </datalist>
+          <select id="owner-id-search" name="q-owner" class="form-select" aria-label="Owner Search">
+            <option selected>Open this select menu</option>
+            {% for user in all_users %}
+            <option value="{{user.id}}">{{ user.username }}</option>
+            {% endfor %}
+          </select>
           <button type="submit" class="btn btn-success" form="owner-search">Search</button>
         </form>
       </div>

@@ -1,6 +1,6 @@
 from django.views.generic import ListView
 from django.db.models import Q
-from  django.contrib.auth.models import User
+from django.contrib.auth.models import User
 from recipes.models import Recipe
 
 
@@ -14,6 +14,12 @@ class Index(ListView):
     model = Recipe
     context_object_name = 'recipes'
     paginate_by = 9
+
+    # For owner search, send all the User model's name and pk
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['all_users'] = User.objects.all()
+        return context
 
     def get_queryset(self):
         """
@@ -44,14 +50,26 @@ class Index(ListView):
         if avoid_query:
             if include_query:
                 queryset = self.model.objects.all().exclude(
-                    ingredients__contains=avoid_query).filter(
+                    ingredients__icontains=avoid_query).filter(
                     Q(ingredients__icontains=include_query))
             else:
                 queryset = self.model.objects.all().exclude(
-                    ingredients__contains=avoid_query)
+                    ingredients__icontains=avoid_query)
         else:
             if include_query:
                 queryset = self.model.objects.all().filter(
                     Q(ingredients__icontains=include_query))
+        
+        # # Free search in Title, Description, Instruction
+        # print(free_query)
+        # if free_query:
+        #     print(free_query)
+        #     queryset = self.model.objects.all().filter(
+        #         Q(title__icontains=query) |
+        #         Q(description__icontains=query) |
+        #         Q(instructions__icontains=query)
+        #     )
+
+        
 
         return queryset
