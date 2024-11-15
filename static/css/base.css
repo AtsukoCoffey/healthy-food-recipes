@@ -119,27 +119,20 @@ h1 {
     text-align: right;
 }
 
-.form {
-    width: 100%;
-    padding: 2% 4%;
-    margin: 3% auto;
-    box-shadow: var(--small-shadow);
-    border-radius: 5px;
-}
-
-#search-option input {
+#free-search input,
+#owner-search select {
     border-radius: 7px;
     border: solid 1px var(--star-gray);
+    color: gray;
 }
 
-.flex-row-form {
-    display: flex;
-    flex-flow: row wrap;
-    justify-content: space-between;
+#checkbox-filter i {
+    color: var(--mos-green);
+    font-size: 170%;
 }
 
-.button-center {
-    margin: 0 auto;
+#checkbox-filter li:hover {
+    color: var(--logo-green);
 }
 
 /*----------------------------------------------------------  Home */
@@ -324,6 +317,11 @@ footer {
         font-size: 1.8rem;
     }
     
+    #free-search input,
+    #owner-search select {
+        width: 70%;
+    }
+
     .form {
         padding: 3% 8%;
         max-width: 935px;

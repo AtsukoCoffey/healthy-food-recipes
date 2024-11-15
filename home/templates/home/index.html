@@ -55,16 +55,16 @@
 </section>
 <!-- Modal - for search options -->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
+  <div class="modal-dialog modal-lg">
     <div class="modal-content p-4">
       <div class="modal-header">
-        <h5 class="modal-title" id="search-option-title">Search options</h5>
+        <h3 class="modal-title" id="search-option-title">Search options</h3>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
         <form id="checkbox-filter" role="search" method="GET" action="{% url 'home'  %}">
           <fieldset>
-            <legend>Quick serch</legend>
+            <legend>Quick search</legend>
             <ul class="d-flex flex-wrap list-unstyled">
               <li><input type="checkbox" id="lowsugar" name="lowsugar"><label for="lowsugar" class="me-4"><i
                     class="fa-solid fa-cubes-stacked p-2" title="Low-Sugar"></i> Low-Sugar</label></li>
@@ -94,10 +94,10 @@
             <legend>Ingredients search</legend>
             <label for="avoid-search">Avoid ingredients</label>
             <input id="avoid-search" class="form-control me-2 p-2 mb-2" name="q-avoid" type="search"
-              placeholder="Input avoid ingredients" aria-label="Input avoid ingredients">
+              placeholder="Ingredients to be avoided" aria-label="Input avoid ingredients">
             <label for="include-search">Include ingredients</label>
             <input id="include-search" class="form-control me-2 p-2 mb-2" name="q-incl" type="search"
-              placeholder="Prefer ingredients" aria-label="Prefer ingredients">
+              placeholder="Preferred ingredients" aria-label="Prefer ingredients">
           </fieldset>
           <div class="modal-button pb-2 mb-2">
             <button type="submit" class="btn btn-success" form="ingre-search">Search</button>
@@ -111,8 +111,8 @@
         </form>
         <form id="owner-search" role="search" method="GET" action="{% url 'home'  %}">
           <label for="owner-id-search" class="pt-3">Recipe's Owner search</label><br>
-          <select id="owner-id-search" name="q-owner" class="form-select" aria-label="Owner Search">
-            <option disabled="disabled" selected>Open this select menu</option>
+          <select id="owner-id-search" name="q-owner" class="p-2" aria-label="Owner Search">
+            <option disabled="disabled" selected>Select recipe's owner from here! </option>
             {% for owner in all_users %}
             <option value="{{ owner.id }}">{{ owner.username }}</option>
             {% endfor %}
