@@ -27,6 +27,16 @@ class AddRecipe(LoginRequiredMixin, SuccessMessageMixin, CreateView):
         )
 
 
+# If user is authenticated and rated before display the rate, or 0 star
+# Took this out from Detail view to call before and after processing POST
+def get_user_rating(user, recipe):
+    if user.is_authenticated:
+        rating = Rating.objects.filter(recipe=recipe, user=user).first()
+        return rating.rating if rating else 0
+    else: 
+        return 0
+
+
 def RecipeDetail(request: HttpRequest, slug) -> HttpResponse:
     """
     Display a single recipe page :model:`recipes.Recipe`
@@ -36,12 +46,9 @@ def RecipeDetail(request: HttpRequest, slug) -> HttpResponse:
     ``comments`` All comments related to the recipe.
     """
     recipe = get_object_or_404(Recipe.objects.all(), slug=slug)
-    # If user is authenticated and rated before display the rate, or 0 star
-    if request.user.is_authenticated:
-        rating = Rating.objects.filter(recipe=recipe, user=request.user).first()
-        user_rating = rating.rating if rating else 0
-    else: 
-        user_rating = 0
+
+    # Call user rating function : ->move to outside of this function view
+    user_rating = get_user_rating(request.user, recipe)
 
     # Update or create the rating for this unique user and recipe
     if request.method == "POST":
@@ -51,15 +58,18 @@ def RecipeDetail(request: HttpRequest, slug) -> HttpResponse:
         Rating.objects.update_or_create(
             recipe=recipe,
             user=request.user,
-            defaults={"rating": rate_value}
+            defaults={"rating": rate_value}  # rating is the field of rating model
         )
+        # Call user rating function again
+        user_rating = get_user_rating(request.user, recipe)
+        print(user_rating)
 
     return render(
         request, 
         "recipes/recipe_detail.html",
         {
             "recipe": recipe,
-            "user_rating": user_rating
+            "user_rating": user_rating,
         }
     )
 
