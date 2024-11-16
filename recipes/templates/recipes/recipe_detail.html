@@ -75,24 +75,30 @@
                 <form action="{% url 'recipe_detail' recipe.slug %}" id="star-form" method="POST">
                     <div class="d-flex">
                         <div class="btn btn-light rating-list">
-                            <input type="radio" class="d-none" name="rate" id="5" value="5">
-                            <label for="5" class="fa fa-star {% if user_rating > 4 %}checked{% endif %}"
+                            <input type="radio" class="d-none" name="rate" id="5" value="5" {% if user_rating==5
+                                %}checked{% endif %}>
+                            <label for="5" class="fa fa-star {% if user_rating == 5 %}checked{% endif %}"
                                 title="Rate 5"></label>
-                            <input type="radio" class="d-none" name="rate" id="4" value="4">
-                            <label for="4" class="fa fa-star {% if user_rating > 3 %}checked{% endif %}"
+                            <input type="radio" class="d-none" name="rate" id="4" value="4" {% if user_rating==4
+                                %}checked{% endif %}>
+                            <label for="4" class="fa fa-star {% if user_rating == 4 %}checked{% endif %}"
                                 title="Rate 4"></label>
-                            <input type="radio" class="d-none" name="rate" id="3" value="3">
-                            <label for="3" class="fa fa-star {% if user_rating > 2 %}checked{% endif %}"
+                            <input type="radio" class="d-none" name="rate" id="3" value="3" {% if user_rating==3
+                                %}checked{% endif %}>
+                            <label for="3" class="fa fa-star {% if user_rating == 3 %}checked{% endif %}"
                                 title="Rate 3"></label>
-                            <input type="radio" class="d-none" name="rate" id="2" value="2">
-                            <label for="2" class="fa fa-star {% if user_rating > 1 %}checked{% endif %}"
+                            <input type="radio" class="d-none" name="rate" id="2" value="2" {% if user_rating==2
+                                %}checked{% endif %}>
+                            <label for="2" class="fa fa-star {% if user_rating == 2 %}checked{% endif %}"
                                 title="Rate 2"></label>
-                            <input type="radio" class="d-none" name="rate" id="1" value="1">
-                            <label for="1" class="fa fa-star {% if user_rating > 0 %}checked{% endif %}"
+                            <input type="radio" class="d-none" name="rate" id="1" value="1" {% if user_rating==1
+                                %}checked{% endif %}>
+                            <label for="1" class="fa fa-star {% if user_rating == 1 %}checked{% endif %}"
                                 title="Rate 1"></label>
                         </div>
                         {% csrf_token %}
-                        <button type="submit" form="star-form" class="btn btn-edit btn-primary ms-2">Submit Rating</button>
+                        <button type="submit" form="star-form" class="btn btn-edit btn-primary ms-2">Submit
+                            Rating</button>
                     </div>
                 </form>
             </figure>

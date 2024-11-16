@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from django.views.generic import CreateView, DetailView, UpdateView, DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.contrib.messages.views import SuccessMessageMixin
@@ -46,7 +46,6 @@ def RecipeDetail(request: HttpRequest, slug) -> HttpResponse:
     ``comments`` All comments related to the recipe.
     """
     recipe = get_object_or_404(Recipe.objects.all(), slug=slug)
-
     # Call user rating function : ->move to outside of this function view
     user_rating = get_user_rating(request.user, recipe)
 
@@ -62,14 +61,15 @@ def RecipeDetail(request: HttpRequest, slug) -> HttpResponse:
         )
         # Call user rating function again
         user_rating = get_user_rating(request.user, recipe)
-        print(user_rating)
-
+        # Redirect to avoid form resubmission
+        return redirect('recipe_detail', slug=slug)
+    
     return render(
         request, 
         "recipes/recipe_detail.html",
         {
-            "recipe": recipe,
-            "user_rating": user_rating,
+            'recipe': recipe,
+            'user_rating': user_rating,
         }
     )
 
