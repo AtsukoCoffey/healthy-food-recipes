@@ -69,30 +69,25 @@
             <hr>
             <p>How many stars would you like to give this &quot;{{ recipe.title }}&quot;?</p>
             <!-- Prevent unauthenticated user from rating -->
-            {% if user.is_authenticated %}
+            {% if user.is_authenticated and request.user != recipe.user %}
             <figure>
                 <figcaption>Your rating:</figcaption>
                 <form action="{% url 'recipe_detail' recipe.slug %}" id="star-form" method="POST">
                     <div class="d-flex">
                         <div class="btn btn-light rating-list">
-                            <input type="radio" class="d-none" name="rate" id="5" value="5" {% if user_rating==5
-                                %}checked{% endif %}>
+                            <input type="radio" class="d-none" name="rate" id="5" value="5" {% if user_rating == 5 %}checked{% endif %}>
                             <label for="5" class="fa fa-star {% if user_rating == 5 %}checked{% endif %}"
                                 title="Rate 5"></label>
-                            <input type="radio" class="d-none" name="rate" id="4" value="4" {% if user_rating==4
-                                %}checked{% endif %}>
+                            <input type="radio" class="d-none" name="rate" id="4" value="4" {% if user_rating == 4 %}checked{% endif %}>
                             <label for="4" class="fa fa-star {% if user_rating == 4 %}checked{% endif %}"
                                 title="Rate 4"></label>
-                            <input type="radio" class="d-none" name="rate" id="3" value="3" {% if user_rating==3
-                                %}checked{% endif %}>
+                            <input type="radio" class="d-none" name="rate" id="3" value="3" {% if user_rating == 3 %}checked{% endif %}>
                             <label for="3" class="fa fa-star {% if user_rating == 3 %}checked{% endif %}"
                                 title="Rate 3"></label>
-                            <input type="radio" class="d-none" name="rate" id="2" value="2" {% if user_rating==2
-                                %}checked{% endif %}>
+                            <input type="radio" class="d-none" name="rate" id="2" value="2" {% if user_rating == 2 %}checked{% endif %}>
                             <label for="2" class="fa fa-star {% if user_rating == 2 %}checked{% endif %}"
                                 title="Rate 2"></label>
-                            <input type="radio" class="d-none" name="rate" id="1" value="1" {% if user_rating==1
-                                %}checked{% endif %}>
+                            <input type="radio" class="d-none" name="rate" id="1" value="1" {% if user_rating == 1 %}checked{% endif %}>
                             <label for="1" class="fa fa-star {% if user_rating == 1 %}checked{% endif %}"
                                 title="Rate 1"></label>
                         </div>
@@ -102,6 +97,8 @@
                     </div>
                 </form>
             </figure>
+            {% elif request.user == recipe.user %}
+            <p>To be fair, it is not permitted to rate your own recipe. Please rate other members recipes and help everyone with your feedback!</p>
             {% else %}
             <p>Or you're not Logged in? <a href="/accounts/login" aria-label="Log-in link" title="Log-in"><i
                         class="fa-solid fa-right-to-bracket"></i>Log-in</a> to rate this recipe, or <a
