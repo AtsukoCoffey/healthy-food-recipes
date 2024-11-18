@@ -103,14 +103,15 @@ h1 {
 
 /*---------------------------------------------------------- messages */
 
-.messages {
+/* .messages {
+    list-style-type: none;
     border: 1px solid orangered;
     background-color: var(--white-orange);
-}
+} */
 
-.messages li {
-    text-decoration: none;
-}
+/* .messages li {
+    list-style-type: none;
+} */
 
 /*---------------------------------------------------------- Add recipe form */
 

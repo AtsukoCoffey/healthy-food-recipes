@@ -17,14 +17,14 @@
 <section class="container flex-column">
   <!-- Section Title and Search Button -> trigger modal -->
   <div class="search-button">
-    <h2 class="mt-3">Recipes</h2>
+    <h2 class="mt-3">Recipes</h2> {{ page.count }}
     <button id="search-btn" type="button" class="btn" data-bs-toggle="modal" data-bs-target="#exampleModal">
       Search <i class="fa-solid fa-magnifying-glass"></i>
     </button>
   </div>
   <hr>
   <div class="recipe-cont">
-    {% for recipe in recipes %}
+    {% for recipe in page_obj %}
     <a href="{% url 'recipe_detail' recipe.slug %}" class="img-container">
       <img src="{{recipe.image.url}}" alt="{{recipe.image_alt}}" style="width: 100%">
       <div class="centerd">
@@ -47,7 +47,7 @@
       <li><a href="?page={{ page_obj.previous_page_number }}" class="page-link">&laquo; PREV </a></li>
       {% endif %}
       {% if page_obj.has_next %}
-      <li><a href="?page={{ page_obj.next_page_number }}" class="page-link"> NEXT &raquo;</a></li>
+      <li><a href="?page={{ page_obj.next_page_number }}" class="page-link"> NEXT &raquo;</a> {{page.num_pages}}</li>
       {% endif %}
     </ul>
   </nav>

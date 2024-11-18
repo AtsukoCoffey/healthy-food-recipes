@@ -36,7 +36,7 @@
             <div class="col-md-8 offset-md-2">
                 {% for message in messages %}
                 <ul class="messages alert">
-                    <li{% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message|safe }}</li>
+                    <li class="alert {% if message.tags %}{{ message.tags }}{% endif %}" role="alert">{{ message|safe }}</li>
                 </ul>
                 {% endfor %}
             </div>

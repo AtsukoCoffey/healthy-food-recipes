@@ -6,12 +6,17 @@ from recipes.models import Recipe
 
 class Index(ListView):
     """
-    Display the list of the recipes :model:`recipes.Recipe`.
+    Display the list of the recipes
     **Template:**
     :template:`home/index.html` 
+    **Context**
+    ``recipes`` All recipes :model:`recipes.Recipe`
+    ``queryset`` All queried recipes - get_queryset()
+    ``all_users`` All users data for option search display
     """
     template_name = 'home/index.html'
     model = Recipe
+    ordering = ['posted_date']
     context_object_name = 'recipes'
     paginate_by = 9
 
@@ -72,5 +77,4 @@ class Index(ListView):
         if owner_query:
             queryset = queryset.filter(Q(user=owner_query))
         
-
         return queryset
