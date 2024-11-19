@@ -15,10 +15,10 @@ class Index(ListView):
     ``all_users`` All users data for option search display
     """
     template_name = 'home/index.html'
-    model = Recipe
     ordering = ['posted_date']
     context_object_name = 'recipes'
     paginate_by = 9
+    queryset = Recipe.objects.all()
 
     # For owner search, send all the User model's name and pk
     def get_context_data(self, **kwargs):
