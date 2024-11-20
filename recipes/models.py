@@ -8,15 +8,16 @@ from django.utils.text import slugify
 class Recipe(models.Model):
     """
     Stores a single recipe entry related to :model:`auth.User`
+    Also for average rating  :model:`Rating`
     """
     user = models.ForeignKey(
         User, related_name="recipe_owner", on_delete=models.CASCADE, default='0'
     )
     title = models.CharField(max_length=100, unique=True, null=False, blank=False)
     slug = models.SlugField()
-    description = models.TextField(max_length=400, null=False, blank=True)
-    prep_time = models.CharField()
-    cook_time = models.CharField()
+    description = models.TextField(max_length=500, null=False, blank=True)
+    prep_time = models.CharField(max_length=50)
+    cook_time = models.CharField(max_length=50)
     ingredients = models.TextField(
         max_length=10000, null=False, blank=False, default=""
     )
@@ -30,7 +31,7 @@ class Recipe(models.Model):
         force_format="WEBP",
         default='https://res.cloudinary.com/dulfdtcut/image/upload/v1/recipes/recipe-image-placeholder_upjwg0'
     )
-    image_alt = models.CharField()
+    image_alt = models.CharField(max_length=100)
     posted_date = models.DateTimeField(auto_now=True)
     lowsugar = models.BooleanField(
         default=False, help_text='e.g. sucrose, glucose, fructose, maltose,\
@@ -51,7 +52,7 @@ class Recipe(models.Model):
     nutfree = models.BooleanField(default=False, help_text='All kind of Nuts.\
         Not include seeds: sesame, sunflower pumpkin, macadamia nut, pine nut')
 
-
+    # This average was calculated using an Aggregate from the specific recipe in Rating.
     def average_rating(self) -> float:
         return Rating.objects.filter(recipe=self).aggregate(Avg("rating"))["rating__avg"] or 0
 
@@ -75,5 +76,10 @@ class Rating(models.Model):
     def __str__(self):
         return f"{self.recipe.title}: {self.rating}"
 
-    
+
+class Recipe_comment(models.Model):
+    recipe = models.ForeignKey(Recipe, on_delete=models.CASCADE)
+    comment = models.CharField(max_length=500)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    posted_date = models.DateTimeField(auto_now=True)
 
