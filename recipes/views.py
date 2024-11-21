@@ -125,3 +125,31 @@ class DeleteRecipe(LoginRequiredMixin, UserPassesTestMixin, SuccessMessageMixin,
 
     def test_func(self):
         return self.request.user == self.get_object().user
+
+
+def comment_edit(request, slug, comment_id):
+    """
+    Display an individual comment for edit.
+    **Context**
+    ``recipe``
+        An instance of :model:`recipes.Recipe`.
+    ``commnet``
+        A single comment related to the rcipe.
+    ``comment_form``
+        An isntance of :form:`recipes.RecipeCommentForm`.
+    """
+    if request.method == "POST":
+        recipes = Recipe.objects.all()
+        recipe = get_object_or_404(recipes, slug=slug)
+        comment = get_object_or_404(RecipeComment, pk=comment_id)
+        comment_form = RecipeCommentForm(data=request.POST, instance=comment)
+
+        if comment_form.is_valid() and comment.commenter == request.user:
+            comment = comment_form.save(commit=False)
+            comment.recipe = recipe
+            comment.save()
+            messages.add_message(request, messages.SUCCESS, 'Comment Updated!')
+        else:
+            messages.add_message(
+                request, messages.ERROR, 'Error updating comment!')
+    return HttpResponseRedirect(reverse('post_detail', args=[slug]))

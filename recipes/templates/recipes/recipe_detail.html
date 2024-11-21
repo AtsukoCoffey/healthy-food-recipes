@@ -102,20 +102,22 @@
             <p>To be fair, it is not permitted to rate your own recipe. Please rate other members recipes and help
                 everyone with your feedback!</p>
             {% else %}
-            <p>Or you're not Logged in? <a href="/accounts/login" aria-label="Log-in link" title="Log-in"><i
-                        class="fa-solid fa-right-to-bracket"></i>Log-in</a> to rate this recipe, or <a
+            <p>Or you're not Logged in? <a href="/accounts/login" aria-label="Log-in link" title="Log-in"><button><i
+                        class="fa-solid fa-right-to-bracket"></i>Log-in</button></a> to rate this recipe, or <a
                     href="/accounts/signup" aria-label="Sign-Up link" title="Sign-up"><i
                         class="fa-solid fa-user-pen"></i> Sign-up</a></p>
             {% endif %}
         </div>
+        <!-- All the comments related to this recipe - comment owner can edit/delete -->
         <div class="col-md-4 p-3">
             <h3>Comments</h3>
+            <hr>
             <div class="card-body">
                 <!-- for loop inside the empty control tags to iterate through each comment in recipe comments -->
                 {% for comment in comments %}
                 <div class="p-2 comment">
                     <p class="font-weight-bold">
-                        {{ comment.commneter }}
+                        {{ comment.commenter }}
                         <span class="font-weight-normal">
                             {{ comment.posted_date }}
                         </span> wrote:
@@ -123,7 +125,7 @@
                     <div id="comment{{ comment.id }}">
                         {{ comment.comment_body | linebreaks }}
                     </div>
-                    {% if user.is_authenticated and comment.commenter == user %}
+                    {% if user.is_authenticated and request.user == comment.commenter %}
                     <button class="btn btn-delete" data-comment_id="{{ comment.id }}">Delete</button>
                     <button class="btn btn-edit" data-comment_id="{{ comment.id }}">Edit</button>
                     {% endif %}
@@ -131,18 +133,23 @@
                 {% endfor %}
             </div>
         </div>
+        <!-- Comment form for authenticated user -->
         <div class="col-md-4 p-3">
             <div class="card-body">
-                {% if user.is_authenticated %}
                 <h3>Leave a comment:</h3>
+                <hr>
+                {% if user.is_authenticated %}
                 <p>Posting as: {{ user.username }}</p>
                 <form id="commentForm" method="post" style="margin-top: 1.3em;">
                     {{ comment_form | crispy }}
                     {% csrf_token %}
-                    <button id="submitButton" type="submit" class="btn btn-signup btn-lg">Submit</button>
+                    <button id="submitButton" type="submit" class="btn btn-signup btn-primary">Submit</button>
                 </form>
                 {% else %}
-                <p>Log in to leave a comment</p>
+                <p>Log in to leave a comment.<a href="/accounts/login" aria-label="Log-in link" title="Log-in"><button><i
+                    class="fa-solid fa-right-to-bracket"></i>Log-in</button></a>, or join our community <a
+                href="/accounts/signup" aria-label="Sign-Up link" title="Sign-up"><i
+                    class="fa-solid fa-user-pen"></i> Sign-up</a></p>
                 {% endif %}
             </div>
 
@@ -150,5 +157,5 @@
     </div>
 </div>
 
-<script src="{% static 'js/rating.js' recipe.id %}"></script>
+<script src="{% static 'js/recipe-comment.js' %}"></script>
 {% endblock %}

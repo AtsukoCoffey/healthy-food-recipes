@@ -88,6 +88,6 @@ class RecipeComment(models.Model):
     """
     recipe = models.ForeignKey(Recipe, on_delete=models.CASCADE, related_name="comments")
     comment_body = models.CharField(max_length=500)
-    commneter = models.ForeignKey(User, on_delete=models.CASCADE, related_name="commenter")
+    commenter = models.ForeignKey(User, on_delete=models.CASCADE, related_name="commenter")
     posted_date = models.DateTimeField(auto_now=True)
 
