@@ -35,7 +35,7 @@ class AddRecipe(LoginRequiredMixin, SuccessMessageMixin, CreateView):
         )
 
 
-# If user is authenticated and rated before display the rate, or 0 star
+# If user is authenticated and rated before display the rating, or 0 star
 # Took this out from Detail view to call before and after processing POST
 def get_user_rating(user, recipe):
     if user.is_authenticated:
@@ -154,3 +154,25 @@ def comment_edit(request, slug, comment_id):
                 request, messages.ERROR, 'Error updating comment!')
     return HttpResponseRedirect(reverse('recipe_detail', args=[slug]))
 
+
+def comment_delete(request, slug, comment_id):
+    """
+    Delete an individual comment.
+    **Context**
+    ``recipe``
+        An instance of :model:`recipes.Recipe`.
+    ``comment``
+        A single comment related to the recipe.
+    """
+    recipes = Recipe.objects.all()
+    recipe = get_object_or_404(recipes, slug=slug)
+    comment = get_object_or_404(RecipeComment, pk=comment_id)
+
+    if comment.commenter == request.user:
+        comment.delete()
+        messages.add_message(request, messages.SUCCESS, 'Your comment deleted!')
+    else:
+        messages.add_message(
+            request, messages.ERROR, 'You can only delete your own comments!')
+
+    return HttpResponseRedirect(reverse('resipe_detail', args=[slug]))
