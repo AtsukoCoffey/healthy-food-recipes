@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django_summernote.admin import SummernoteModelAdmin
 
-from .models import Recipe, Rating
+from .models import Recipe, Rating, RecipeComment
 
 @admin.register(Recipe)
 class RecipeAdmin(SummernoteModelAdmin):
@@ -19,3 +19,4 @@ class RecipeAdmin(SummernoteModelAdmin):
 
 admin.site.register(Rating)
 
+admin.site.register(RecipeComment)

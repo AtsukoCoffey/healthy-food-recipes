@@ -2,14 +2,22 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.views.generic import CreateView, DetailView, UpdateView, DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.contrib.messages.views import SuccessMessageMixin
+from django.contrib import messages
 from django.urls import reverse
 from django.http import HttpRequest, HttpResponse
-from .models import Recipe, Rating
-from .forms import RecipeForm
+from .models import Recipe, Rating, RecipeComment
+from .forms import RecipeForm, RecipeCommentForm
 
 
 class AddRecipe(LoginRequiredMixin, SuccessMessageMixin, CreateView):
-    """Add - create new - recipe view"""
+    """
+    Add - create new - recipe view
+    **Template:**
+    :template:`recipes/add_recipe.html`
+     **Context**
+    ``form_class``
+        form input for an instance :model:`recipes.Recipe`
+    """
     template_name = "recipes/add_recipe.html"
     model = Recipe
     form_class = RecipeForm
@@ -48,9 +56,23 @@ def RecipeDetail(request: HttpRequest, slug) -> HttpResponse:
     recipe = get_object_or_404(Recipe.objects.all(), slug=slug)
     # Call user rating function : ->move to outside of this function view
     user_rating = get_user_rating(request.user, recipe)
+    # get comment data using the related_name 
+    comments = recipe.comments.all().order_by("-posted_date")
 
-    # Update or create the rating for this unique user and recipe
     if request.method == "POST":
+        # For Comment posting
+        comment_form = RecipeCommentForm(data=request.POST)
+        if comment_form.is_valid():
+            comment = comment_form.save(commit=False)
+            comment.commenter = request.user
+            comment.recipe = recipe
+            comment.save()
+            messages.add_message(
+                request, messages.SUCCESS,
+                'Comment submitted successfully'
+             )
+
+        # Update or create the rating for this unique user and recipe
         rate_value = request.POST.get("rate")
         if rate_value == None:
             rate_value = 0
@@ -64,12 +86,15 @@ def RecipeDetail(request: HttpRequest, slug) -> HttpResponse:
         # Redirect to avoid form resubmission
         return redirect('recipe_detail', slug=slug)
     
+    comment_form = RecipeCommentForm()
     return render(
         request, 
         "recipes/recipe_detail.html",
         {
             'recipe': recipe,
             'user_rating': user_rating,
+            'comments': comments,
+            "comment_form": comment_form,
         }
     )
 

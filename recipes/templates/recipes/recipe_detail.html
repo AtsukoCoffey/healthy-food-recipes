@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load static %}
+{% load crispy_forms_tags %}
 {% block title %}Recipe Detail - {{recipe.title}}{% endblock %}
 
 {% block content %}
@@ -64,7 +65,7 @@
     </div>
     <!-- User Rating and comments -->
     <div class="row">
-        <div class="col-md-8 p-3">
+        <div class="col-md-4 p-3">
             <h3>Rate this recipe</h3>
             <hr>
             <p>How many stars would you like to give this &quot;{{ recipe.title }}&quot;?</p>
@@ -98,7 +99,8 @@
                 </form>
             </figure>
             {% elif request.user == recipe.user %}
-            <p>To be fair, it is not permitted to rate your own recipe. Please rate other members recipes and help everyone with your feedback!</p>
+            <p>To be fair, it is not permitted to rate your own recipe. Please rate other members recipes and help
+                everyone with your feedback!</p>
             {% else %}
             <p>Or you're not Logged in? <a href="/accounts/login" aria-label="Log-in link" title="Log-in"><i
                         class="fa-solid fa-right-to-bracket"></i>Log-in</a> to rate this recipe, or <a
@@ -106,7 +108,45 @@
                         class="fa-solid fa-user-pen"></i> Sign-up</a></p>
             {% endif %}
         </div>
-        <div class="col-md-4 p-3"></div>
+        <div class="col-md-4 p-3">
+            <h3>Comments</h3>
+            <div class="card-body">
+                <!-- for loop inside the empty control tags to iterate through each comment in recipe comments -->
+                {% for comment in comments %}
+                <div class="p-2 comment">
+                    <p class="font-weight-bold">
+                        {{ comment.commneter }}
+                        <span class="font-weight-normal">
+                            {{ comment.posted_date }}
+                        </span> wrote:
+                    </p>
+                    <div id="comment{{ comment.id }}">
+                        {{ comment.comment_body | linebreaks }}
+                    </div>
+                    {% if user.is_authenticated and comment.commenter == user %}
+                    <button class="btn btn-delete" data-comment_id="{{ comment.id }}">Delete</button>
+                    <button class="btn btn-edit" data-comment_id="{{ comment.id }}">Edit</button>
+                    {% endif %}
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="col-md-4 p-3">
+            <div class="card-body">
+                {% if user.is_authenticated %}
+                <h3>Leave a comment:</h3>
+                <p>Posting as: {{ user.username }}</p>
+                <form id="commentForm" method="post" style="margin-top: 1.3em;">
+                    {{ comment_form | crispy }}
+                    {% csrf_token %}
+                    <button id="submitButton" type="submit" class="btn btn-signup btn-lg">Submit</button>
+                </form>
+                {% else %}
+                <p>Log in to leave a comment</p>
+                {% endif %}
+            </div>
+
+        </div>
     </div>
 </div>
 

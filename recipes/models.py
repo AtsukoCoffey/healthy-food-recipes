@@ -69,6 +69,10 @@ class Recipe(models.Model):
 
 
 class Rating(models.Model):
+    """
+    Stores a star rating entry related to :modl:`auth.User`
+    and :model:`recipes.Recipe`. 
+    """
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     recipe = models.ForeignKey(Recipe, on_delete=models.CASCADE)
     rating = models.IntegerField(default=0)
@@ -77,9 +81,13 @@ class Rating(models.Model):
         return f"{self.recipe.title}: {self.rating}"
 
 
-class Recipe_comment(models.Model):
-    recipe = models.ForeignKey(Recipe, on_delete=models.CASCADE)
-    comment = models.CharField(max_length=500)
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+class RecipeComment(models.Model):
+    """
+    Stores a single comment entry related to :modl:`auth.User`
+    and :model:`recipes.Recipe`. 
+    """
+    recipe = models.ForeignKey(Recipe, on_delete=models.CASCADE, related_name="comments")
+    comment_body = models.CharField(max_length=500)
+    commneter = models.ForeignKey(User, on_delete=models.CASCADE, related_name="commenter")
     posted_date = models.DateTimeField(auto_now=True)
 

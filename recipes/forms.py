@@ -2,7 +2,7 @@ from django import forms
 from django_summernote.widgets import SummernoteWidget
 from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Layout, Div, Fieldset, Submit
-from .models import Recipe
+from .models import Recipe, RecipeComment
 
 
 class RecipeForm(forms.ModelForm):
@@ -68,3 +68,11 @@ class RecipeForm(forms.ModelForm):
           'description': forms.Textarea(attrs={'rows':4}),
         }
         
+
+class RecipeCommentForm(forms.ModelForm):
+    """
+    Form to leave a comment on the recipe. :model recipes.RecipeComment
+    """
+    class Meta:
+        model = RecipeComment
+        fields = ('comment_body',)
