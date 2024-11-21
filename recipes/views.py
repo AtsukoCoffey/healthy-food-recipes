@@ -4,7 +4,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.contrib.messages.views import SuccessMessageMixin
 from django.contrib import messages
 from django.urls import reverse
-from django.http import HttpRequest, HttpResponse
+from django.http import HttpRequest, HttpResponse, HttpResponseRedirect
 from .models import Recipe, Rating, RecipeComment
 from .forms import RecipeForm, RecipeCommentForm
 
@@ -129,12 +129,12 @@ class DeleteRecipe(LoginRequiredMixin, UserPassesTestMixin, SuccessMessageMixin,
 
 def comment_edit(request, slug, comment_id):
     """
-    Display an individual comment for edit.
+    Display an individual recipe's comment for edit.
     **Context**
     ``recipe``
         An instance of :model:`recipes.Recipe`.
-    ``commnet``
-        A single comment related to the rcipe.
+    ``comment``
+        A single comment related to the recipe.
     ``comment_form``
         An isntance of :form:`recipes.RecipeCommentForm`.
     """
@@ -152,4 +152,5 @@ def comment_edit(request, slug, comment_id):
         else:
             messages.add_message(
                 request, messages.ERROR, 'Error updating comment!')
-    return HttpResponseRedirect(reverse('post_detail', args=[slug]))
+    return HttpResponseRedirect(reverse('recipe_detail', args=[slug]))
+

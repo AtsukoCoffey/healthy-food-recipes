@@ -126,8 +126,8 @@
                         {{ comment.comment_body | linebreaks }}
                     </div>
                     {% if user.is_authenticated and request.user == comment.commenter %}
-                    <button class="btn btn-delete" data-comment_id="{{ comment.id }}">Delete</button>
-                    <button class="btn btn-edit" data-comment_id="{{ comment.id }}">Edit</button>
+                    <button class="btn btn-delete btn-danger" data-comment_id="{{ comment.id }}">Delete</button>
+                    <button class="btn btn-edit btn-primary" data-comment_id="{{ comment.id }}">Edit</button>
                     {% endif %}
                 </div>
                 {% endfor %}
