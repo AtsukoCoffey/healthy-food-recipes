@@ -197,6 +197,7 @@ a.img-container {
     text-decoration: none;
     border: 1px solid var(--black);
     box-shadow: var(--small-shadow);
+    border-radius: 8px;
 }
 
 a.img-container:hover {
@@ -221,6 +222,11 @@ a.img-container:hover {
 
 .centerd p {
     color: var(--star-gray);
+}
+
+.stars {
+    font-size: small;
+    margin-bottom: 0;
 }
 
 /*---------------------------------------------------------- Recipe detail page */

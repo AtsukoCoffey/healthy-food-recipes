@@ -5,11 +5,15 @@
     <nav class="navbar navbar-expand-md">
         <div class="container-fluid">
             <!-- Logo -->
-            <a class="navbar-brand logo" href="https://atsukocoffey.github.io/healthy-food-club/" target="_blank"
+            <!-- <a class="navbar-brand logo" href="https://atsukocoffey.github.io/healthy-food-club/" target="_blank"
                 rel="author" aria-label="Visit our grand top page (opens in a new tab)"
                 title="Visit our  grand top page (opens in a new tab)">Healthy Food Club</a><a
                 class="navbar-brand community-top" href="{% url 'home' %}" aria-label="Community Area Top page"
-                title="Community Area Top page">- Community -</a>
+                title="Community Area Top page">- Community -</a> -->
+            <a class="navbar-brand logo" href="{% url 'home' %}" aria-label="Healthy Food Recipe Top page"
+                title="Healthy Food Recipe Top page">
+                <h1>Healthy Food Recipe</h1>
+            </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -35,8 +39,8 @@
                         </a>
                         <ul class="dropdown-menu">
                             <li><a class="dropdown-item{% if url_name == 'add_recipe' %} active"
-                                    aria-current="page{% endif %}" href="{% url 'add_recipe' %}" aria-label="Create Recipe"
-                                    title="Create Recipe"> Create Recipe</a></li>
+                                    aria-current="page{% endif %}" href="{% url 'add_recipe' %}"
+                                    aria-label="Create Recipe" title="Create Recipe"> Create Recipe</a></li>
                             <li><a class="dropdown-item{% if url_name == 'add_recipe' %} active"
                                     aria-current="page{% endif %}" href="{% url 'add_recipe' %}" aria-label="Crate Post"
                                     title="Create Post"> Create Post</a></li>
