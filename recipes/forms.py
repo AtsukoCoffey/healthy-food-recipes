@@ -9,8 +9,8 @@ class RecipeForm(forms.ModelForm):
     """form to create a recipe"""
     ingredients = forms.CharField(widget=SummernoteWidget())
     instructions = forms.CharField(widget=SummernoteWidget())
-    prep_time = forms.CharField(label=(u'Preparation time (min)'), required=False)
-    cook_time = forms.CharField(label=(u'Cooking time (min)'), required=False)
+    prep_time = forms.CharField(label=(u'Preparation time'), required=False)
+    cook_time = forms.CharField(label=(u'Cooking time'), required=False)
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -76,3 +76,6 @@ class RecipeCommentForm(forms.ModelForm):
     class Meta:
         model = RecipeComment
         fields = ('comment_body',)
+        widgets = {
+          'comment_body': forms.Textarea(attrs={'rows':3}),
+        }
