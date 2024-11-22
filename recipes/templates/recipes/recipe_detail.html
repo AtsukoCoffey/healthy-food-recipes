@@ -74,7 +74,7 @@
             <figure>
                 <figcaption>Your rating:</figcaption>
                 <form action="{% url 'recipe_detail' recipe.slug %}" id="star-form" method="POST">
-                    <div class="d-flex">
+                    <div class="d-flex flex-wrap">
                         <div class="btn btn-light rating-list">
                             <input type="radio" class="d-none" name="rate" id="5" value="5" {% if user_rating == 5 %}checked{% endif %}>
                             <label for="5" class="fa fa-star {% if user_rating == 5 %}checked{% endif %}"
@@ -93,7 +93,7 @@
                                 title="Rate 1"></label>
                         </div>
                         {% csrf_token %}
-                        <button type="submit" form="star-form" class="btn btn-edit btn-primary ms-2">Submit</button>
+                        <button type="submit" form="star-form" class="btn btn-edit btn-primary m-2">Submit</button>
                     </div>
                 </form>
             </figure>

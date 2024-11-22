@@ -109,9 +109,9 @@ h1 {
     background-color: var(--white-orange);
 } */
 
-/* .messages li {
+.messages {
     list-style-type: none;
-} */
+}
 
 /*---------------------------------------------------------- Add recipe form */
 
@@ -285,10 +285,6 @@ input:checked ~ label.fa-star,
 input:checked + label.fa-star {
     color: var(--strong-orange);
 }
-
-/* li>input:checked ~ label {
-    color: var(--strong-orange);
-} */
 
 /*---------------------------------------------------------- Footer */
 footer {

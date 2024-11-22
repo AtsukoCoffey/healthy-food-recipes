@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.views.generic import CreateView, DetailView, UpdateView, DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
+from django.contrib.auth.decorators import login_required
 from django.contrib.messages.views import SuccessMessageMixin
 from django.contrib import messages
 from django.urls import reverse
@@ -127,6 +128,7 @@ class DeleteRecipe(LoginRequiredMixin, UserPassesTestMixin, SuccessMessageMixin,
         return self.request.user == self.get_object().user
 
 
+@login_required
 def comment_edit(request, slug, comment_id):
     """
     Display an individual recipe's comment for edit.
@@ -143,7 +145,7 @@ def comment_edit(request, slug, comment_id):
         recipe = get_object_or_404(recipes, slug=slug)
         comment = get_object_or_404(RecipeComment, pk=comment_id)
         comment_form = RecipeCommentForm(data=request.POST, instance=comment)
-
+        # form validation and "user = commenter" check 
         if comment_form.is_valid() and comment.commenter == request.user:
             comment = comment_form.save(commit=False)
             comment.recipe = recipe
@@ -155,6 +157,7 @@ def comment_edit(request, slug, comment_id):
     return HttpResponseRedirect(reverse('recipe_detail', args=[slug]))
 
 
+@login_required
 def comment_delete(request, slug, comment_id):
     """
     Delete an individual comment.
@@ -168,11 +171,11 @@ def comment_delete(request, slug, comment_id):
     recipe = get_object_or_404(recipes, slug=slug)
     comment = get_object_or_404(RecipeComment, pk=comment_id)
 
+    #  "user = commenter" check 
     if comment.commenter == request.user:
         comment.delete()
         messages.add_message(request, messages.SUCCESS, 'Your comment deleted!')
     else:
         messages.add_message(
             request, messages.ERROR, 'You can only delete your own comments!')
-
     return HttpResponseRedirect(reverse('recipe_detail', args=[slug]))
