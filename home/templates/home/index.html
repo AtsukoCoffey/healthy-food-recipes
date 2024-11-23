@@ -7,7 +7,11 @@
 
 <section class="text-center p-2" id="hero-image">
   <div class="container p-2" id="hero-text">
-    <h2 class="main-title mt-4 mx-auto">Welcome to the Community Area of Healthy Food Club!</h2>
+    {% if user.is_authenticated %}
+    <h2 class="main-title mt-4 mx-auto">Welcome back {{ user.username }}!</h2>
+    {% else %}
+    <h2 class="main-title mt-4 mx-auto">Welcome to the Community of Healthy Food Club!</h2>
+    {% endif %}
     <p class="pt-2">This is where we share healthy recipes, information and tips & tricks for a better food
       lifestyle. We aim to generate positive discussion for all those interested in becoming more aware of what we
       eat. Join us today and share your favorite recipes! We also have a useful search and filter option. Give it
@@ -58,7 +62,7 @@
   <div class="modal-dialog modal-lg">
     <div class="modal-content p-4">
       <div class="modal-header">
-        <h3 class="modal-title" id="search-option-title">Search options</h3>
+        <h4 class="modal-title" id="search-option-title">Search options</h4>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
