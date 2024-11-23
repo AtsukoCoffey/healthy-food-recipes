@@ -110,11 +110,11 @@ a:active {
     border-bottom: 2px solid var(--light-green);
 }
 
-
 /*---------------------------------------------------------- messages */
 
 .messages {
     list-style-type: none;
+    margin: 0;
 }
 
 /*---------------------------------------------------------- Add recipe form */

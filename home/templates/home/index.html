@@ -7,6 +7,7 @@
 
 <section class="text-center p-2" id="hero-image">
   <div class="container p-2" id="hero-text">
+    <!-- Change the welcome message depend on the user's status - authenticated -->
     {% if user.is_authenticated %}
     <h2 class="main-title mt-4 mx-auto">Welcome back {{ user.username }}!</h2>
     {% else %}
@@ -21,13 +22,14 @@
 <section class="container flex-column">
   <!-- Section Title and Search Button -> trigger modal -->
   <div class="search-button">
-    <h3 class="mt-3">Recipes</h3> {{ page.count }}
+    <h3 class="mt-3">Recipes</h3>
     <button id="search-btn" type="button" class="btn" data-bs-toggle="modal" data-bs-target="#exampleModal">
       Search <i class="fa-solid fa-magnifying-glass"></i>
     </button>
   </div>
   <hr>
   <div class="recipe-cont">
+    <!-- Display recipes list - 9 par 1 page with pagination -->
     {% for recipe in page_obj %}
     <a href="{% url 'recipe_detail' recipe.slug %}" class="img-container">
       <img src="{{recipe.image.url}}" alt="{{recipe.image_alt}}" style="width: 100%">
@@ -58,7 +60,7 @@
   {% endif %}
 </section>
 <!-- Modal - for search options -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="searchModal" tabindex="-1" aria-labelledby="searchModal" aria-hidden="true">
   <div class="modal-dialog modal-lg">
     <div class="modal-content p-4">
       <div class="modal-header">
@@ -66,6 +68,7 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
+        <!-- Quick search by 8 categories -->
         <form id="checkbox-filter" role="search" method="GET" action="{% url 'home'  %}">
           <fieldset>
             <legend>Quick search</legend>
@@ -93,6 +96,7 @@
             <button type="submit" class="btn btn-success" form="checkbox-filter">Search</button>
           </div>
         </form>
+        <!-- Ingredients search - avoid and/or include -->
         <form id="ingre-search" role="search" method="GET" action="{% url 'home'  %}">
           <fieldset>
             <legend>Ingredients search</legend>
@@ -107,12 +111,14 @@
             <button type="submit" class="btn btn-success" form="ingre-search">Search</button>
           </div>
         </form>
+        <!-- Free text search - look for in title, description and instruction field -->
         <form id="free-search" role="search" method="GET" action="{% url 'home'  %}">
-        <label for="free-word-search" class="pt-3">Free search</label><br>
-        <input id="free-word-search" class="me-2 p-2" name="q-free" type="search" placeholder="Free Search"
-          aria-label="Free Search">
-        <button type="submit" class="btn btn-success" form="free-search">Search</button>
+          <label for="free-word-search" class="pt-3">Free search</label><br>
+          <input id="free-word-search" class="me-2 p-2" name="q-free" type="search" placeholder="Free Search"
+            aria-label="Free Search">
+          <button type="submit" class="btn btn-success" form="free-search">Search</button>
         </form>
+        <!-- Owner search - 'all_users' get the User model's ids and usernames -->
         <form id="owner-search" role="search" method="GET" action="{% url 'home'  %}">
           <label for="owner-id-search" class="pt-3">Recipe's Owner search</label><br>
           <select id="owner-id-search" name="q-owner" class="p-2" aria-label="Owner Search">

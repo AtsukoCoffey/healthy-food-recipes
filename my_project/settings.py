@@ -188,10 +188,9 @@ SUMMERNOTE_CONFIG = {
         # Toolbar customization
         # https://summernote.org/deep-dive/#custom-toolbar-popover
         'toolbar': [
-            ['style', ['style']],
             ['font', ['bold', 'underline', 'clear']],
             ['para', ['ul', 'ol', 'paragraph']],
-            ['insert', ['link', 'picture', 'video']],
+            ['insert', ['link', 'picture']],
             ['view', ['fullscreen', 'codeview', 'help']],
         ],
 
