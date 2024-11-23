@@ -5,7 +5,7 @@
 {% block content %}
 <div class="container">
     <form method="POST" enctype="multipart/form-data" class="form">
-        <h1 class="text-center">Edit Recipe</h1>
+        <h2 class="text-center">Edit Recipe</h2>
         {% load crispy_forms_tags %}
         {% csrf_token %}
         {% crispy form %}
