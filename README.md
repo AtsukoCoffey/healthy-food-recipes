@@ -1,3 +1,6 @@
+<script src="https://cdn.jsdelivr.net/npm/mermaid@11.4.0/dist/mermaid.min.js"></script>
+
+
 # UX DESIGN
 
 ## 1. Strategy Plane
@@ -10,8 +13,7 @@
 2.	Users can access and learn crucial information that could have an impact on their health and well-being by the community activities.
 3.	Users can learn alternative cooking knowledge to avoid potentially dangerous food additives and unnaturally excessively processed food.
 ### Difference from competitors and substitutions
-1.  The "Healthy Food Club" is not just recipes, but has more emphasis on learning.
-2.  The cooking recipes for the session is aligned with the lecture content, making it more practical.
+1.  The "Healthy Food Club" is not just recipes, but has more emphasis on learning and communication.
 
 ## 2. Scope Plane 
 ### First time visitor
@@ -38,19 +40,21 @@
 ## 3. Structure Plane
 * The website should have a Navigation menu that is consistent across all pages.
 * The website should have a fixed footer to access anytime to see this site's SNS.
-<!-- * The website should give the user a way to contact through a form. -->
 * The website should have breadcrumbs to help users feel a strong sense of place and also give access to previous pages when it expands to become a larger website.
 *	The website should have hover interaction for links, abbreviation, and tooltips with additional information to enhance user experience.
 * The landing page should show what this site is offering intuitively.
-<!-- * The Info page should have a variety of articles that are categorized by different perspectives. -->
 * Burger icon is commonly used on smaller screens, so using this convention suits users' expectations.
 *	The Sign-up page submit button should be clearly visible and interactive when the mouse hovers over it. 
 
 ## 4. Skeleton Plane
+### Structure diagram
+
+![Database relationship diagram](readme-img/ux-structure-diagram.png "Database relationship diagram")
+
 <details open>
 <summary>Database relationship diagram</summary>
 
-![Database relationship diagram](readme-img/db-diagram.jpg "Database relationship diagram")
+![Database relationship diagram](readme-img/ux-db-diagram.jpg "Database relationship diagram")
 </details>  
 
 For the mobile screen wireframe, I simply lined up important and necessary information under the flow of UX design strategy as I thought there wasn't much excess spaces.  
@@ -104,6 +108,23 @@ For the site's basic font, I was considering using "Quicksand" for the best read
 
 ## The Header And Navigation Bar
 
+
+# Future features
+
+Any open issues can be tracked [here](). These are the "Won't Have's" for this project that, for a variety of reasons, will not be included in this projct submission. These may be revisited and added in the future.
+
+# Bugs
+
+
+- Bug title.
+
+    ![screenshot](readme-img/)
+
+    - To fix this, ....
+
+## Unfixed Bugs
+
+There are no remaining bugs that I am aware of.
 
 # CREDIT
 
@@ -194,3 +215,4 @@ Credit referenced projects
 Technology
 * Mermaid
 [JavaScript-based diagramming and charting tool](https://github.com/mermaid-js/mermaid/blob/develop/README.md "JavaScript-based diagramming and charting tool")
+
