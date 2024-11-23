@@ -36,7 +36,10 @@
             <div class="col-md-8 offset-md-2">
                 {% for message in messages %}
                 <ul class="messages alert">
-                    <li class="alert {% if message.tags %}{{ message.tags }}{% endif %}" role="alert">{{ message|safe }}</li>
+                    <li class="alert {% if message.tags %}{{ message.tags }}{% endif %} alert-dismissible 
+                    fade show" role="alert">{{ message|safe }}
+                        <button type="button" class="btn-close ma-auto" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </li>
                 </ul>
                 {% endfor %}
             </div>

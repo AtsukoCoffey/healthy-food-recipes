@@ -82,6 +82,8 @@ def RecipeDetail(request: HttpRequest, slug) -> HttpResponse:
             user=request.user,
             defaults={"rating": rate_value}  # rating is the field of rating model
         )
+        if rate_value != 0:
+            messages.add_message(request, messages.SUCCESS, 'Thank you for your rating!')
         # Call user rating function again
         user_rating = get_user_rating(request.user, recipe)
         # Redirect to avoid form resubmission
