@@ -10,5 +10,8 @@
         {% csrf_token %}
         {% crispy form %}
     </form>
+    <!-- Return to detail's page -->
+    <div class="text-center"><a class="btn btn-secondary mb-3" href="{% url 'recipe_detail' object.slug %}">
+        Go back to the recipe</a></div>
 </div>
 {% endblock %}

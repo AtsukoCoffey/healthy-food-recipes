@@ -10,7 +10,10 @@
         <form method="POST" class="text-center">
             {% csrf_token %}
             <p>Are you sure you want to delete "{{object.title}}"</p>
-            <input type="submit" value="Delete" class="btn btn-danger w-25">
+            <!-- Confirm and proceed to delete -->
+            <input type="submit" value="Confirm Delete" class="btn btn-danger">
+            <!-- Return to detail's page -->
+            <a class="btn btn-secondary" href="{% url 'recipe_detail' object.slug %}">No, go back</a>
         </form>
     </div>
 </div>
