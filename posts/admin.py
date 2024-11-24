@@ -9,7 +9,8 @@ class RecipeAdmin(SummernoteModelAdmin):
     list_display = (
         'title',
         'image',
-        'post_body'
+        'post_body',
+        'user'
         )
     search_fields = ['title', 'post_body']
     prepopulated_fields = {'slug': ('title',)}

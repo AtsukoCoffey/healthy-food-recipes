@@ -338,6 +338,11 @@ footer a:active {
     color: var(--mos-green);
 }
 
+/* -------------------------------------------------------------- Post top page */
+.faded {
+    color: rgba(172, 175, 175, 0.632);
+}
+
 /* Media query: General smart phone (768px and up) */
 @media screen and (min-width:768px) {
 

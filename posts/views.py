@@ -11,7 +11,7 @@ class AddPost(LoginRequiredMixin, SuccessMessageMixin, CreateView):
     Add - create new - post
     **Template:**
     :template:`posts/add_post.html`
-     **Context**
+    **Context**
     ``form_class``
         form input for an instance :model:`posts.Post`
     """
@@ -40,10 +40,16 @@ class AddPost(LoginRequiredMixin, SuccessMessageMixin, CreateView):
 
 class Posts(ListView):
     """
-    All the Posts list view - posts top page
+    Add - the Posts list view - posts top page
+    **Template:**
+    :template:`posts/posts.html`
+    **Context**
+    ``queryset``
+        All the post article :model:`posts.Post`
     """
     template_name = "posts/posts.html"
     model = Post
+    paginate_by = 8
     context_object_name = "posts"
 
 
