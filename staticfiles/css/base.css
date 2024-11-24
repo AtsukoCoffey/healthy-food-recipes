@@ -327,6 +327,17 @@ footer {
     color: var(--mos-green);
 }
 
+#healthy-food-club {
+    font-family: var(--title);
+    font-weight: 700;
+    text-decoration: none;
+}
+
+footer a:hover,
+footer a:active {
+    color: var(--mos-green);
+}
+
 /* Media query: General smart phone (768px and up) */
 @media screen and (min-width:768px) {
 

@@ -6,7 +6,9 @@ from .models import Recipe, RecipeComment
 
 
 class RecipeForm(forms.ModelForm):
-    """form to create a recipe"""
+    """
+    form to create a recipe with summernote
+    """
     ingredients = forms.CharField(widget=SummernoteWidget())
     instructions = forms.CharField(widget=SummernoteWidget())
     prep_time = forms.CharField(label=(u'Preparation time'), required=False)

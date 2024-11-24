@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Add Post{% endblock %}
+
+{% block content %}
+<div class="container"></div>
+    <form method="POST" enctype="multipart/form-data" class="form">
+        <h2 class="text-center">Add Post</h2>
+        {% load crispy_forms_tags %}
+        {% csrf_token %}
+        {% crispy form %}
+    </form>
+</div>
+{% endblock %}
