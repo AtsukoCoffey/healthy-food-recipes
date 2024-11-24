@@ -21,11 +21,11 @@
                             href="{% url 'home' %}" aria-label="Home (Top-page)" title="Home"><i
                                 class="fa-solid fa-house"></i> Home</a>
                     </li>
-                    <!-- <li class="nav-item">
-                        <a class="nav-link{% if url_name == 'home' %} active" aria-current="page{% endif %}"
-                            href="{% url 'home' %}" aria-label="Posts list page" title="Posts"><i
+                    <li class="nav-item">
+                        <a class="nav-link{% if url_name == 'posts' %} active" aria-current="page{% endif %}"
+                            href="{% url 'posts' %}" aria-label="Posts list page" title="Posts"><i
                                 class="fa-solid fa-newspaper"></i> Posts</a>
-                    </li> -->
+                    </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
                             aria-expanded="false" aria-label="New Create (Recipe or Post)"

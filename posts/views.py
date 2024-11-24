@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.views.generic import CreateView
+from django.views.generic import CreateView, ListView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.messages.views import SuccessMessageMixin
 from .models import Post
@@ -29,3 +29,13 @@ class AddPost(LoginRequiredMixin, SuccessMessageMixin, CreateView):
             cleaned_data,
             title=self.object.title,
         )
+
+
+class Posts(ListView):
+    """
+    All the Posts list view - posts top page
+    """
+    template_name = "posts/posts.html"
+    model = Post
+    context_object_name = "posts"
+

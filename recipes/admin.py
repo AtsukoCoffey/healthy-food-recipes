@@ -9,7 +9,14 @@ class RecipeAdmin(SummernoteModelAdmin):
         'image',
         'title',
         'user',
-        'slug',
+        'lowsugar',
+        'glutenfree',
+        'dairyfree',
+        'vegan',
+        'vegitarian',
+        'highfiber',
+        'highprotein',
+        'nutfree',
         'posted_date'
         )
     search_fields = ['title', 'ingredients']

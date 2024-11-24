@@ -16,8 +16,9 @@ class PostForm(forms.ModelForm):
         self.helper.form_method = 'post'
         self.helper.layout = Layout(
             Fieldset(
-                "Create New Recipe!!",
+                "Create New Post!!",
                 "title",
+                'image',
                 'post_body',
             ),
             Div(
@@ -27,5 +28,5 @@ class PostForm(forms.ModelForm):
         )
     class Meta:
         model = Post
-        fields = ['title', 'post_body',]
+        fields = ['title', 'image', 'post_body',]
         
