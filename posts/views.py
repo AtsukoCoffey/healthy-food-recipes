@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.views.generic import CreateView, ListView
+from django.views.generic import CreateView, ListView, DetailView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.messages.views import SuccessMessageMixin
 from .models import Post
@@ -39,3 +39,13 @@ class Posts(ListView):
     model = Post
     context_object_name = "posts"
 
+
+class PostDetail(DetailView):
+    """
+    Display a single post page :model:`posts.Post`
+    **Context**
+    ``post`` An instance of :model:`posts.Post`
+    """
+    template_name = "posts/post_detail.html"
+    model = Post
+    context_object_name = "post"

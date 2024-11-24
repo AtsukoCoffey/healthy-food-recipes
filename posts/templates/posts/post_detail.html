@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block title %}Post Detail - {{post.title}}{% endblock %}
+
+{% block content %}
+<div class="container">
+    <!-- Post's image, title and some information -->
+    <div class="row mt-3 p-1">
+        <div class="col-md-8 col-lg-6">
+            <img src="{{ post.image.url }}" alt="{{ post.image_alt }}" class="recipe-pic">
+        </div>
+        <div class="col-md-4 col-lg-6">
+            <h2 class="text-center">{{post.title}}</h2>
+            <p class="text-center">Posted by {{post.user}} on {{post.posted_date}}</p>
+            <hr>
+            <p>{{ post.post_body }} </p>
+            
+            <!-- If post's user display Edit/Delete button -->
+            {% if request.user == post.user %}
+            <div class="text-center">
+                <a href="{% url 'edit_recipe' recipe.id %}" class="btn btn-warning w-25">Edit</a>
+                <a href="{% url 'delete_recipe' recipe.id %}" class="btn btn-danger w-25">Delete</a>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+    <!-- post's ingredients and instructions -->
+    <div class="row">
+        <div class="col-md-4 p-3">
+            <h3><i class="fa-solid fa-pepper-hot"></i> Post article</h3>
+            <hr>
+            <p class="card-text">{{post.post_body|safe}}</p>
+        </div>
+    </div>
+</div>
+</div>
+{% endblock %}
+
+{% block extras %}
+<script src="{% static 'js/recipe-comment.js' %}"></script>
+{% endblock %}
