@@ -1,6 +1,8 @@
 from django.shortcuts import render
 from django.views.generic import CreateView, ListView, DetailView, UpdateView, DeleteView
+from django.db.models import Q
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
+from django.contrib.auth.models import User
 from django.contrib.messages.views import SuccessMessageMixin
 from django.urls import reverse
 from .models import Post
@@ -51,17 +53,59 @@ class Posts(ListView):
     """
     template_name = "posts/posts.html"
     queryset = Post.objects.filter(approved=True)
-    paginate_by = 9 
+    paginate_by = 6 
     context_object_name = "posts"
 
     def get_context_data(self, **kwargs):
         """
-        For unapproved post author, show their unapproved post
+        1: For unapproved post author, show their unapproved post
+        2: For owner search, send all the User model's name and pk and
         """
         context = super().get_context_data(**kwargs)
         # All the unapproved post's data
         context['unapproved'] = Post.objects.filter(approved=False)
+        # All user's data
+        context['all_users'] = User.objects.all()
         return context
+
+    def get_queryset(self, **kwargs):
+        """
+        Search option modal's query
+        Avoid/include words search - string
+        owner_query - int (foreign key)
+        """
+        avoid_query = self.request.GET.get('q-avoid')
+        include_query = self.request.GET.get('q-incl')
+        owner_query = self.request.GET.get('q-owner')
+
+        queryset = Post.objects.filter(approved=True)
+
+        # Avoid and include words query
+        if avoid_query:
+            if include_query:
+                queryset = queryset.exclude(
+                    Q(title__icontains=avoid_query) |
+                    Q(post_body__icontains=avoid_query)
+                    ).filter(
+                    Q(title__icontains=include_query) |
+                    Q(post_body__icontains=include_query)
+                    )
+            else:
+                queryset = queryset.exclude(
+                    Q(title__icontains=avoid_query) |
+                    Q(post_body__icontains=avoid_query)
+                    )
+        else:
+            if include_query:
+                queryset = queryset.filter(
+                    Q(title__icontains=include_query) |
+                    Q(post_body__icontains=include_query)
+                    )
+
+        # Owner search
+        if owner_query:
+            queryset = queryset.filter(Q(user=owner_query))
+        return queryset
 
 
 class PostDetail(DetailView):

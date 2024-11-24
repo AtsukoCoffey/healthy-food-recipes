@@ -11,7 +11,7 @@
     {% else %}
     <h2 class="main-title mt-4 mx-auto">Here we have some topics that some members wants to talk.</h2>
     {% endif %}
-    <p class="pt-2">Join the conversation and let us know what you think. We would appreciate it if 
+    <p class="pt-2">Join the conversation and let us know what you think. We would appreciate it if
       you could share any information that you think would be useful to everyone.</p>
   </div>
 </section>
@@ -25,17 +25,17 @@
   </div>
   <hr>
   <div class="recipe-cont">
-      {% for post in posts %}
-        <a href="{% url 'post_detail' post.slug %}" class="post-container" aria-label="Click to view {{post.title}}">
-            <div class="card m-3">
-                <img src="{{post.image.url}}" class="card-img-top" alt="{{post.image_alt}}">
-                <div class="card-body">
-                    <h3 class="card-title">{{post.title|truncatechars:60}}</h3>
-                    <p class="card-text">{{post.post_body|truncatechars:100|safe}}</p>
-                </div>
-            </div>
-        </a>
-      {% endfor %}
+    {% for post in posts %}
+    <a href="{% url 'post_detail' post.slug %}" class="post-container" aria-label="Click to view {{post.title}}">
+      <div class="card m-3">
+        <img src="{{post.image.url}}" class="card-img-top" alt="{{post.image_alt}}">
+        <div class="card-body">
+          <h3 class="card-title">{{post.title|truncatechars:60}}</h3>
+          <p class="card-text">{{post.post_body|truncatechars:100|safe}}</p>
+        </div>
+      </div>
+    </a>
+    {% endfor %}
   </div>
 </section>
 <!-- Pagination -->
@@ -46,7 +46,8 @@
     <li><a href="?page={{ page_obj.previous_page_number }}&{{ query_string }}" class="page-link">&laquo; PREV </a></li>
     {% endif %}
     {% if page_obj.has_next %}
-    <li><a href="?page={{ page_obj.next_page_number }}&{{ query_string }}" class="page-link"> NEXT &raquo;</a> {{page.num_pages}}</li>
+    <li><a href="?page={{ page_obj.next_page_number }}&{{ query_string }}" class="page-link"> NEXT &raquo;</a>
+      {{page.num_pages}}</li>
     {% endif %}
   </ul>
 </nav>
@@ -63,18 +64,61 @@
     {% if user.is_authenticated %}
     {% for pos in unapproved %}
     {% if pos.user == user %}
-      <a href="{% url 'post_detail' pos.slug %}" class="post-container" aria-label="Click to view {{pos.title}}">
-          <div class="card m-3 faded">
-              <img src="{{pos.image.url}}" class="card-img-top" alt="{{pos.image_alt}}">
-              <div class="card-body">TestTest
-                  <h3 class="card-title">{{pos.title|truncatechars:60}}</h3>
-                  <p class="card-text">{{pos.post_body|truncatechars:100|safe}}</p>
-              </div>
-          </div>
-      </a>
+    <a href="{% url 'post_detail' pos.slug %}" class="post-container" aria-label="Click to view {{pos.title}}">
+      <div class="card m-3 faded">
+        <img src="{{pos.image.url}}" class="card-img-top" alt="{{pos.image_alt}}">
+        <div class="card-body">TestTest
+          <h3 class="card-title">{{pos.title|truncatechars:60}}</h3>
+          <p class="card-text">{{pos.post_body|truncatechars:100|safe}}</p>
+        </div>
+      </div>
+    </a>
     {% endif %}
     {% endfor %}
     {% endif %}
   </div>
 </section>
+
+<!-- Modal - for search options -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModal" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content p-4">
+      <div class="modal-header">
+        <h4 class="modal-title" id="search-option-title">Post - Search options</h4>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <!-- Word search - avoid and/or include -->
+        <form id="words-search" role="search" method="GET" action="{% url 'posts'  %}">
+          <fieldset>
+            <legend>Words search</legend>
+            <label for="avoid-search">Avoid words</label>
+            <input id="avoid-search" class="form-control me-2 p-2 mb-2" name="q-avoid" type="search"
+              placeholder="Words to be avoided" aria-label="Words to be avoided">
+            <label for="include-search">Include words</label>
+            <input id="include-search" class="form-control me-2 p-2 mb-2" name="q-incl" type="search"
+              placeholder="Include words" aria-label="Include words">
+          </fieldset>
+          <div class="modal-button pb-2 mb-2">
+            <button type="submit" class="btn btn-success" form="words-search">Search</button>
+          </div>
+        </form>
+        <!-- Owner search - 'all_users' get the User model's ids and usernames -->
+        <form id="owner-search" role="search" method="GET" action="{% url 'posts'  %}">
+          <label for="owner-id-search" class="pt-3">Posts' Owner search</label><br>
+          <select id="owner-id-search" name="q-owner" class="p-2" aria-label="Owner Search">
+            <option disabled="disabled" selected>Select posts' owner from here! </option>
+            {% for owner in all_users %}
+            <option value="{{ owner.id }}">{{ owner.username }}</option>
+            {% endfor %}
+          </select>
+          <button type="submit" class="btn btn-success" form="owner-search">Search</button>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
 {% endblock %}
