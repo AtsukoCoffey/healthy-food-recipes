@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.views.generic import CreateView, ListView, DetailView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.messages.views import SuccessMessageMixin
+from django.urls import reverse
 from .models import Post
 from .forms import PostForm
 
@@ -17,7 +18,6 @@ class AddPost(LoginRequiredMixin, SuccessMessageMixin, CreateView):
     template_name = "posts/add_post.html"
     model = Post
     form_class = PostForm
-    success_url = "/"
     success_message = "Post was created successfully"
 
     def form_valid(self, form):
@@ -29,6 +29,13 @@ class AddPost(LoginRequiredMixin, SuccessMessageMixin, CreateView):
             cleaned_data,
             title=self.object.title,
         )
+
+    # Return to the detail's page using 'get_success_url' and 'reverse'
+    def get_success_url(self, **kwargs):
+        if self.object.id != None:
+            return reverse('post_detail', args=[self.object.slug])
+        else:
+            return reverse('posts')
 
 
 class Posts(ListView):

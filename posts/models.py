@@ -18,7 +18,7 @@ class Post(models.Model):
         quality=75,
         upload_to="posts/",
         force_format="WEBP",
-        default='https://res.cloudinary.com/dulfdtcut/image/upload/v1729505935/cld-sample-4.jpg'
+        default='https://res.cloudinary.com/dulfdtcut/image/upload/v1731383533/recipes/Screenshot_2024-10-25_211028_zlqtk7.webp'
     )
     image_alt = models.CharField(max_length=100)
     post_body = models.TextField(max_length=2000, null=False, blank=True)
