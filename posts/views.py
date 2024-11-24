@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.views.generic import CreateView, ListView, DetailView, UpdateView
+from django.views.generic import CreateView, ListView, DetailView, UpdateView, DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.contrib.messages.views import SuccessMessageMixin
 from django.urls import reverse
@@ -67,7 +67,6 @@ class PostDetail(DetailView):
 
 
 class EditPost(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
-    """"""
     """
     Edit a single post page :model:`posts.Post`
     **Context**
@@ -84,3 +83,17 @@ class EditPost(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     def test_func(self):
         return self.request.user == self.get_object().user
 
+
+class DeletePost(LoginRequiredMixin, UserPassesTestMixin, SuccessMessageMixin, DeleteView):
+    """
+    Delete a single post page :model:`posts.Post`
+    **Context**
+    ``object`` An instance of :model:`posts.Post`
+    """
+    model = Post
+    success_url = '/posts/'
+    success_message = "Post was deleted successfully"
+
+    # security
+    def test_func(self):
+        return self.request.user == self.get_object().user

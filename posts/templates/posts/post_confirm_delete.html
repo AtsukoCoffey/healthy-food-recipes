@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block title %}Delete post{{ object.title }}{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1 class="text-center mt-2">Confirm Post Deletion</h1>
+    <div class="d-flex justify-content-center pt-3">
+        <form method="POST" class="text-center">
+            {% csrf_token %}
+            <p>Are you sure you want to delete "{{object.title}}"</p>
+            <!-- Confirm and proceed to delete -->
+            <input type="submit" value="Confirm Delete" class="btn btn-danger">
+            <!-- Return to detail's page -->
+            <a class="btn btn-secondary" href="{% url 'post_detail' object.slug %}">No, go back</a>
+        </form>
+    </div>
+</div>
+{% endblock %}
