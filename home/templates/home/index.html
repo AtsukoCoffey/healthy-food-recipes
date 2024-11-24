@@ -1,6 +1,5 @@
 {% extends 'base.html' %}
 {% load static %}
-
 {% block title %}Home{% endblock %}
 
 {% block content %}
@@ -31,7 +30,7 @@
   <div class="recipe-cont">
     <!-- Display recipes list - 9 par 1 page with pagination -->
     {% for recipe in page_obj %}
-    <a href="{% url 'recipe_detail' recipe.slug %}" class="img-container">
+    <a href="{% url 'recipe_detail' recipe.slug %}" class="img-container" aria-label="Click to view {{recipe.title}}">
       <img src="{{recipe.image.url}}" alt="{{recipe.image_alt}}" style="width: 100%">
       <div class="centerd">
         <h5>{{recipe.title}}</h5>

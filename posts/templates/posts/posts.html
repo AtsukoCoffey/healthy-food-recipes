@@ -3,24 +3,42 @@
 {% block title %}Add Post{% endblock %}
 
 {% block content %}
-<h2 class="text-center p-2">Latest Posts</h2>
-<hr>
-<div class="container d-flex flex-row flex-wrap justify-content-center">
-    {% for post in posts %}
-    <div class="{% if not post.approved and post.user == user %}
-          faded{% elif not post.approved %} d-none{% endif %}">
-        <a href="{% url 'post_detail' post.slug %}" class="recipes" aria-label="Click to view {{post.title}}">
-            <div class="card m-3" style="width: 18rem;">
+<section class="container flex-column" id="hero-image">
+  <div class="container p-2" id="hero-text">
+    <!-- Change the welcome message depend on the user's status - authenticated -->
+    {% if user.is_authenticated %}
+    <h2 class="main-title mt-4 mx-auto">What are you thinking about today? {{ user.username }}!</h2>
+    {% else %}
+    <h2 class="main-title mt-4 mx-auto">Here we have some topics that some members wants to talk.</h2>
+    {% endif %}
+    <p class="pt-2">Join the conversation and let us know what you think. We would appreciate it if 
+      you could share any information that you think would be useful to everyone.</p>
+  </div>
+</section>
+<section class="container flex-column">
+  <!-- Section Title and Search Button -> trigger modal -->
+  <div class="search-button">
+    <h3 class="mt-3"><i class="fa-solid fa-newspaper"></i> Latest Posts</h3>
+    <button id="search-btn" type="button" class="btn" data-bs-toggle="modal" data-bs-target="#exampleModal">
+      Search <i class="fa-solid fa-magnifying-glass"></i>
+    </button>
+  </div>
+  <hr>
+  <div class="recipe-cont">
+      {% for post in posts %}
+        <a href="{% url 'post_detail' post.slug %}" class="post-container" aria-label="Click to view {{post.title}}">
+            <div class="card m-3">
                 <img src="{{post.image.url}}" class="card-img-top" alt="{{post.image_alt}}">
                 <div class="card-body">
-                    <h2 class="card-title">{{post.title|truncatechars:60}}</h2>
-                    <p class="card-text">{{post.post_body|truncatechars:100}}</p>
+                    <h3 class="card-title">{{post.title|truncatechars:60}}</h3>
+                    <p class="card-text">{{post.post_body|truncatechars:100|safe}}</p>
                 </div>
             </div>
         </a>
-    </div>
-    {% endfor %}
-</div>
+      {% endfor %}
+  </div>
+</section>
+<!-- Pagination -->
 {% if is_paginated %}
 <nav aria-label="Page navigation">
   <ul class="pagination justify-content-center">
@@ -34,4 +52,29 @@
 </nav>
 {% endif %}
 
+<!-- Unapproved post - display only the post's author -->
+<section class="container flex-column">
+  <!-- Section Title and Search Button -> trigger modal -->
+  <div class="search-button">
+    <h4 class="mt-3"><i class="fa-solid fa-newspaper"></i> Waiting to be approved</h4>
+  </div>
+  <hr>
+  <div class="recipe-cont">
+    {% if user.is_authenticated %}
+    {% for pos in unapproved %}
+    {% if pos.user == user %}
+      <a href="{% url 'post_detail' pos.slug %}" class="post-container" aria-label="Click to view {{pos.title}}">
+          <div class="card m-3 faded">
+              <img src="{{pos.image.url}}" class="card-img-top" alt="{{pos.image_alt}}">
+              <div class="card-body">TestTest
+                  <h3 class="card-title">{{pos.title|truncatechars:60}}</h3>
+                  <p class="card-text">{{pos.post_body|truncatechars:100|safe}}</p>
+              </div>
+          </div>
+      </a>
+    {% endif %}
+    {% endfor %}
+    {% endif %}
+  </div>
+</section>
 {% endblock %}

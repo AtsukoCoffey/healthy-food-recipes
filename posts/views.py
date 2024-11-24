@@ -46,13 +46,22 @@ class Posts(ListView):
     **Template:**
     :template:`posts/posts.html`
     **Context**
-    ``posts``
-        All the post article :model:`posts.Post`
+    ``queryset``
+        All the approved post article :model:`posts.Post`
     """
     template_name = "posts/posts.html"
-    model = Post
-    paginate_by = 8
+    queryset = Post.objects.filter(approved=True)
+    paginate_by = 9 
     context_object_name = "posts"
+
+    def get_context_data(self, **kwargs):
+        """
+        For unapproved post author, show their unapproved post
+        """
+        context = super().get_context_data(**kwargs)
+        # All the unapproved post's data
+        context['unapproved'] = Post.objects.filter(approved=False)
+        return context
 
 
 class PostDetail(DetailView):
