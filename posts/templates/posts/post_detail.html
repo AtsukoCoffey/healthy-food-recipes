@@ -19,16 +19,16 @@
             <!-- If post's user display Edit/Delete button -->
             {% if request.user == post.user %}
             <div class="text-center">
-                <a href="#" class="btn btn-warning w-25">Edit</a>
+                <a href="{% url 'edit_post' post.slug %}" class="btn btn-warning w-25">Edit</a>
                 <a href="#" class="btn btn-danger w-25">Delete</a>
             </div>
             {% endif %}
         </div>
     </div>
-    <!-- post's ingredients and instructions -->
+    <!-- post's article -->
     <div class="row">
-        <div class="col-md-4 p-3">
-            <h3><i class="fa-solid fa-pepper-hot"></i> Post article</h3>
+        <div class="col-md-12 p-3">
+            <h3><i class="fa-solid fa-newspaper"></i> Post article</h3>
             <hr>
             <p class="card-text">{{post.post_body|safe}}</p>
         </div>

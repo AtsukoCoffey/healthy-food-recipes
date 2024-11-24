@@ -1,6 +1,6 @@
 from django.shortcuts import render
-from django.views.generic import CreateView, ListView, DetailView
-from django.contrib.auth.mixins import LoginRequiredMixin
+from django.views.generic import CreateView, ListView, DetailView, UpdateView
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.contrib.messages.views import SuccessMessageMixin
 from django.urls import reverse
 from .models import Post
@@ -14,6 +14,8 @@ class AddPost(LoginRequiredMixin, SuccessMessageMixin, CreateView):
     **Context**
     ``form_class``
         form input for an instance :model:`posts.Post`
+    ``title``
+        for message - post's title
     """
     template_name = "posts/add_post.html"
     model = Post
@@ -44,7 +46,7 @@ class Posts(ListView):
     **Template:**
     :template:`posts/posts.html`
     **Context**
-    ``queryset``
+    ``posts``
         All the post article :model:`posts.Post`
     """
     template_name = "posts/posts.html"
@@ -62,3 +64,23 @@ class PostDetail(DetailView):
     template_name = "posts/post_detail.html"
     model = Post
     context_object_name = "post"
+
+
+class EditPost(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
+    """"""
+    """
+    Edit a single post page :model:`posts.Post`
+    **Context**
+    ``form_class``
+        form input for an instance :model:`posts.Post`
+    ``post`` An instance of :model:`posts.Post`
+    """
+    template_name ='posts/edit_post.html'
+    model = Post
+    form_class = PostForm
+    success_url = '/posts/'
+
+    # security
+    def test_func(self):
+        return self.request.user == self.get_object().user
+
