@@ -9,6 +9,7 @@ from django.urls import reverse
 from .models import Post, PostComment
 from .forms import PostForm, PostCommentForm
 
+
 class AddPost(LoginRequiredMixin, SuccessMessageMixin, CreateView):
     """
     Add - create new - post
@@ -28,7 +29,7 @@ class AddPost(LoginRequiredMixin, SuccessMessageMixin, CreateView):
     def form_valid(self, form):
         form.instance.user = self.request.user
         return super(AddPost, self).form_valid(form)
-    
+
     def get_success_message(self, cleaned_data):
         return self.success_message % dict(
             cleaned_data,
@@ -54,7 +55,7 @@ class Posts(ListView):
     """
     template_name = "posts/posts.html"
     queryset = Post.objects.filter(approved=True)
-    paginate_by = 6 
+    paginate_by = 6
     context_object_name = "posts"
 
     def get_context_data(self, **kwargs):
@@ -109,57 +110,62 @@ class Posts(ListView):
         return queryset
 
 
-class PostDetail(DetailView):
+class PostDetail(SuccessMessageMixin, DetailView):
     """
     Display a single post page :model:`posts.Post`
     **Context**
-    ``post`` 
+    ``post``
         An instance of :model:`posts.Post`
     ``form_class``
-        form input for an instance :model:`posts.Post` 
+        form input for an instance :model:`posts.Post`
     """
     template_name = "posts/post_detail.html"
-    model = Post
-    context_object_name = "post"
+    # model = Post
+    # context_object_name = "post"
+    # queryset = Post.objects.filter(approved=True)
     form_class = PostCommentForm
-    
+    success_message = "Comment for this post was created successfully"
+
     # queryset - approved post only
     def get_queryset(self, **kwargs):
         return Post.objects.filter(approved=True)
 
-    # send the form_class to GET request 
+    # send the form_class to GET request
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['form'] = self.form_class()
+        context['comments'] = self.get_queryset().get(slug=self.kwargs['slug']).comments.all()
         return context
 
-    # POST request in CBV 
+    # POST request in CBV
     def post(self, request, *args, **kwargs):
         form = self.form_class(request.POST)
         slug = self.kwargs['slug']
-        post = self.get_queryset().get(slug=slug)
+
+        try:
+            post = self.get_queryset().get(slug=slug)
+        except Post.DoesNotExist:
+            raise Http404("There is no approved post yet. Post not found.")
+
         comments = post.comments.all()
 
         if form.is_valid():
             # <process form cleaned data>
             comment = form.save(commit=False)
-            comment.post_commenter = request.user
+            comment.commenter = request.user
             comment.post = post
             comment.save()
-            # messages.add_message(
-            #     request, messages.SUCCESS,
-            #     'Comment submitted successfully'
-            #  )
+
             return HttpResponseRedirect(reverse('post_detail', args=[slug]))
         return render(
-            request, 
-            "posts/post_detail.html",
+            request,
+            self.template_name,
             {
                 "post": post,
                 "comments": comments,
                 "form": form,
             }
-            )
+        )
 
 
 class EditPost(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
@@ -170,7 +176,7 @@ class EditPost(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
         form input for an instance :model:`posts.Post`
     ``post`` An instance of :model:`posts.Post`
     """
-    template_name ='posts/edit_post.html'
+    template_name = 'posts/edit_post.html'
     model = Post
     form_class = PostForm
     success_url = '/posts/'
@@ -180,7 +186,8 @@ class EditPost(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
         return self.request.user == self.get_object().user
 
 
-class DeletePost(LoginRequiredMixin, UserPassesTestMixin, SuccessMessageMixin, DeleteView):
+class DeletePost(
+    LoginRequiredMixin, UserPassesTestMixin, SuccessMessageMixin, DeleteView):
     """
     Delete a single post page :model:`posts.Post`
     **Context**
