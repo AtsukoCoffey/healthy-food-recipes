@@ -114,17 +114,17 @@
             <div class="card-body">
                 <!-- for loop inside the empty control tags to iterate through each comment in recipe comments -->
                 {% for comment in comments %}
-                <div class="p-2 comment">
-                    <p class="font-weight-bold">
-                        {{ comment.post_commenter }}
-                        <span class="font-weight-normal">
+                <div class="p-2">
+                    <p class="fw-bold">
+                        {{ comment.commenter }}
+                        <span class="fw-normal">
                             {{ comment.posted_date }}
                         </span> wrote:
                     </p>
                     <div id="comment{{ comment.id }}">
                         {{ comment.comment_body | linebreaks }}
                     </div>
-                    {% if user.is_authenticated and request.user == comment.post_commenter %}
+                    {% if user.is_authenticated and request.user == comment.commenter %}
                     <button class="btn btn-delete btn-danger" data-comment_id="{{ comment.id }}">Delete</button>
                     <button class="btn btn-edit btn-warning" data-comment_id="{{ comment.id }}">Edit</button>
                     {% endif %}
