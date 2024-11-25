@@ -60,7 +60,7 @@
                 {% if user.is_authenticated %}
                 <p>Posting as: {{ user.username }}</p>
                 <form id="commentForm" method="post" style="margin-top: 1.3em;">
-                    {{ comment_form | crispy }}
+                    {{ form | crispy }}
                     {% csrf_token %}
                     <button id="submitButton" type="submit" class="btn btn-signup btn-success">Submit</button>
                 </form>
