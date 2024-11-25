@@ -208,8 +208,9 @@ a.img-container {
     border-radius: 8px;
 }
 
-a.img-container:hover {
-    color: var(--light-green);
+.img-container img:hover ~ div,
+.centerd:hover {
+    background-color: #070707c9;
 }
 
 .img-container img {
@@ -220,7 +221,7 @@ a.img-container:hover {
 
 .centerd {
     width: 100%;
-    background-color: #322f25c9;
+    background-color: #1b1b1ac9;
     color: var(--white-green);
     position: absolute;
     bottom: 0%;
@@ -351,6 +352,12 @@ footer a:active {
     border: 1px solid var(--logo-dark);
     box-shadow: var(--small-shadow);
     border-radius: 8px;
+}
+
+.post-container:hover,
+.post-container:active {
+    background-color: var(--white-green);
+    color: var(--dark-color);
 }
 
 /* Media query: General smart phone (768px and up) */
