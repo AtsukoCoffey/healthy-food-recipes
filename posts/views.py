@@ -1,3 +1,4 @@
+from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from django.views.generic import CreateView, ListView, DetailView, UpdateView, DeleteView
 from django.db.models import Q
@@ -5,8 +6,8 @@ from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.contrib.auth.models import User
 from django.contrib.messages.views import SuccessMessageMixin
 from django.urls import reverse
-from .models import Post
-from .forms import PostForm
+from .models import Post, PostComment
+from .forms import PostForm, PostCommentForm
 
 class AddPost(LoginRequiredMixin, SuccessMessageMixin, CreateView):
     """
@@ -112,11 +113,42 @@ class PostDetail(DetailView):
     """
     Display a single post page :model:`posts.Post`
     **Context**
-    ``post`` An instance of :model:`posts.Post`
+    ``post`` 
+        An instance of :model:`posts.Post`
+    ``form_class``
+        form input for an instance :model:`posts.Post` 
     """
     template_name = "posts/post_detail.html"
     model = Post
     context_object_name = "post"
+    form_class = PostCommentForm
+
+    # POST request in CBV 
+    def post(self, request, *args, **kwargs):
+        form = self.form_class(request.POST)
+        post = Post.objects.filter(approved=True).filter(slug=slug)
+        comments = post.comments.all()
+
+        if form.is_valid():
+            # <process form cleaned data>
+            comment = form.save(commit=False)
+            comment.post_commenter = request.user
+            comment.post = post
+            comment.save()
+            # messages.add_message(
+            #     request, messages.SUCCESS,
+            #     'Comment submitted successfully'
+            #  )
+            return HttpResponseRedirect(reverse('post_detail', args=[slug]))
+        return render(
+            request, 
+            "posts/post_detail.html",
+            {
+                "post": post,
+                "comments": comments,
+                "form": form,
+            }
+            )
 
 
 class EditPost(LoginRequiredMixin, UserPassesTestMixin, UpdateView):

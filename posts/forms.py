@@ -2,7 +2,7 @@ from django import forms
 from django_summernote.widgets import SummernoteWidget
 from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Layout, Div, Fieldset, Submit
-from .models import Post
+from .models import Post, PostComment
 
 
 class PostForm(forms.ModelForm):
@@ -29,4 +29,15 @@ class PostForm(forms.ModelForm):
     class Meta:
         model = Post
         fields = ['title', 'image', 'post_body',]
-        
+
+
+class PostCommentForm(forms.ModelForm):
+    """
+    Form to leave a comment on the posts. :model posts.PostComment
+    """
+    class Meta:
+        model = PostComment
+        fields = ('comment_body',)
+        widgets = {
+          'comment_body': forms.Textarea(attrs={'rows':6}),
+        }

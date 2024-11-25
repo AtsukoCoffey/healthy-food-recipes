@@ -12,7 +12,6 @@
             <p class="text-center">Posted by {{post.user}} on {{post.posted_date}}</p>
             <hr>
             <p>{{ post.post_body|safe }} </p>
-            
             <!-- If post's user display Edit/Delete button -->
             {% if request.user == post.user %}
             <div class="text-center">
@@ -33,7 +32,75 @@
             <p class="card-text">comment comment</p>
         </div>
     </div>
+
+    <!-- User comments -->
+    <div class="row">
+        <!-- All the comments related to this post - comment owner can edit/delete -->
+        <div class="col-md-8 p-3">
+            <h4><i class="fa-solid fa-comment-dots"></i> Comments</h4>
+            <hr>
+            <div class="card-body">
+                <!-- for loop inside the empty control tags to iterate through each comment in recipe comments -->
+                {% for comment in comments %}
+                <div class="p-2 comment">
+                    <p class="font-weight-bold">
+                        {{ comment.post_commenter }}
+                        <span class="font-weight-normal">
+                            {{ comment.posted_date }}
+                        </span> wrote:
+                    </p>
+                    <div id="comment{{ comment.id }}">
+                        {{ comment.comment_body | linebreaks }}
+                    </div>
+                    {% if user.is_authenticated and request.user == comment.post_commenter %}
+                    <button class="btn btn-delete btn-danger" data-comment_id="{{ comment.id }}">Delete</button>
+                    <button class="btn btn-edit btn-warning" data-comment_id="{{ comment.id }}">Edit</button>
+                    {% endif %}
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        <!-- Comment form for authenticated user -->
+        <div class="col-md-4 p-3">
+            <div class="card-body">
+                <h4><i class="fa-solid fa-comment-dots"></i> Leave a comment</h4>
+                <hr>
+                {% if user.is_authenticated %}
+                <p>Posting as: {{ user.username }}</p>
+                <form id="commentForm" method="post" style="margin-top: 1.3em;">
+                    {{ comment_form | crispy }}
+                    {% csrf_token %}
+                    <button id="submitButton" type="submit" class="btn btn-signup btn-success">Submit</button>
+                </form>
+                {% else %}
+                <p>Log in to leave a comment.<a href="/accounts/login" aria-label="Log-in link" title="Log-in"><button><i
+                    class="fa-solid fa-right-to-bracket"></i>Log-in</button></a>, or join our community <a
+                href="/accounts/signup" aria-label="Sign-Up link" title="Sign-up"><i
+                    class="fa-solid fa-user-pen"></i> Sign-up</a></p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
 </div>
+
+<!-- Delete confirmation modal -->
+<div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="deleteModalLabel">Delete your comment?</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                Are you sure you want to delete your comment?
+                This action cannot be undone.
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <a id="deleteConfirm" href="#" class="btn btn-danger">Delete</a>
+            </div>
+        </div>
+    </div>
 </div>
 {% endblock %}
 

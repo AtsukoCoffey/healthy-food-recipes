@@ -8,7 +8,7 @@ class Post(models.Model):
     """
     Stores a post entry related to :model:`auth.User`
     """
-    title = models.TextField(max_length=1000, unique=True, null=False, blank=False)
+    title = models.CharField(max_length=200, unique=True, null=False, blank=False)
     user = models.ForeignKey(
         User, related_name="post_owner", on_delete=models.CASCADE, default='0'
     )
@@ -37,4 +37,15 @@ class Post(models.Model):
         super(Post,self).save(*args,**kwargs)
 
 
+class PostComment(models.Model):
+    """
+    Stores a single comment entry related to :modl:`auth.User`
+    and :model:`posts.Post`. 
+    """
+    post = models.ForeignKey(Post, on_delete=models.CASCADE, related_name="comments")
+    comment_body = models.CharField(max_length=200)
+    commenter = models.ForeignKey(User, on_delete=models.CASCADE, related_name="post_commenter")
+    posted_date = models.DateTimeField(auto_now=True)
 
+    class Meta:
+        ordering = ["-posted_date"]
