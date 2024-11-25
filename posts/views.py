@@ -122,11 +122,22 @@ class PostDetail(DetailView):
     model = Post
     context_object_name = "post"
     form_class = PostCommentForm
+    
+    # queryset - approved post only
+    def get_queryset(self, **kwargs):
+        return Post.objects.filter(approved=True)
+
+    # send the form_class to GET request 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['form'] = self.form_class()
+        return context
 
     # POST request in CBV 
     def post(self, request, *args, **kwargs):
         form = self.form_class(request.POST)
-        post = Post.objects.filter(approved=True).filter(slug=slug)
+        slug = self.kwargs['slug']
+        post = self.get_queryset().get(slug=slug)
         comments = post.comments.all()
 
         if form.is_valid():
