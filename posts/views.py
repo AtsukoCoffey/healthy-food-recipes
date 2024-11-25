@@ -115,9 +115,11 @@ class PostDetail(SuccessMessageMixin, DetailView):
     Display a single post page :model:`posts.Post`
     **Context**
     ``post``
-        An instance of :model:`posts.Post`
-    ``form_class``
-        form input for an instance :model:`posts.Post`
+        Queryset object An instance of :model:`posts.Post`
+    ``form``
+        form_class input for an instance :model:`posts.PostComment`
+    ``comments``
+        All the relavent comments that are filtered by Post's conditions
     """
     template_name = "posts/post_detail.html"
     # model = Post
@@ -133,8 +135,10 @@ class PostDetail(SuccessMessageMixin, DetailView):
     # send the form_class to GET request
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['form'] = self.form_class()
-        context['comments'] = self.get_queryset().get(slug=self.kwargs['slug']).comments.all()
+        context['form'] = self.form_class()  
+        context['comments'] = self.get_queryset(
+            # 'slug=self.kwargs['slug']' means similar to 'slug=slug'
+            ).get(slug=self.kwargs['slug']).comments.all()
         return context
 
     # POST request in CBV
@@ -142,21 +146,19 @@ class PostDetail(SuccessMessageMixin, DetailView):
         form = self.form_class(request.POST)
         slug = self.kwargs['slug']
 
-        try:
+        try:  # In case of Non try and catch
             post = self.get_queryset().get(slug=slug)
         except Post.DoesNotExist:
-            raise Http404("There is no approved post yet. Post not found.")
-
-        comments = post.comments.all()
-
+            raise Http404("There is no approved post yet. Post not found.")        
+        # The model for the form is PostComment
         if form.is_valid():
-            # <process form cleaned data>
             comment = form.save(commit=False)
             comment.commenter = request.user
             comment.post = post
             comment.save()
-
             return HttpResponseRedirect(reverse('post_detail', args=[slug]))
+        # comments assign again 
+        comments = post.comments.all()
         return render(
             request,
             self.template_name,
