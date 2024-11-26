@@ -158,6 +158,8 @@ class PostDetail(SuccessMessageMixin, DetailView):
             comment.commenter = request.user
             comment.post = post
             comment.save()
+            # Add success message manually
+            messages.success(request, self.success_message)
             return HttpResponseRedirect(reverse('post_detail', args=[slug]))
         # comments assign again 
         comments = post.comments.all()
@@ -209,23 +211,23 @@ class DeletePost(
 @login_required
 def comment_edit(request, slug, comment_id):
     """
-    Display an individual recipe's comment for edit.
+    Display an individual post's comment for edit.
     **Context**
-    ``recipe``
-        An instance of :model:`recipes.Recipe`.
+    ``post``
+        An instance of :model:`posts.Post`.
     ``comment``
-        A single comment related to the recipe.
-    ``comment_form``
-        An isntance of :form:`recipes.RecipeCommentForm`.
+        A single comment related to the post.
+    ``form``
+        An isntance of :form:`posts.PostCommentForm`.
     """
     if request.method == "POST":
         posts = Post.objects.all()
         post = get_object_or_404(posts, slug=slug)
         comment = get_object_or_404(PostComment, pk=comment_id)
-        comment_form = PostCommentForm(data=request.POST, instance=comment)
+        form = PostCommentForm(data=request.POST, instance=comment)
         # form validation and "user = commenter" check 
-        if comment_form.is_valid() and comment.commenter == request.user:
-            comment = comment_form.save(commit=False)
+        if form.is_valid() and comment.commenter == request.user:
+            comment = form.save(commit=False)
             comment.post = post
             comment.save()
             messages.add_message(request, messages.SUCCESS, 'Comment Updated!')
@@ -240,10 +242,10 @@ def comment_delete(request, slug, comment_id):
     """
     Delete an individual comment.
     **Context**
-    ``recipe``
-        An instance of :model:`recipes.Recipe`.
+    ``post``
+        An instance of :model:`posts.Post`.
     ``comment``
-        A single comment related to the recipe.
+        A single comment related to the post.
     """
     posts = Post.objects.all()
     post = get_object_or_404(posts, slug=slug)
