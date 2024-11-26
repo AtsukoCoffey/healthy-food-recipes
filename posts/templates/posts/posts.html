@@ -3,9 +3,9 @@
 {% block title %}Add Post{% endblock %}
 
 {% block content %}
-<section class="container flex-column" id="hero-image">
+<section class="text-center p-2" id="hero-image">
   <!-- Breadcrumb -->
-  <nav aria-label="breadcrumb">
+  <nav class="container" aria-label="breadcrumb">
     <ol class="breadcrumb">
       <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>
       <li class="breadcrumb-item active" aria-current="page">Post list-page</li>
@@ -14,12 +14,11 @@
   <div class="container p-2" id="hero-text">
     <!-- Change the welcome message depend on the user's status - authenticated -->
     {% if user.is_authenticated %}
-    <h2 class="main-title mt-4 mx-auto">What are you thinking about today? {{ user.username }}!</h2>
+    <h2 class="main-title mt-4 mx-auto">Join the conversation and share your great ideas! {{ user.username }}!</h2>
     {% else %}
     <h2 class="main-title mt-4 mx-auto">Here we have some topics that some members wants to talk.</h2>
     {% endif %}
-    <p class="pt-2">Join the conversation and let us know what you think. We would appreciate it if
-      you could share any information that you think would be useful to everyone.</p>
+    <p class="pt-2">Please feel free to share the post, your comment will appear on the first line once approved.</p>
   </div>
 </section>
 <section class="container flex-column">
