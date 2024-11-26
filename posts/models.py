@@ -8,7 +8,7 @@ class Post(models.Model):
     """
     Stores a post entry related to :model:`auth.User`
     """
-    title = models.CharField(max_length=200, unique=True, null=False, blank=False)
+    title = models.CharField(max_length=100, unique=True, null=False, blank=False)
     user = models.ForeignKey(
         User, related_name="post_owner", on_delete=models.CASCADE, default='0'
     )
@@ -18,7 +18,7 @@ class Post(models.Model):
         quality=75,
         upload_to="posts/",
         force_format="WEBP",
-        default='https://res.cloudinary.com/dulfdtcut/image/upload/v1731383533/recipes/Screenshot_2024-10-25_211028_zlqtk7.webp'
+        default='https://res.cloudinary.com/dulfdtcut/image/upload/v1732624989/posts/oils_byapkh.webp'
     )
     image_alt = models.CharField(max_length=50)
     post_body = models.TextField(max_length=3000, null=False, blank=True)

@@ -126,13 +126,13 @@ class PostDetail(SuccessMessageMixin, DetailView):
     template_name = "posts/post_detail.html"
     # model = Post
     # context_object_name = "post"
-    # queryset = Post.objects.filter(approved=True)
+    # queryset = Post.objects.all()
     form_class = PostCommentForm
     success_message = "Comment for this post was created successfully"
 
     # queryset - approved post only
     def get_queryset(self, **kwargs):
-        return Post.objects.filter(approved=True)
+        return Post.objects.all()
 
     # send the form_class to GET request
     def get_context_data(self, **kwargs):

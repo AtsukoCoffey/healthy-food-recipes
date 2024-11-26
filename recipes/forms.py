@@ -20,7 +20,7 @@ class RecipeForm(forms.ModelForm):
         self.helper.form_method = 'post'
         self.helper.layout = Layout(
             Fieldset(
-                "Create New Recipe!!",
+                "Please share your favorite recipes!!!",
                 "title",
                 "description",
                 "ingredients",

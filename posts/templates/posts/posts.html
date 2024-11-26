@@ -4,6 +4,13 @@
 
 {% block content %}
 <section class="container flex-column" id="hero-image">
+  <!-- Breadcrumb -->
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>
+      <li class="breadcrumb-item active" aria-current="page">Post list-page</li>
+    </ol>
+  </nav>
   <div class="container p-2" id="hero-text">
     <!-- Change the welcome message depend on the user's status - authenticated -->
     {% if user.is_authenticated %}

@@ -5,6 +5,14 @@
 
 {% block content %}
 <div class="container">
+    <!-- Breadcrumb -->
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>
+          <li class="breadcrumb-item"><a href="{% url 'posts' %}">Post list-page</a></li>
+          <li class="breadcrumb-item active" aria-current="page">{{post.title}}</li>
+        </ol>
+      </nav>
     <!-- Post's image, title and some information -->
     <div class="row mt-3 p-1">
         <div class="col-md-8 col-lg-6">

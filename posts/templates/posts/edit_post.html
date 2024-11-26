@@ -4,6 +4,15 @@
 
 {% block content %}
 <div class="container">
+    <!-- Breadcrumb -->
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>
+            <li class="breadcrumb-item"><a href="{% url 'posts' %}">Post list-page</a></li>
+            <li class="breadcrumb-item"><a href="{% url 'post_detail' object.slug %}">{{object.title}}</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Edit Post</li>
+        </ol>
+    </nav>
     <form method="POST" enctype="multipart/form-data" class="form">
         <h2 class="text-center">Edit Post</h2>
         {% load crispy_forms_tags %}

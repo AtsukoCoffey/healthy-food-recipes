@@ -16,7 +16,7 @@ class PostForm(forms.ModelForm):
         self.helper.form_method = 'post'
         self.helper.layout = Layout(
             Fieldset(
-                "Create New Post!!",
+                "Questions to members, news or anything healthy topics!!",
                 "title",
                 'image',
                 'post_body',

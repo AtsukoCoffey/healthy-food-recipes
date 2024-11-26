@@ -4,15 +4,24 @@
 
 {% block content %}
 <div class="container">
-    <h1 class="text-center mt-2">Confirm Post Deletion</h1>
+    <!-- Breadcrumb -->
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>
+            <li class="breadcrumb-item"><a href="{% url 'posts' %}">Post list-page</a></li>
+            <li class="breadcrumb-item"><a href="{% url 'post_detail' object.slug %}">{{object.title}}</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Post Delete</li>
+        </ol>
+    </nav>
+    <h1 class="text-center mt-2">Confirm Post Delete</h1>
     <div class="d-flex justify-content-center pt-3">
         <form method="POST" class="text-center">
             {% csrf_token %}
             <p>Are you sure you want to delete "{{object.title}}"</p>
-            <!-- Confirm and proceed to delete -->
-            <input type="submit" value="Confirm Delete" class="btn btn-danger">
             <!-- Return to detail's page -->
             <a class="btn btn-secondary" href="{% url 'post_detail' object.slug %}">No, go back</a>
+            <!-- Confirm and proceed to delete -->
+            <input type="submit" value="Confirm Delete" class="btn btn-danger">
         </form>
     </div>
 </div>
