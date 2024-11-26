@@ -180,7 +180,7 @@ a:active {
     top: 0;
     right: 0;
     color: var(--logo-dark);
-    background-color: var(--star-yellow);
+    background-color: var(--light-green);
     border: solid 2px var(--mos-green);
     box-shadow: var(--small-shadow);
     font-weight: 700;
@@ -188,7 +188,7 @@ a:active {
 
 #search-btn:hover,
 #search-btn:active {
-    background-color: var(--light-green);
+    background-color: var(--white-green);
 }
 
 #post-search-btn {
@@ -196,7 +196,7 @@ a:active {
     top: 0;
     right: 0;
     color: var(--logo-dark);
-    background-color: var(--star-yellow);
+    background-color: var(--light-green);
     border: solid 2px var(--mos-green);
     box-shadow: var(--small-shadow);
     font-weight: 700;
@@ -204,7 +204,7 @@ a:active {
 
 #post-search-btn:hover,
 #post-search-btn:active {
-    background-color: var(--light-green);
+    background-color: var(--white-green);
 }
 
 .recipe-cont {

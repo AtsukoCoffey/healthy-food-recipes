@@ -24,7 +24,7 @@
     <div class="search-button">
       <h3 class="mt-3">Recipes</h3>
       <h4 class="d-none">Useful Search Option</h4>
-      <button id="search-btn" type="button" class="btn me-2" data-bs-toggle="modal" data-bs-target="#exampleModal">
+      <button id="search-btn" type="button" class="btn me-4" data-bs-toggle="modal" data-bs-target="#RecipeSearchModal">
         Search <i class="fa-solid fa-magnifying-glass"></i>
       </button>
     </div>
@@ -55,7 +55,7 @@
     <div class="search-button">
       <h3 class="mt-3">Posts</h3>
       <h4 class="d-none">Post Search</h4>
-      <button id="post-search-btn" type="button" class="btn me-2" data-bs-toggle="modal" data-bs-target="#exampleModal">
+      <button id="post-search-btn" type="button" class="btn me-4" data-bs-toggle="modal" data-bs-target="#PostSearchModal">
         Search <i class="fa-solid fa-magnifying-glass"></i>
       </button>
     </div>
@@ -90,7 +90,7 @@
   {% endif %}
 </div>
 <!-- Modal - for search options -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModal" aria-hidden="true">
+<div class="modal fade" id="RecipeSearchModal" tabindex="-1" aria-labelledby="RecipeSearchModal" aria-hidden="true">
   <div class="modal-dialog modal-lg">
     <div class="modal-content p-4">
       <div class="modal-header">
@@ -153,6 +153,48 @@
           <label for="owner-id-search" class="pt-3">Recipe's Owner search</label><br>
           <select id="owner-id-search" name="q-owner" class="p-2" aria-label="Owner Search">
             <option disabled="disabled" selected>Select recipe's owner from here! </option>
+            {% for owner in all_users %}
+            <option value="{{ owner.id }}">{{ owner.username }}</option>
+            {% endfor %}
+          </select>
+          <button type="submit" class="btn btn-success" form="owner-search">Search</button>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Modal - for Post search options -->
+<div class="modal fade" id="PostSearchModal" tabindex="-1" aria-labelledby="PostSearchModal" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content p-4">
+      <div class="modal-header">
+        <h4 class="modal-title" id="search-option-title">Post - Search options</h4>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <!-- Word search - avoid and/or include -->
+        <form id="words-search" role="search" method="GET" action="{% url 'posts'  %}">
+          <fieldset>
+            <legend>Words search</legend>
+            <label for="avoid-search">Avoid words</label>
+            <input id="avoid-search" class="form-control me-2 p-2 mb-2" name="q-avoid" type="search"
+              placeholder="Words to be avoided" aria-label="Words to be avoided">
+            <label for="include-search">Include words</label>
+            <input id="include-search" class="form-control me-2 p-2 mb-2" name="q-incl" type="search"
+              placeholder="Include words" aria-label="Include words">
+          </fieldset>
+          <div class="modal-button pb-2 mb-2">
+            <button type="submit" class="btn btn-success" form="words-search">Search</button>
+          </div>
+        </form>
+        <!-- Owner search - 'all_users' get the User model's ids and usernames -->
+        <form id="owner-search" role="search" method="GET" action="{% url 'posts'  %}">
+          <label for="owner-id-search" class="pt-3">Posts' Owner search</label><br>
+          <select id="owner-id-search" name="q-owner" class="p-2" aria-label="Owner Search">
+            <option disabled="disabled" selected>Select posts' owner from here! </option>
             {% for owner in all_users %}
             <option value="{{ owner.id }}">{{ owner.username }}</option>
             {% endfor %}
