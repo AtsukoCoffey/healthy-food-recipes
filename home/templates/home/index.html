@@ -18,46 +18,75 @@
       a try!</p>
   </div>
 </section>
-<section class="container flex-column">
-  <!-- Section Title and Search Button -> trigger modal -->
-  <div class="search-button">
-    <h3 class="mt-3">Recipes</h3>
-    <button id="search-btn" type="button" class="btn" data-bs-toggle="modal" data-bs-target="#exampleModal">
-      Search <i class="fa-solid fa-magnifying-glass"></i>
-    </button>
-  </div>
-  <hr>
-  <div class="recipe-cont">
-    <!-- Display recipes list - 9 par 1 page with pagination -->
-    {% for recipe in page_obj %}
-    <a href="{% url 'recipe_detail' recipe.slug %}" class="img-container" aria-label="Click to view {{recipe.title}}">
-      <img src="{{recipe.image.url}}" alt="{{recipe.image_alt}}" style="width: 100%">
-      <div class="centerd">
-        <h5>{{recipe.title}}</h5>
-        <p class="stars">
-          <span class="fa fa-star {% if recipe.average_rating > 0 %} checked {% endif %}"></span>
-          <span class="fa fa-star {% if recipe.average_rating > 1 %} checked {% endif %}"></span>
-          <span class="fa fa-star {% if recipe.average_rating > 2 %} checked {% endif %}"></span>
-          <span class="fa fa-star {% if recipe.average_rating > 3 %} checked {% endif %}"></span>
-          <span class="fa fa-star {% if recipe.average_rating > 4 %} checked {% endif %}"></span>
-        </p>
-      </div>
-    </a>
-    {% endfor %}
-  </div>
-  {% if is_paginated %}
-  <nav aria-label="Page navigation">
-    <ul class="pagination justify-content-center">
-      {% if page_obj.has_previous %}
-      <li><a href="?page={{ page_obj.previous_page_number }}&{{ query_string }}" class="page-link">&laquo; PREV </a></li>
-      {% endif %}
-      {% if page_obj.has_next %}
-      <li><a href="?page={{ page_obj.next_page_number }}&{{ query_string }}" class="page-link"> NEXT &raquo;</a> {{page.num_pages}}</li>
-      {% endif %}
-    </ul>
-  </nav>
-  {% endif %}
-</section>
+<div class="container ms-auto me-auto row">
+  <section class="col-lg-9 align-items-center">
+    <!-- Section Title and Search Button -> trigger modal -->
+    <div class="search-button">
+      <h3 class="mt-3">Recipes</h3>
+      <h4 class="d-none">Useful Search Option</h4>
+      <button id="search-btn" type="button" class="btn" data-bs-toggle="modal" data-bs-target="#exampleModal">
+        Search <i class="fa-solid fa-magnifying-glass"></i>
+      </button>
+    </div>
+    <hr>
+    <div class="recipe-cont">
+      <!-- Display recipes list - 9 par 1 page with pagination -->
+      {% for recipe in page_obj %}
+      <a href="{% url 'recipe_detail' recipe.slug %}" class="img-container" aria-label="Click to view {{recipe.title}}">
+        <img src="{{recipe.image.url}}" alt="{{recipe.image_alt}}" style="width: 100%">
+        <div class="centerd">
+          <h5>{{recipe.title}}</h5>
+          <p class="stars">
+            <span class="fa fa-star {% if recipe.average_rating > 0 %} checked {% endif %}"></span>
+            <span class="fa fa-star {% if recipe.average_rating > 1 %} checked {% endif %}"></span>
+            <span class="fa fa-star {% if recipe.average_rating > 2 %} checked {% endif %}"></span>
+            <span class="fa fa-star {% if recipe.average_rating > 3 %} checked {% endif %}"></span>
+            <span class="fa fa-star {% if recipe.average_rating > 4 %} checked {% endif %}"></span>
+          </p>
+        </div>
+      </a>
+      {% endfor %}
+    </div>
+    {% if is_paginated %}
+    <nav aria-label="Page navigation">
+      <ul class="pagination justify-content-center">
+        {% if page_obj.has_previous %}
+        <li><a href="?page={{ page_obj.previous_page_number }}&{{ query_string }}" class="page-link">&laquo; PREV </a>
+        </li>
+        {% endif %}
+        {% if page_obj.has_next %}
+        <li><a href="?page={{ page_obj.next_page_number }}&{{ query_string }}" class="page-link"> NEXT &raquo;</a>
+          {{page.num_pages}}</li>
+        {% endif %}
+      </ul>
+    </nav>
+    {% endif %}
+  </section>
+  <article class="col-lg-3">
+    <!-- Section Title and Search Button -> trigger modal -->
+    <div class="search-button">
+      <h3 class="mt-3">Posts</h3>
+      <h4 class="d-none">Post Search</h4>
+      <button id="search-btn" type="button" class="btn" data-bs-toggle="modal" data-bs-target="#exampleModal">
+        Search <i class="fa-solid fa-magnifying-glass"></i>
+      </button>
+    </div>
+    <hr>
+    <div class="post-cont">
+      <!-- Display recipes list - 9 par 1 page with pagination -->
+      {% for post in posts3 %}
+      <a href="{% url 'post_detail' post.slug %}" class="img-container" aria-label="Click to view {{post.title}}">
+        <img src="{{post.image.url}}" alt="{{post.image_alt}}" style="width: 100%">
+        <div>
+          <h5>{{post.title}}</h5>
+          <p>{{post.post_body|truncatechars:100|safe}}
+          </p>
+        </div>
+      </a>
+      {% endfor %}
+    </div>
+  </article>
+</div>
 <!-- Modal - for search options -->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModal" aria-hidden="true">
   <div class="modal-dialog modal-lg">
