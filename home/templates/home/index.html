@@ -99,7 +99,7 @@
       </div>
       <div class="modal-body">
         <!-- Quick search by 8 categories -->
-        <form id="checkbox-filter" role="search" method="GET" action="{% url 'home'  %}">
+        <form id="checkbox-filter" role="search" method="GET" action="{% url 'home' %}">
           <fieldset>
             <legend>Quick search</legend>
             <ul class="d-flex flex-wrap list-unstyled">
@@ -127,7 +127,7 @@
           </div>
         </form>
         <!-- Ingredients search - avoid and/or include -->
-        <form id="ingre-search" role="search" method="GET" action="{% url 'home'  %}">
+        <form id="ingre-search" role="search" method="GET" action="{% url 'home' %}">
           <fieldset>
             <legend>Ingredients search</legend>
             <label for="avoid-search">Avoid ingredients</label>
@@ -142,14 +142,14 @@
           </div>
         </form>
         <!-- Free text search - look for in title, description and instruction field -->
-        <form id="free-search" role="search" method="GET" action="{% url 'home'  %}">
+        <form id="free-search" role="search" method="GET" action="{% url 'home' %}">
           <label for="free-word-search" class="pt-3">Free search</label><br>
           <input id="free-word-search" class="me-2 p-2" name="q-free" type="search" placeholder="Free Search"
             aria-label="Free Search">
           <button type="submit" class="btn btn-success" form="free-search">Search</button>
         </form>
         <!-- Owner search - 'all_users' get the User model's ids and usernames -->
-        <form id="owner-search" role="search" method="GET" action="{% url 'home'  %}">
+        <form id="owner-search" role="search" method="GET" action="{% url 'home' %}">
           <label for="owner-id-search" class="pt-3">Recipe's Owner search</label><br>
           <select id="owner-id-search" name="q-owner" class="p-2" aria-label="Owner Search">
             <option disabled="disabled" selected>Select recipe's owner from here! </option>
@@ -176,7 +176,7 @@
       </div>
       <div class="modal-body">
         <!-- Word search - avoid and/or include -->
-        <form id="words-search" role="search" method="GET" action="{% url 'posts'  %}">
+        <form id="post-search" role="search" method="GET" action="{% url 'posts' %}">
           <fieldset>
             <legend>Words search</legend>
             <label for="avoid-search">Avoid words</label>
@@ -187,11 +187,9 @@
               placeholder="Include words" aria-label="Include words">
           </fieldset>
           <div class="modal-button pb-2 mb-2">
-            <button type="submit" class="btn btn-success" form="words-search">Search</button>
-          </div>
-        </form>
+            <button type="submit" class="btn btn-success" form="post-search">Search</button>
+          </div>       
         <!-- Owner search - 'all_users' get the User model's ids and usernames -->
-        <form id="owner-search" role="search" method="GET" action="{% url 'posts'  %}">
           <label for="owner-id-search" class="pt-3">Posts' Owner search</label><br>
           <select id="owner-id-search" name="q-owner" class="p-2" aria-label="Owner Search">
             <option disabled="disabled" selected>Select posts' owner from here! </option>
@@ -199,7 +197,7 @@
             <option value="{{ owner.id }}">{{ owner.username }}</option>
             {% endfor %}
           </select>
-          <button type="submit" class="btn btn-success" form="owner-search">Search</button>
+          <button type="submit" class="btn btn-success" form="post-search">Search</button>
         </form>
       </div>
       <div class="modal-footer">

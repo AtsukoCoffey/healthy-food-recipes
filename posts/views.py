@@ -8,6 +8,7 @@ from django.contrib.auth.models import User
 from django.contrib.messages.views import SuccessMessageMixin
 from django.contrib import messages
 from django.urls import reverse
+from django.core.exceptions import BadRequest
 from .models import Post, PostComment
 from .forms import PostForm, PostCommentForm
 
@@ -56,7 +57,6 @@ class Posts(ListView):
         All the approved post article :model:`posts.Post`
     """
     template_name = "posts/posts.html"
-    queryset = Post.objects.filter(approved=True)
     paginate_by = 9
     context_object_name = "posts"
 
@@ -78,36 +78,30 @@ class Posts(ListView):
         Avoid/include words search - string
         owner_query - int (foreign key)
         """
+        queryset = Post.objects.filter(approved=True)
         avoid_query = self.request.GET.get('q-avoid')
         include_query = self.request.GET.get('q-incl')
         owner_query = self.request.GET.get('q-owner')
 
-        queryset = Post.objects.filter(approved=True)
-        # Avoid and include words query
+        # From queryset flter Avoid query 
         if avoid_query:
-            if include_query:
-                queryset = queryset.exclude(
-                    Q(title__icontains=avoid_query) |
-                    Q(post_body__icontains=avoid_query)
-                    ).filter(
-                    Q(title__icontains=include_query) |
-                    Q(post_body__icontains=include_query)
-                    )
-            else:
-                queryset = queryset.exclude(
-                    Q(title__icontains=avoid_query) |
-                    Q(post_body__icontains=avoid_query)
-                    )
-        else:
-            if include_query:
-                queryset = queryset.filter(
-                    Q(title__icontains=include_query) |
-                    Q(post_body__icontains=include_query)
-                    )
-
+            queryset = queryset.exclude(
+                Q(title__icontains=avoid_query) |
+                Q(post_body__icontains=avoid_query)
+            )
+        # filter include query
+        if include_query:
+            queryset = queryset.filter(
+                Q(title__icontains=include_query) |
+                Q(post_body__icontains=include_query)
+            )
         # Owner search
         if owner_query:
-            queryset = queryset.filter(Q(user=owner_query))
+            try:
+                owner_id = int(owner_query)
+                queryset = queryset.filter(user_id=owner_id)
+            except ValueError:
+                raise BadRequest("Invalid owner! Try again!")
         return queryset
 
 

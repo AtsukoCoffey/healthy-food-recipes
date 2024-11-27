@@ -14,7 +14,7 @@
     --white-green: #f1eddb;
     --star-yellow: #f9d419;
     --star-gray: #27252594;
-    --dark-orange: rgb(85, 32, 1);
+    --dark-orange: rgb(65, 27, 5);
     --white: #fff;
     --black: #000;
 
@@ -38,7 +38,7 @@ h1 {
     margin-top: 7px;
 }
 
-h2, h3, h4 {
+h2, h3 {
     color: var(--dark-color);
 }
 
@@ -47,7 +47,7 @@ a {
 }
 a:hover,
 a:active {
-    color: var(--star-gray);
+    color: var(--mos-green);
 }
 
 /*---------------------------------------------------------- Header */
@@ -238,7 +238,7 @@ a:active {
     border-radius: 8px;
 }
 
-.recipe-cont h5,
+.recipe-cont h4,
 .recipe-cont p,
 .post-cont h5,
 .post-cont p {
@@ -255,9 +255,8 @@ a:active {
     border-radius: 8px;
 }
 
-.img-container img:hover ~ div,
-.centerd:hover {
-    background-color: #070707c9;
+a img:hover {
+    opacity: 0.5;
 }
 
 .img-container img {
@@ -268,12 +267,11 @@ a:active {
 
 .centerd {
     width: 100%;
-    background-color: #061f04a4;
+    background-color: var(--dark-color);
     color: var(--white-green);
     position: absolute;
     top: 8%;
     left: 60%;
-    transform: translate(-0%, 0%);
     padding: 4px 0px;
 }
 
@@ -284,6 +282,20 @@ a:active {
 .stars {
     font-size: smaller;
     margin-bottom: 0;
+}
+
+.opaci{
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 100%;
+    width:100%;
+    background-color: #a0979788;
+    display: none;
+}
+
+img~div:hover {
+    display: block;
 }
 
 .pagination a {
@@ -298,7 +310,7 @@ a:active {
 
 .rating,
 .category {
-    color: var(--star-gray);
+    color: var(--white-green);
 }
 
 .category>i {
