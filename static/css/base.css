@@ -47,13 +47,18 @@ a {
 }
 a:hover,
 a:active {
-    color: var(--light-green);
+    color: var(--star-gray);
 }
 
 /*---------------------------------------------------------- Header */
 
 .navbar {
     background-color: var(--logo-dark);
+}
+
+.navbar a:hover,
+.navbar a:active {
+    color: var(--light-green)
 }
 
 .logo {

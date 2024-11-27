@@ -13,7 +13,7 @@
     --light-green: #bfe077;
     --white-green: #f1eddb;
     --star-yellow: #f9d419;
-    --star-gray: #ddd;
+    --star-gray: #27252594;
     --dark-orange: rgb(85, 32, 1);
     --white: #fff;
     --black: #000;
@@ -47,13 +47,18 @@ a {
 }
 a:hover,
 a:active {
-    color: var(--light-green);
+    color: var(--star-gray);
 }
 
 /*---------------------------------------------------------- Header */
 
 .navbar {
     background-color: var(--logo-dark);
+}
+
+.navbar a:hover,
+.navbar a:active {
+    color: var(--light-green)
 }
 
 .logo {
@@ -180,7 +185,7 @@ a:active {
     top: 0;
     right: 0;
     color: var(--logo-dark);
-    background-color: var(--star-yellow);
+    background-color: var(--light-green);
     border: solid 2px var(--mos-green);
     box-shadow: var(--small-shadow);
     font-weight: 700;
@@ -188,7 +193,23 @@ a:active {
 
 #search-btn:hover,
 #search-btn:active {
+    background-color: var(--white-green);
+}
+
+#post-search-btn {
+    position: absolute;
+    top: 0;
+    right: 0;
+    color: var(--logo-dark);
     background-color: var(--light-green);
+    border: solid 2px var(--mos-green);
+    box-shadow: var(--small-shadow);
+    font-weight: 700;
+}
+
+#post-search-btn:hover,
+#post-search-btn:active {
+    background-color: var(--white-green);
 }
 
 .recipe-cont {
@@ -197,10 +218,36 @@ a:active {
     flex-wrap: wrap;
 }
 
-a.img-container {
+.datetime {
+    font-size: 80%;
+}
+
+.post-cont {
+    display: flex;
+    flex-direction: column;
+}
+
+.img-container {
     position: relative;
-    text-align: center;
+    text-align: left;
     margin: 2%;
+    overflow: hidden;
+    text-decoration: none;
+    border: 1px solid var(--logo-dark);
+    box-shadow: var(--small-shadow);
+    border-radius: 8px;
+}
+
+.recipe-cont h5,
+.recipe-cont p,
+.post-cont h5,
+.post-cont p {
+    margin: 0 1rem;
+}
+
+.post-img-container {
+    text-align: left;
+    margin: .8rem;
     overflow: hidden;
     text-decoration: none;
     border: 1px solid var(--logo-dark);
@@ -215,19 +262,19 @@ a.img-container {
 
 .img-container img {
     width: 100%;
-    max-height: 300px;
+    max-height: 250px;
     object-fit: cover;
 }
 
 .centerd {
     width: 100%;
-    background-color: #1b1b1ac9;
+    background-color: #061f04a4;
     color: var(--white-green);
     position: absolute;
-    bottom: 0%;
-    left: 50%;
-    transform: translate(-50%, -20%);
-    padding: 0.5rem;
+    top: 8%;
+    left: 60%;
+    transform: translate(-0%, 0%);
+    padding: 4px 0px;
 }
 
 .centerd p {
@@ -235,7 +282,7 @@ a.img-container {
 }
 
 .stars {
-    font-size: small;
+    font-size: smaller;
     margin-bottom: 0;
 }
 
@@ -374,6 +421,10 @@ footer a:active {
         display: block;
     }
 
+    .centerd {
+        left: 40%;
+    }
+
     .form {
         padding: 2% 6%;
         max-width: 700px;
@@ -383,12 +434,28 @@ footer a:active {
         flex-direction: row;
     }
 
+    .post-cont {
+        flex-direction: row;
+    }
+
     .img-container,
     .post-container {
         flex-direction: row;
         width: 29%;
     }
 
+}
+
+/* Media query: Bootstrap size LG (992px and up) */
+@media screen and (min-width:992px) {
+    .post-cont {
+        flex-direction: column;
+        margin: 6%;
+    }
+    
+    .post-img-container {
+        margin: .8rem 0;
+    }
 }
 
 /* Media query: General smart phone (1024px and up) */
@@ -410,6 +477,11 @@ footer a:active {
         width: 70%;
     }
 
+
+/* 
+    .post-cont.img-container {
+        flex-direction: column;
+    } */
     .form {
         padding: 3% 8%;
         max-width: 935px;

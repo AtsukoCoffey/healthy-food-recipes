@@ -57,7 +57,7 @@ class Posts(ListView):
     """
     template_name = "posts/posts.html"
     queryset = Post.objects.filter(approved=True)
-    paginate_by = 6
+    paginate_by = 9
     context_object_name = "posts"
 
     def get_context_data(self, **kwargs):
@@ -83,7 +83,6 @@ class Posts(ListView):
         owner_query = self.request.GET.get('q-owner')
 
         queryset = Post.objects.filter(approved=True)
-
         # Avoid and include words query
         if avoid_query:
             if include_query:
