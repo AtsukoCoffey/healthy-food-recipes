@@ -100,7 +100,7 @@ I've tested my deployed project using the Lighthouse Audit tool.
 | --- | --- | --- | --- |
 | Home | Mobile | ![screenshot](readme-img/validation/light-mb-home.png) | Some minor performance warnings |
 | Recipe create | Mobile | ![screenshot](readme-img/validation/light-mb-recipes-add.png) | Some minor performance warnings |
-| Recipe detail | Mobile | ![screenshot](readme-img/validation/light-mb-) | Some minor performance warnings |
+| Recipe detail | Mobile | ![screenshot](readme-img/validation/light-mb-recipes-detail.png) | Some minor performance warnings |
 | Recipe edit | Mobile | ![screenshot](readme-img/validation/) | Some minor performance warnings |
 | Recipe delete | Mobile | ![screenshot](readme-img/validation/) | Some minor performance warnings |
 | Posts | Mobile | ![screenshot](readme-img/validation/light-mb-posts.png) | Some minor performance warnings |
@@ -114,7 +114,7 @@ I've tested my deployed project using the Lighthouse Audit tool.
 | Page | Size | Screenshot | Notes |
 | --- | --- | --- | --- |
 | Home | Desktop | ![screenshot](readme-img/validation/light-pc-home.png) | Some minor performance warnings |
-| Recipe detail | Desktop | ![screenshot](readme-img/validation/) | Some minor performance warnings |
+| Recipe detail | Desktop | ![screenshot](readme-img/validation/light-pc-recipes-detail.png) | Some minor performance warnings |
 | Recipe create | Desktop | ![screenshot](readme-img/validation/light-pc-recipes-add.png) | Some minor performance warnings |
 | Recipe edit | Desktop | ![screenshot](readme-img/validation/) | Some minor performance warnings |
 | Recipe delete | Desktop | ![screenshot](readme-img/validation/) | Some minor performance warnings |
@@ -129,7 +129,7 @@ I've tested my deployed project using the Lighthouse Audit tool.
 | Page | Size | Screenshot | Notes |
 | --- | --- | --- | --- |
 | Login | Mobile | ![screenshot](readme-img/validation/) | Some minor performance warnings |
-| Logout | Mobile | ![screenshot](readme-img/validation/) | Some minor performance warnings |
+| Logout | Mobile | ![screenshot](readme-img/validation/light-mb-logout.png) | Some minor performance warnings |
 | Register | Mobile | ![screenshot](readme-img/validation/) | Some minor performance warnings |
 | Profile | Mobile | ![screenshot](readme-img/validation/) | Some minor performance warnings |
 | Password reset | Mobile | ![screenshot](readme-img/validation/) | Some minor performance warnings |
@@ -141,7 +141,7 @@ I've tested my deployed project using the Lighthouse Audit tool.
 | Page | Size | Screenshot | Notes |
 | --- | --- | --- | --- |
 | Login | Desktop | ![screenshot](readme-img/validation/) | Some minor performance warnings |
-| Logout | Desktop | ![screenshot](readme-img/validation/) | Some minor performance warnings |
+| Logout | Desktop | ![screenshot](readme-img/validation/light-pc-logout.png) | Some minor performance warnings |
 | Register | Desktop | ![screenshot](readme-img/validation/) | Some minor performance warnings |
 | Profile | Desktop | ![screenshot](readme-img/validation/) | Some minor performance warnings |
 | Password reset | Desktop | ![screenshot](readme-img/validation/) | Some minor performance warnings |

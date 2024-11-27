@@ -1,8 +1,6 @@
 # Healthy Food Recipe
-This website is aiming a recipe sharing and also community group discussion.
-
-
-# UX DESIGN
+The website aims to raise awareness of health and wellness through recipe sharing and community group discussion.
+It was originally planned as part of a previous project, but midway through development my standup teacher advised me that it would be better to make it a standalone project separate from the previous one. Therefore, I have made some changes to the color theme and purpose of the site from the wireframe design.
 
 ## 1. Strategy Plane
 ### Target users 
@@ -14,7 +12,7 @@ This website is aiming a recipe sharing and also community group discussion.
 2.	Users can access and learn crucial information that could have an impact on their health and well-being by the community activities.
 3.	Users can learn alternative cooking knowledge to avoid potentially dangerous food additives and unnaturally excessively processed food.
 ### Difference from competitors and substitutions
-1.  The "Healthy Food Club" is not just recipes, but has more emphasis on learning and communication.
+1.  The "Healthy Food Recipe" is not just recipes, but has more emphasis on learning and communication.
 
 ## 2. Scope Plane 
 ### First time visitor
@@ -36,7 +34,7 @@ This website is aiming a recipe sharing and also community group discussion.
 *	As a site owner, I want to encourage people’s awareness about chemicals in our life.  
 *	As a site owner, I want to inform and educate about European and national regulations on food additives.  
 *	As a site owner, I want to provide inspiration for alternative cooking ideas by search options in the recipes.  
-*	As a site owner, I want to convey clearly that the "Healthy Food Club" is not just about recipes and cooking.  
+*	As a site owner, I want to convey clearly that the "Healthy Food Recipe" is not only about recipes.  
 
 ## 3. Structure Plane
 * The website should have a Navigation menu that is consistent across all pages.
@@ -58,12 +56,8 @@ This website is aiming a recipe sharing and also community group discussion.
 ![Database relationship diagram](readme-img/ux-db-diagram.jpg "Database relationship diagram")
 </details>  
 
-For the mobile screen wireframe, I simply lined up important and necessary information under the flow of UX design strategy as I thought there wasn't much excess spaces.  
-<details>
-<summary>Mobile - 320px - Wireframe</summary>
-
-<!-- ![Home page mobile Wireframe](readme-img/wireframe/ "Home page mobile Wireframe") -->
-</details>  
+### Structure diagram  
+For the mobile screen, I simply lined up important and necessary information under the flow of UX design strategy as I thought there wasn't much excess spaces.  
 
 For PC monitor wireframe, for first time visitor.   
 <details open>
@@ -82,18 +76,16 @@ For PC monitor wireframe, for authenticated user.
 ## 5. Surface Plane
 
 ### Colour
-At the planning stage, I chose this colour scheme, which has a healthy, lively, clear and optimistic feeling, from the Adobe colour website. [CREDITS Content References - Adobe Color API](#credits-content) 
+The color scheme that was originally planned has been changed to one that is more neutral and calming. [CREDITS Content References - Adobe Color API](#credits-content) 
   
 <!-- ![Colour scheme](readme-img/colour-scheme1.png "Colour scheme") -->
-
-However, using only these colors couldn’t provide enough contrast, so I adjusted the color scheme as below.  
   
 <!-- ![Colour scheme 2](readme-img/colour-scheme2.png "Colour scheme 2") -->
 
 
 ### Typography
 
-I selected "Poiret One" for the “Healthy Food Club” Logo from Google font API. It is attractive and has sharp features and it’s not too heavy.  
+I selected "Poiret One" for the Logo from Google font API. It is attractive and has sharp features and it’s not too heavy.  
 For the site's basic font, I was considering using "Quicksand" for the best readability, however our target users are young people and since it’s not a huge business website so a little bit unique font like "Josefin Sans" might appeal well to this unique community. [TECHNOLOGY USED - Google Fonts](#tech)  
 
 * "Poiret One"  
