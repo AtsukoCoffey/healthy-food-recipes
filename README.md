@@ -1,4 +1,5 @@
-<script src="https://cdn.jsdelivr.net/npm/mermaid@11.4.0/dist/mermaid.min.js"></script>
+# Healthy Food Recipe
+This website is aiming a recipe sharing and also community group discussion.
 
 
 # UX DESIGN
@@ -24,10 +25,10 @@
 *	As a user, I want to see articles that offer a variety of perspectives on health to increase my awareness and knowledge.
 ### Returning and frequent visitor
 *	As a user, I want to share my favorite recipes with easy and intuitive form inputs.
-* As a user, I want to share my thoughts by posting the articles.
-* As a user, I want to communicate with other members by the comment feature.
-* As a user, I want the useful search options to look for my needs.
-* As a user, I want to see the rating score by other members about recipes.
+*   As a user, I want to share my thoughts by posting the articles.
+*   As a user, I want to communicate with other members by the comment feature.
+*   As a user, I want the useful search options to look for my needs.
+*   As a user, I want to see the rating score by other members about recipes.
 ### The website owner stories
 *	As a site owner, I want to encourage people for joining the healthy eathing community.
 *	As a site owner, I want to convey clearly who we are and our purpose, to give users a sense of trust and confidence.
@@ -112,6 +113,11 @@ For the site's basic font, I was considering using "Quicksand" for the best read
 # Future features
 
 Any open issues can be tracked [here](). These are the "Won't Have's" for this project that, for a variety of reasons, will not be included in this projct submission. These may be revisited and added in the future.
+
+# Tests
+For testing I created `README-TEST.md` file
+[Tests- README-TEST](/README-TEST.md "Tests- README-TEST")
+</details>  
 
 # Bugs
 

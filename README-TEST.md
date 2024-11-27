@@ -98,12 +98,13 @@ I've tested my deployed project using the Lighthouse Audit tool.
 ### Website App Templates - Mobile Testing
 | Page | Size | Screenshot | Notes |
 | --- | --- | --- | --- |
-| Home | Mobile | ![screenshot](readme-img/validation/) | Some minor performance warnings |
-| Recipes | Mobile | ![screenshot](readme-img/validation/) | Some minor performance warnings |
-| Recipe detail | Mobile | ![screenshot](readme-img/validation/) | Some minor performance warnings |
-| Recipe create | Mobile | ![screenshot](readme-img/validation/) | Some minor performance warnings |
+| Home | Mobile | ![screenshot](readme-img/validation/light-mb-home.png) | Some minor performance warnings |
+| Recipe create | Mobile | ![screenshot](readme-img/validation/light-mb-recipes-add.png) | Some minor performance warnings |
+| Recipe detail | Mobile | ![screenshot](readme-img/validation/light-mb-) | Some minor performance warnings |
 | Recipe edit | Mobile | ![screenshot](readme-img/validation/) | Some minor performance warnings |
 | Recipe delete | Mobile | ![screenshot](readme-img/validation/) | Some minor performance warnings |
+| Posts | Mobile | ![screenshot](readme-img/validation/light-mb-posts.png) | Some minor performance warnings |
+| Posts detail | Mobile | ![screenshot](readme-img/validation/light-mb-posts-details.png) | Some minor performance warnings |
 | Custom Error 400 | Mobile | ![screenshot](readme-img/validation/) | Some minor performance warnings |
 | Custom Error 403 | Mobile | ![screenshot](readme-img/validation/) | Some minor performance warnings |
 | Custom Error 404 | Mobile | ![screenshot](readme-img/validation/) | Some minor performance warnings |
@@ -112,12 +113,13 @@ I've tested my deployed project using the Lighthouse Audit tool.
 ### Website App Templates - Desktop Testing
 | Page | Size | Screenshot | Notes |
 | --- | --- | --- | --- |
-| Home | Desktop | ![screenshot](readme-img/validation/) | Some minor performance warnings |
-| Recipes | Desktop | ![screenshot](readme-img/validation/) | Some minor performance warnings |
+| Home | Desktop | ![screenshot](readme-img/validation/light-pc-home.png) | Some minor performance warnings |
 | Recipe detail | Desktop | ![screenshot](readme-img/validation/) | Some minor performance warnings |
-| Recipe create | Desktop | ![screenshot](readme-img/validation/) | Some minor performance warnings |
+| Recipe create | Desktop | ![screenshot](readme-img/validation/light-pc-recipes-add.png) | Some minor performance warnings |
 | Recipe edit | Desktop | ![screenshot](readme-img/validation/) | Some minor performance warnings |
 | Recipe delete | Desktop | ![screenshot](readme-img/validation/) | Some minor performance warnings |
+| Posts | Desktop | ![screenshot](readme-img/validation/light-pc-posts.png) | Some minor performance warnings |
+| Posts detail | Desktop | ![screenshot](readme-img/validation/light-pc-posts-details.png) | Some minor performance warnings |
 | Custom Error 400 | Desktop | ![screenshot](readme-img/validation/) | Some minor performance warnings |
 | Custom Error 403 | Desktop | ![screenshot](readme-img/validation/) | Some minor performance warnings |
 | Custom Error 404 | Desktop | ![screenshot](readme-img/validation/) | Some minor performance warnings |
