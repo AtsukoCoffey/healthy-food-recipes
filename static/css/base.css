@@ -218,6 +218,11 @@ a:active {
     flex-wrap: wrap;
 }
 
+.card-body:hover,
+.card-body:active {
+    background-color: var(--white-green);
+}
+
 .datetime {
     font-size: 80%;
 }
@@ -284,16 +289,6 @@ a img:hover {
     margin-bottom: 0;
 }
 
-.opaci{
-    position: absolute;
-    top: 0;
-    left: 0;
-    padding: 100%;
-    width:100%;
-    background-color: #a0979788;
-    display: none;
-}
-
 img~div:hover {
     display: block;
 }
@@ -325,6 +320,11 @@ img~div:hover {
 .category>strong,
 .rating>strong {
     color: var(--black);
+}
+
+.detail-img {
+    overflow: hidden;
+    margin-bottom: 1rem;
 }
 /*---------------------------------------------------------- Star rating */
 
@@ -413,8 +413,8 @@ footer a:active {
     border-radius: 8px;
 }
 
-.post-container:hover,
-.post-container:active {
+.post-container.card-body:hover,
+.post-container.card-body:active {
     background-color: var(--white-green);
     color: var(--dark-color);
 }
@@ -450,10 +450,14 @@ footer a:active {
         flex-direction: row;
     }
 
-    .img-container,
+    .img-container{
+        flex-direction: row; 
+        max-width: 29%;
+    }
+
     .post-container {
         flex-direction: row;
-        width: 29%;
+        max-width: 45%;
     }
 
 }
@@ -465,6 +469,11 @@ footer a:active {
         margin: 6%;
     }
     
+    .post-container {
+        flex-direction: row;
+        max-width: 29%;
+    }
+
     .post-img-container {
         margin: .8rem 0;
     }
@@ -489,11 +498,6 @@ footer a:active {
         width: 70%;
     }
 
-
-/* 
-    .post-cont.img-container {
-        flex-direction: column;
-    } */
     .form {
         padding: 3% 8%;
         max-width: 935px;
@@ -506,5 +510,13 @@ footer a:active {
     footer {
         padding-right: 10%;
         padding-left: 10%;
+    }
+}
+
+/* Media query: General smart phone (1200px and up) */
+@media screen and (min-width:1200px) {
+
+    .post-container {
+        max-width: 22%;;
     }
 }

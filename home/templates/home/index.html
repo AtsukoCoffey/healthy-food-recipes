@@ -43,7 +43,6 @@
             <span class="fa fa-star {% if recipe.average_rating > 4 %} checked {% endif %}"></span>
           </p>
         </div>
-        <div class="opaci"></div>
         <h4 class="mt-2">{{recipe.title|truncatechars:50}}</h4>
         <p>{{recipe.user}}</p>
         <p class="datetime pb-2">{{recipe.posted_date}}</p>
@@ -55,7 +54,8 @@
     <!-- Section Title and Search Button -> trigger modal -->
     <div class="search-button">
       <h3 class="mt-3">Posts</h3>
-      <button id="post-search-btn" type="button" class="btn me-4" data-bs-toggle="modal" data-bs-target="#PostSearchModal">
+      <button id="post-search-btn" type="button" class="btn me-4" data-bs-toggle="modal"
+        data-bs-target="#PostSearchModal">
         Search <i class="fa-solid fa-magnifying-glass"></i>
       </button>
     </div>
@@ -188,8 +188,8 @@
           </fieldset>
           <div class="modal-button pb-2 mb-2">
             <button type="submit" class="btn btn-success" form="post-search">Search</button>
-          </div>       
-        <!-- Owner search - 'all_users' get the User model's ids and usernames -->
+          </div>
+          <!-- Owner search - 'all_users' get the User model's ids and usernames -->
           <label for="owner-id-search" class="pt-3">Posts' Owner search</label><br>
           <select id="owner-id-search" name="q-owner" class="p-2" aria-label="Owner Search">
             <option disabled="disabled" selected>Select posts' owner from here! </option>

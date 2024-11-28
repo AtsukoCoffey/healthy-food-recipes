@@ -57,7 +57,7 @@ class Posts(ListView):
         All the approved post article :model:`posts.Post`
     """
     template_name = "posts/posts.html"
-    paginate_by = 9
+    paginate_by = 8
     context_object_name = "posts"
 
     def get_context_data(self, **kwargs):

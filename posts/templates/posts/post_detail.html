@@ -15,7 +15,7 @@
       </nav>
     <!-- Post's image, title and some information -->
     <div class="row mt-3 p-1">
-        <div class="col-md-8 col-lg-6">
+        <div class="col-md-6 col-lg-8">
             <h2 class="text-center"><i class="fa-solid fa-newspaper"></i> {{post.title}}</h2>
             <p class="text-center">Posted by {{post.user}} on {{post.posted_date}}</p>
             <hr>
@@ -28,7 +28,7 @@
             </div>
             {% endif %}
         </div>
-        <div class="col-md-4 col-lg-6 mt-2">
+        <div class="col-md-6 col-lg-4 mt-2 detail-img">
             <img src="{{ post.image.url }}" alt="{{ post.image_alt }}" class="recipe-pic">
         </div>
     </div>
