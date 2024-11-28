@@ -1,6 +1,7 @@
 /* Google fonts import */
 @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Poiret+One&display=swap');
 
+
 :root {
     /** Fonts */
     --title: 'Poiret One', sans-serif;
@@ -172,7 +173,7 @@ a:active {
 }
 
 #hero-text {
-    counter-reset: var(--black);
+    font-size: 120%;
 }
 
 .search-button{
@@ -429,6 +430,10 @@ footer a:active {
         font-size: 1.5rem;
     }
     
+    #hero-text {
+        line-height: 180%;
+    }
+    
     .dropdown:hover .dropdown-menu {
         display: block;
     }
@@ -477,6 +482,10 @@ footer a:active {
     .post-img-container {
         margin: .8rem 0;
     }
+    
+    #hero-text {
+        line-height: 220%;
+    }
 }
 
 /* Media query: General smart phone (1024px and up) */
@@ -489,6 +498,11 @@ footer a:active {
     .logo {
         font-size: 2.7rem;
     }
+
+    #hero-text {
+        line-height: 250%;
+    }
+
     .community-top {
         font-size: 1.8rem;
     }

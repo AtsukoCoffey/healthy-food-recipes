@@ -5,20 +5,19 @@
 ### HTML
 | Page | W3C URL | Screenshot | Notes |
 | --- | --- | --- | --- |
-| Home | [W3C](https://validator.w3.org/nu/?doc=https%3A%2F%2Fhealthy-food-c44b0f8f09a5.herokuapp.com%2F) | ![screenshot](readme-img/validation/) | Pass: No Errors |
-| Sign-up | [W3C](https://validator.w3.org) | ![screenshot](readme-img/validation/) | Pass: No Errors |
-| Log-in | [W3C](https://validator.w3.org) | ![screenshot](readme-img/validation/) | Pass: No Errors |
-| Log-out | [W3C](https://validator.w3.org) | ![screenshot](readme-img/validation/) | Pass: No Errors |
-| Recipes | [W3C](https://validator.w3.org) | ![screenshot](readme-img/validation/) | Pass: No Errors |
-| Recipe detail | [W3C](https://validator.w3.org) | ![screenshot](readme-img/validation/) | Pass: No Errors |
-| Recipe create | [W3C](https://validator.w3.org) | ![screenshot](readme-img/validation/) | Pass: No Errors |
-| Recipe edit | [W3C](https://validator.w3.org) | ![screenshot](readme-img/validation/) | Pass: No Errors |
-| Recipe delete | [W3C](https://validator.w3.org) | ![screenshot](readme-img/validation/) | Pass: No Errors |
-| Posts | [W3C](https://validator.w3.org) | ![screenshot](readme-img/validation/) | Pass: No Errors |
-| Post detail | [W3C](https://validator.w3.org) | ![screenshot](readme-img/validation/) | Pass: No Errors |
-| Post create | [W3C](https://validator.w3.org) | ![screenshot](readme-img/validation/) | Pass: No Errors |
-| Post edit | [W3C](https://validator.w3.org) | ![screenshot](readme-img/validation/) | Pass: No Errors |
-| Post delete | [W3C](https://validator.w3.org) | ![screenshot](readme-img/validation/) | Pass: No Errors |
+| Home | [W3C](https://validator.w3.org/nu/?doc=https%3A%2F%2Fhealthy-food-c44b0f8f09a5.herokuapp.com%2F) | ![screenshot](readme-img/validation/w3-vali-home.png) | Pass: No Errors |
+| Sign-up | [W3C](https://validator.w3.org) | ![screenshot](readme-img/validation/w3-vali-signup.png) | Pass: No Errors |
+| Log-in | [W3C](https://validator.w3.org) | ![screenshot](readme-img/validation/w3-vali-login.png) | Pass: No Errors |
+| Log-out | [W3C](https://validator.w3.org) | ![screenshot](readme-img/validation/w3-vali-logout.png) | Pass: No Errors |
+| Recipe detail | [W3C](https://validator.w3.org) | ![screenshot](readme-img/validation/w3-vali-recipe-detail.png) | Pass: No Errors　The warning does not apply |
+| Recipe create | [W3C](https://validator.w3.org) | ![screenshot](readme-img/validation/w3-vali-add-recipe.png) | These errors are caused by the summernote and are beyond my control. |
+| Recipe edit | [W3C](https://validator.w3.org) | ![screenshot](readme-img/validation/w3-vali-edit-recipe.png) | These errors are caused by the summernote and are beyond my control. |
+| Recipe delete | [W3C](https://validator.w3.org) | ![screenshot](readme-img/validation/w3-vali-delete-recipe.png) | Pass: No Errors |
+| Posts | [W3C](https://validator.w3.org) | ![screenshot](readme-img/validation/w3-vali-posts.png) | Pass: No Errors |
+| Post detail | [W3C](https://validator.w3.org) | ![screenshot](readme-img/validation/w3-vali-post-detail.png) | Pass: No Errors |
+| Post create | [W3C](https://validator.w3.org) | ![screenshot](readme-img/validation/w3-vali-add-post.png) | Pass: No Errors |
+| Post edit | [W3C](https://validator.w3.org) | ![screenshot](readme-img/validation/w3-vali-edit-post.png) | These errors are caused by the summernote and are beyond my control. |
+| Post delete | [W3C](https://validator.w3.org) | ![screenshot](readme-img/validation/w3-vali-delete-post.png) | Pass: No Errors |
 | Custom Error 400 | [W3C](https://validator.w3.org) | ![screenshot](readme-img/validation/) | Pass: No Errors |
 | Custom Error 403 | [W3C](https://validator.w3.org) | ![screenshot](readme-img/validation/) | Pass: No Errors |
 | Custom Error 404 | [W3C](https://validator.w3.org) | ![screenshot](readme-img/validation/) | Pass: No Errors |
@@ -27,7 +26,7 @@
 ### CSS
 | File | Jigsaw URL | Screenshot | Notes |
 | --- | --- | --- | --- |
-| style.css | [Jigsaw](https://jigsaw.w3.org/css-validator/) | ![screenshot](readme-img/validation/) | Pass: No Errors |
+| style.css | [Jigsaw](https://jigsaw.w3.org/css-validator/) | ![screenshot](readme-img/validation/w3-vali-css.png) | Pass: No Errors |
 
 ### JavaScript
 | File | Screenshot | Notes |
