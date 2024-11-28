@@ -94,7 +94,7 @@
   <div class="modal-dialog modal-lg">
     <div class="modal-content p-4">
       <div class="modal-header">
-        <h5 class="modal-title" id="search-option-title">Search options</h5>
+        <h5 class="modal-title">Search options</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
@@ -171,7 +171,7 @@
   <div class="modal-dialog modal-lg">
     <div class="modal-content p-4">
       <div class="modal-header">
-        <h4 class="modal-title" id="search-option-title">Post - Search options</h4>
+        <h4 class="modal-title">Post - Search options</h4>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
@@ -179,19 +179,19 @@
         <form id="post-search" role="search" method="GET" action="{% url 'posts' %}">
           <fieldset>
             <legend>Words search</legend>
-            <label for="avoid-search">Avoid words</label>
-            <input id="avoid-search" class="form-control me-2 p-2 mb-2" name="q-avoid" type="search"
+            <label for="post-avoid-search">Avoid words</label>
+            <input id="post-avoid-search" class="form-control me-2 p-2 mb-2" name="q-avoid" type="search"
               placeholder="Words to be avoided" aria-label="Words to be avoided">
-            <label for="include-search">Include words</label>
-            <input id="include-search" class="form-control me-2 p-2 mb-2" name="q-incl" type="search"
+            <label for="post-include-search">Include words</label>
+            <input id="post-include-search" class="form-control me-2 p-2 mb-2" name="q-incl" type="search"
               placeholder="Include words" aria-label="Include words">
           </fieldset>
           <div class="modal-button pb-2 mb-2">
             <button type="submit" class="btn btn-success" form="post-search">Search</button>
           </div>
           <!-- Owner search - 'all_users' get the User model's ids and usernames -->
-          <label for="owner-id-search" class="pt-3">Posts' Owner search</label><br>
-          <select id="owner-id-search" name="q-owner" class="p-2" aria-label="Owner Search">
+          <label for="post-owner-id-search" class="pt-3">Posts' Owner search</label><br>
+          <select id="post-owner-id-search" name="q-owner" class="p-2" aria-label="Owner Search">
             <option disabled="disabled" selected>Select posts' owner from here! </option>
             {% for owner in all_users %}
             <option value="{{ owner.id }}">{{ owner.username }}</option>

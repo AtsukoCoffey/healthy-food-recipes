@@ -12,12 +12,12 @@
           <li class="breadcrumb-item active" aria-current="page">Edit Recipe</li>
         </ol>
     </nav>
-    <form method="POST" enctype="multipart/form-data" class="form">
+    <div class="form">
         <h2 class="text-center">Edit Recipe</h2>
         {% load crispy_forms_tags %}
         {% csrf_token %}
         {% crispy form %}
-    </form>
+    </div>
     <!-- Return to detail's page -->
     <div class="text-center"><a class="btn btn-secondary mb-3" href="{% url 'recipe_detail' object.slug %}">
         Go back to the recipe</a></div>

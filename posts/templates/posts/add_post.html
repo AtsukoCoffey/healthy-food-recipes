@@ -12,11 +12,11 @@
             <li class="breadcrumb-item active" aria-current="page">Create Post</li>
         </ol>
     </nav>
-    <form method="POST" enctype="multipart/form-data" class="form">
+    <div class="form">
         <h2 class="text-center">Create Post</h2>
         {% load crispy_forms_tags %}
         {% csrf_token %}
         {% crispy form %}
-    </form>
+    </div>
 </div>
 {% endblock %}
