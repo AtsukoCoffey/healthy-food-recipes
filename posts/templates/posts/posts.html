@@ -14,9 +14,9 @@
   <div class="container p-2" id="hero-text">
     <!-- Change the welcome message depend on the user's status - authenticated -->
     {% if user.is_authenticated %}
-    <h2 class="main-title mt-4 mx-auto">Join the conversation and share your great ideas! {{ user.username }}!</h2>
+    <h2 class="main-title mt-4 mx-auto">Hi {{ user.username }}! Why not check out our new posts and join the conversation?</h2>
     {% else %}
-    <h3 class="main-title mt-4 mx-auto">Here we have some topics that some members wants to talk.</h3>
+    <h3 class="main-title mt-4 mx-auto">Here we have a message board where you can provide information and hold discussions.</h3>
     {% endif %}
     <p class="pt-2">Please feel free to share the post, your comment will appear on the first line once approved.</p>
   </div>

@@ -1,6 +1,8 @@
 # Healthy Food Recipe
 The website aims to raise awareness of health and wellness through recipe sharing and community group discussion.
-It was originally planned as part of a previous project, but midway through development my standup teacher advised me that it would be better to make it a standalone project separate from the previous one. Therefore, I have made some changes to the color theme and purpose of the site from the wireframe design.
+It was originally planned as part of a previous project, but midway through development my standup teacher advised me that it would be better to make it a standalone project separate from the previous one. Therefore, I have made some changes to the color theme and purpose of the site from the wireframe design.  
+
+![Healthy Food Recipe](readme-img/amiresponsive.png "Healthy Food Recipe")
 
 ## 1. Strategy Plane
 ### Target users 
@@ -45,7 +47,8 @@ It was originally planned as part of a previous project, but midway through deve
 * Burger icon is commonly used on smaller screens, so using this convention suits users' expectations.
 *	The Sign-up page submit button should be clearly visible and interactive when the mouse hovers over it. 
 
-## 4. Skeleton Plane
+## 4. Skeleton Plane  
+
 ### Structure diagram
 
 ![Database relationship diagram](readme-img/ux-structure-diagram.png "Database relationship diagram")
@@ -56,21 +59,18 @@ It was originally planned as part of a previous project, but midway through deve
 ![Database relationship diagram](readme-img/ux-db-diagram.jpg "Database relationship diagram")
 </details>  
 
-### Structure diagram  
-For the mobile screen, I simply lined up important and necessary information under the flow of UX design strategy as I thought there wasn't much excess spaces.  
-
-For PC monitor wireframe, for first time visitor.   
+### Wireframes
+   
 <details open>
-<summary>Tablet - 768px - and PC - 1440px - Wireframes</summary>
+<summary>For first time visitor - tablet and PC monitor</summary>
 
-![Home page tablet and PC Wireframe](readme-img/wireframe/pc-top-noauth.webp "Home page tablet and PC Wireframe")
+![For first time visitor - tablet and PC monitor](readme-img/wireframe/pc-top-noauth.webp "For first time visitor - tablet and PC monitor")
 </details>
-
-For PC monitor wireframe, for authenticated user.   
+   
 <details>
-<summary>Tablet - 768px - and PC - 1440px - Wireframes</summary>
+<summary>For authenticated user - tablet and PC monitor</summary>
 
-![Home page tablet and PC Wireframe](readme-img/wireframe/pc-top.webp "Home page tablet and PC Wireframe")
+![For authenticated user - tablet and PC monitor](readme-img/wireframe/pc-top.webp "For authenticated user - tablet and PC monitor")
 </details>
 
 ## 5. Surface Plane
@@ -89,17 +89,88 @@ I selected "Poiret One" for the Logo from Google font API. It is attractive and 
 For the site's basic font, I was considering using "Quicksand" for the best readability, however our target users are young people and since it’s not a huge business website so a little bit unique font like "Josefin Sans" might appeal well to this unique community. [TECHNOLOGY USED - Google Fonts](#tech)  
 
 * "Poiret One"  
-<!-- ![Typography Poiret One](readme-img/typo-poiret1.png "Typography Poiret One")   -->
-
 * "Josefin Sans"  
-<!-- ![Typography Josefin Sans](readme-img/typo-josefinsans.png "Typography Josefin Sans") -->
+![Typography  "Poiret One", "Josefin Sans"](readme-img/ux-fonts.gif "Typography Josefin Sans")
 
 
 <a id="features"></a>
 
-# EXISTING FEATURES
+# EXISTING FEATURES  
+- [] 
+## Top page - Home  
+* Header and navigation - First time visiter  
+![Header and navigation - First time visiter](readme-img/feat-home-header2.png "Header and navigation - First time visiter")   
+* Header and navigation - Authenticated user  
+![Header and navigation - Authenticated user](readme-img/feat-home-header.png "Header and navigation - Authenticated user")   
 
-## The Header And Navigation Bar
+* Welcome message - First time visiter  
+![ Welcome message - First time visiter](readme-img/feat-home-intro2.png " Welcome message - First time visiter")   
+*  Welcome message - Authenticated user  
+![ Welcome message - Authenticated user](readme-img/feat-home-intro.png " Welcome message - Authenticated user")  
+
+* Home content - Recipes list  
+![ Home content - Recipes list](readme-img/feat-home-content.webp " Home content - Recipes list")   
+
+* Footer  
+![ Footer ](readme-img/feat-home-footer.png " Footer ")  
+
+* Recipes search options modal  
+![ Recipes search options modal ](readme-img/feat-recipesearch.png " Recipes search options modal ")  
+
+## Posts list page  
+* Lead sentense - First time visiter  
+![ Lead sentense - First time visiter](readme-img/feat-posts-intro.png " Lead sentense - First time visiter")   
+
+* Lead sentense - Authenticated user  
+![ Lead sentense - Authenticated user](readme-img/feat-posts-intro2.png " Lead sentense - Authenticated user")  
+
+* Posts list - Approved  
+![ Posts list - Approved](readme-img/feat-posts-content1.png " Posts list - Approved")   
+
+* Posts list - Waiting to be approved  
+![ Posts list - Waiting to be approved](readme-img/feat-posts-content2.png " Posts list - Waiting to be approved")  
+
+* Posts search options modal  
+![ Posts search options modal ](readme-img/feat-postssearch.png " Posts search options modal ")  
+
+## Authentication pages  
+
+* Sign-up  
+![ Sign-up ](readme-img/feat-a-signup.png " Sign-up ")  
+
+* Log-in  
+![ Log-in ](readme-img/feat-a-login.png " Log-in ")  
+
+* Log-out  
+![ Log-out ](readme-img/feat-a-logout.png " Log-out ")  
+
+## Recipes CRUD pages
+
+* Create recipe form page  
+![ Create recipe form page ](readme-img/feat-recipe-add.webp " Create recipe form page ")  
+
+* Edit recipe form page  
+![ Edit recipe form page ](readme-img/feat-recipe-edit.png " Edit recipe form page ")   
+
+* Delete recipe confirmation page  
+![ Delete recipe confirmation page ](readme-img/feat-recipe-delete.png " Delete recipe confirmation page ")   
+
+## Posts CRUD pages
+
+* Create post form page  
+![ Create post form page ](readme-img/feat-posts-add.png " Create post form page ")  
+
+* Edit post form page  
+![ Edit post form page ](readme-img/feat-posts-edit.png " Edit post form page ")   
+
+* Delete post confirmation page  
+![ Delete post confirmation page ](readme-img/feat-posts-delete.png " Delete post confirmation page ")  
+## Other parts
+
+* Message  
+![ Message ](readme-img/feat-message.png " Message ")  
+
+
 
 
 # Future features
