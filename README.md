@@ -1,8 +1,17 @@
 # Healthy Food Recipe
-The website aims to raise awareness of health and wellness through recipe sharing and community group discussion.
-It was originally planned as part of a previous project, but midway through development my standup teacher advised me that it would be better to make it a standalone project separate from the previous one. Therefore, I have made some changes to the color theme and purpose of the site from the wireframe design.  
+This website aims to raise awareness of health and wellness by sharing recipes with an emphasis on good and safe ingredients.   
+  
+The target users are people looking for healthier living and recipes, especially those with health issues such as diabetes or allergies.  
+One notable feature in this website is the various search options for recipe categories for the target peoples.  
+And if the user create a new recipe that uses safe ingredients, sharing it is a great option for others to use too.  
+  
+We also provide a health article posting and sharing feature to encourage active communication, information sharing, and sometimes discussion in community groups.  
+I hope that these activities will inspire all of us to make better food and lifestyle choices.
+ 
 
 ![Healthy Food Recipe](readme-img/amiresponsive.png "Healthy Food Recipe")
+  
+**[Heroku deployed site - Healthy Food Recipe](https://healthy-food-c44b0f8f09a5.herokuapp.com/ "Heroku deployed site - Healthy Food Recipe")**  
 
 ## 1. Strategy Plane
 ### Target users 
@@ -39,13 +48,12 @@ It was originally planned as part of a previous project, but midway through deve
 *	As a site owner, I want to convey clearly that the "Healthy Food Recipe" is not only about recipes.  
 
 ## 3. Structure Plane
-* The website should have a Navigation menu that is consistent across all pages.
-* The website should have a fixed footer to access anytime to see this site's SNS.
-* The website should have breadcrumbs to help users feel a strong sense of place and also give access to previous pages when it expands to become a larger website.
+*   The website should have a Navigation menu that is consistent across all pages.
+*   The website should have breadcrumbs to help users feel a strong sense of place and also give access to previous pages when it expands to become a larger website.
 *	The website should have hover interaction for links, abbreviation, and tooltips with additional information to enhance user experience.
-* The landing page should show what this site is offering intuitively.
-* Burger icon is commonly used on smaller screens, so using this convention suits users' expectations.
-*	The Sign-up page submit button should be clearly visible and interactive when the mouse hovers over it. 
+*   The landing page should show what this site is offering intuitively.
+*   Burger icon is commonly used on smaller screens, so using this convention suits users' expectations.
+*   The link buttons, form buttons should be clearly visible and interactive. 
 
 ## 4. Skeleton Plane  
 
@@ -60,7 +68,8 @@ It was originally planned as part of a previous project, but midway through deve
 </details>  
 
 ### Wireframes
-   
+This website was originally planned as part of a previous project, but midway through my development my standup teacher advised me that it would be better to make it a standalone project separate from the previous one to avoid confusion. Therefore, I have made some design changes. 
+
 <details open>
 <summary>For first time visitor - tablet and PC monitor</summary>
 
@@ -170,7 +179,11 @@ For the site's basic font, I was considering using "Quicksand" for the best read
 * Message  
 ![ Message ](readme-img/feat-message.png " Message ")  
 
-
+* Breadcrumb  
+![ Breadcrumb ](readme-img/feat-breadcrumb.png " Breadcrumb ")  
+This breadcrumb is for a Post's single page's edit page.   
+The hierarchy is in this order:　Top page > List Page > Single post page > Edit 　
+The recipe's app doesn't have it's own list page as the Home (Top) page is working as a recipe's list page.
 
 
 # Future features

@@ -98,7 +98,7 @@ I've tested my deployed project using the Lighthouse Audit tool.
 | Page | Size | Screenshot | Notes |
 | --- | --- | --- | --- |
 | Home | Mobile | ![screenshot](readme-img/validation/light-mb-home.png) | Some minor performance warnings |
-| Recipe create | Mobile | ![screenshot](readme-img/validation/light-mb-recipes-add.png) | Some minor performance warnings |
+| Recipe create | Mobile | ![screenshot](readme-img/validation/light-mb-recipes-add.png) | Accessibility point deducted from this error "<frame> or <iframe> elements do not have a title" This caused summernote and outof my controll |
 | Recipe detail | Mobile | ![screenshot](readme-img/validation/light-mb-recipes-detail.png) | Some minor performance warnings |
 | Recipe edit | Mobile | ![screenshot](readme-img/validation/) | Some minor performance warnings |
 | Recipe delete | Mobile | ![screenshot](readme-img/validation/) | Some minor performance warnings |
