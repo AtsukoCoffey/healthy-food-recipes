@@ -128,10 +128,10 @@ For the site's basic font, I was considering using "Quicksand" for the best read
 
 ## Posts list page  
 * Lead sentense - First time visiter  
-![ Lead sentense - First time visiter](readme-img/feat-posts-intro.png " Lead sentense - First time visiter")   
+![ Lead sentense - First time visiter](readme-img/feat-posts-intro.webp " Lead sentense - First time visiter")   
 
 * Lead sentense - Authenticated user  
-![ Lead sentense - Authenticated user](readme-img/feat-posts-intro2.png " Lead sentense - Authenticated user")  
+![ Lead sentense - Authenticated user](readme-img/feat-posts-intro2.webp " Lead sentense - Authenticated user")  
 
 * Posts list - Approved  
 ![ Posts list - Approved](readme-img/feat-posts-content1.png " Posts list - Approved")   
@@ -174,7 +174,11 @@ For the site's basic font, I was considering using "Quicksand" for the best read
 
 * Delete post confirmation page  
 ![ Delete post confirmation page ](readme-img/feat-posts-delete.png " Delete post confirmation page ")  
+
 ## Other parts
+
+* Star rating  
+![ Star rating ](readme-img/feat-starrating.webp " Star rating ")  
 
 * Message  
 ![ Message ](readme-img/feat-message.png " Message ")  
