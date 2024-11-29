@@ -212,6 +212,100 @@ For testing I created `README-TEST.md` file
 
 There are no remaining bugs that I am aware of.
 
+# DEPLOYMENT
+## Preparation
+### Django
+First we are using Django, so install Django:   
+1. Creating a Django project `django-admin startproject my_project .`
+2. Add `ALLOWED_HOSTS` to the settings.py 
+3. For security, we always hide sensitive information, so the `SECRET_KEY` and any API keys we use will not be where accessible place.
+Create `env` file and store `SECRET_KEY`, API key, `DATABASE_URL`, also for automatically debug on/off environmane add DEBUG environment variable `DEVELOPMENT` too.
+4. Add `env` file name to gitignore list
+5. Create Django app `python3 manage.py startapp <app_name>`
+6. Add the app into the `INSTALLED_APPS ` settings.py
+
+### Connect Database
+1. set the environment variable. `os.environ.setdefault("DATABASE_URL", "......")`
+2. install two packages `pip3 install dj-database-url~=0.5 psycopg2~=2.9` `pip3 freeze --local > requirements.txt`
+3. Connect settings.py to the env.py - import `dj_database_url ` into the settings.py and `if` statement  
+`if os.path.isfile('env.py'): import env` or you can write like this too `if os.path.exists('env.py'): import env`
+4. Change the already selected local sqlite3 database connection into CI database in settings.py  
+`DATABASES = {
+    'default': dj_database_url.parse(os.environ.get("DATABASE_URL")),
+}`  
+5. Create database table `python3 manage.py migrate`
+6. Superuser can be created using the `python3 manage.py createsuperuser`
+
+### Install modules - Crispy Forms and crispy-bootstrap
+1. install `pip3 install django-crispy-forms~=2.0 crispy-bootstrap5~=0.7`
+2. Add it to  `INSTALLED_APPS`
+3. Add `CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"` and `CRISPY_TEMPLATE_PACK = "bootstrap5"` into the settings.py
+4. Add 
+``` 
+TEMPLATES = 'builtins': [
+                'crispy_forms.templatetags.crispy_forms_tags',
+                'crispy_forms.templatetags.crispy_forms_field'         ] 
+```
+
+### Install modules - Django AllAuth
+1. `pip3 install django-allauth~=0.57.0`
+2. Add it to  `INSTALLED_APPS`
+3. Add `SITE_ID = 1 `, `LOGIN_REDIRECT_URL = '/' `, `LOGOUT_REDIRECT_URL = '/'`
+4. Append `'allauth.account.middleware.AccountMiddleware',` into `MIDDLEWARE `
+5. Add `ACCOUNT_EMAIL_VERIFICATION = 'none'` below the `AUTH_PASSWORD_VALIDATORS`
+6. Save all the file and migrate `python3 manage.py migrate`
+7. Add `urlpatterns` in project's urls `path("accounts/", include("allauth.urls")),`
+8. Collect Allauth template `pip3 show django-allauth` copy into templates folder `cp -r <Location>/allauth/templates/* ./templates/`
+
+### Install modules - Cloudinary
+1. install `pip3 install cloudinary~=1.36.0 dj3-cloudinary-storage~=0.0.6 urllib3~=1.26.15`
+2. Set API key and URL into the `env.py`
+3. Add `'cloudinary_storage'` and `'cloudinary'` into `INSTALLED_APPS` 
+
+### Install modules - summernote
+1. Install `pip3 install django-summernote~=0.8.20.0`
+2. Add it to  `INSTALLED_APPS`
+3. For admin page, add `path('summernote/', include('django_summernote.urls')),` into the project's urls
+
+**After all the installation finished record this to `pip3 freeze --local > requirements.txt`**
+
+## Other settings
+### CSRF tokens Setting
+set `CSRF_TRUSTED_ORIGINS` in settings.py ( CSRF stands for Cross-Site Request Forgery)
+```Under the DATABASES
+CSRF_TRUSTED_ORIGINS = [
+    "https://*.codeinstitute-ide.net/",
+    "https://*.herokuapp.com"
+]
+```
+### The base template
+1. createa `TEMPLATES_DIR` constant to build a path for our subdirectory 'templates' in settings.py  
+`TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')`
+2. `TEMPLATES ` add `TEMPLATES_DIR` constant to the list of `DIR` - `'DIRS': [TEMPLATES_DIR],`
+3. Create `templates` directory at root top-level and `base.html `
+4. Create `index.html` to the existing app level template (app/template/app/index.html)
+
+### Path for static
+1. Link to files in the static directory from a template, add `STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static'), ]`
+
+## Deploy setting
+1. install `gunicorn` for production-ready server
+`pip3 install gunicorn~=20.1`
+2. Create a file named Procfile (no file extension)  
+Declare `web: gunicorn my_project.wsgi` 
+3. Install whitenoise   
+`pip3 install whitenoise~=5.3.0` and wire up to `MIDDLEWARE` in settings.py  
+`'whitenoise.middleware.WhiteNoiseMiddleware',` Not forget `pip3 freeze --local > requirements.txt`
+4. Add `STATIC_ROOT` path `STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')`
+5. Run `collectstatic` command `python3 manage.py collectstatic`
+6. Check the python version `python3 -V`
+7. Look up the supported runtimes from the Heroku web site and copy the runtime closest to the one used in your IDE.
+8. Add a runtime.txt file to your app's root directory
+9. Add the Python version you copied from the list of supported runtimes to runtime.txt file
+
+## Heroku
+
+
 # CREDIT
 
 ## Code References 
