@@ -31,7 +31,7 @@
 ### JavaScript
 | File | Screenshot | Notes |
 | --- | --- | --- |
-| recipe-comment.js | ![screenshot](readme-img/validation/) | Pass: No Errors |
+| recipe-comment.js | ![screenshot](readme-img/validation/vali-javascript.png) | Pass: No Errors |
 
 ### Python
 
@@ -40,29 +40,29 @@ I have used the recommended [PEP8 CI Python Linter](https://pep8ci.herokuapp.com
 #### Validation For my_project App
 | File | CI URL | Screenshot | Notes |
 | --- | --- | --- | --- |
-| asgi.py | [PEP8 CI]() | ![screenshot](readme-img/validation/) | Pass: No Errors |
-| settings.py | [PEP8 CI]() | ![screenshot](readme-img/validation/) | Pass: No Errors |
-| urls.py | [PEP8 CI]() | ![screenshot](readme-img/validation/) | Pass: No Errors |
-| wsgi.py | [PEP8 CI]() | ![screenshot](readme-img/validation/) | Pass: No Errors |
+| asgi.py | [PEP8 CI]() | ![screenshot](readme-img/validation/pep8cipy-asgi.png) | Pass: No Errors |
+| settings.py | [PEP8 CI]() | ![screenshot](readme-img/validation/pep8cipy-setting.png) | Pass: No Errors |
+| urls.py | [PEP8 CI]() | ![screenshot](readme-img/validation/pep8cipy-urls.png) | Pass: No Errors |
+| wsgi.py | [PEP8 CI]() | ![screenshot](readme-img/validation/pep8cilpy-wsgi.png) | Pass: No Errors |
 
 #### Validation For Home App
 | File | CI URL | Screenshot | Notes |
 | --- | --- | --- | --- |
-| apps.py | [PEP8 CI]() | ![screenshot](readme-img/validation/) | Pass: No Errors |
-| tests.py | [PEP8 CI]() | ![screenshot](readme-img/validation/) | Pass: No Errors |
-| urls.py | [PEP8 CI]() | ![screenshot](readme-img/validation/) | Pass: No Errors |
-| views.py | [PEP8 CI]() | ![screenshot](readme-img/validation/) | Pass: No Errors |
+| apps.py | [PEP8 CI]() | ![screenshot](readme-img/validation/pep8-home-app.png) | Pass: No Errors |
+| tests.py | [PEP8 CI]() | ![screenshot](readme-img/validation/pep) | Pass: No Errors |
+| urls.py | [PEP8 CI]() | ![screenshot](readme-img/validation/pep8-home-urls.png) | Pass: No Errors |
+| views.py | [PEP8 CI]() | ![screenshot](readme-img/validation/pep8-home-views.png) | Pass: No Errors |
 
 #### Validation For recipes App
 | File | CI URL | Screenshot | Notes |
 | --- | --- | --- | --- |
-| admin.py | [PEP8 CI]() | ![screenshot](readme-img/validation/) | Pass: No Errors |
-| apps.py | [PEP8 CI]() | ![screenshot](readme-img/validation/) | Pass: No Errors |
-| forms.py | [PEP8 CI]() | ![screenshot](readme-img/validation/) | Pass: No Errors |
-| models.py | [PEP8 CI]() | ![screenshot](readme-img/validation/) | Pass: No Errors |
-| tests.py | [PEP8 CI]() | ![screenshot](readme-img/validation/) | Pass: No Errors |
-| urls.py | [PEP8 CI]() | ![screenshot](readme-img/validation/) | Pass: No Errors |
-| views.py | [PEP8 CI]() | ![screenshot](readme-img/validation/) | Pass: No Errors |
+| admin.py | [PEP8 CI]() | ![screenshot](readme-img/validation/pep8-recipe-admin.png) | Pass: No Errors |
+| apps.py | [PEP8 CI]() | ![screenshot](readme-img/validation/pep8-recipe-app.png) | Pass: No Errors |
+| forms.py | [PEP8 CI]() | ![screenshot](readme-img/validation/pep8-recipe-forms.png) | Pass: No Errors |
+| models.py | [PEP8 CI]() | ![screenshot](readme-img/validation/pep8-recipe-models.png) | Pass: No Errors |
+| tests.py | [PEP8 CI]() | ![screenshot](readme-img/validation/pep8) | Pass: No Errors |
+| urls.py | [PEP8 CI]() | ![screenshot](readme-img/validation/pep8-recipe-urls.png.) | Pass: No Errors |
+| views.py | [PEP8 CI]() | ![screenshot](readme-img/validation/pep8-recipe-views) | Pass: No Errors |
 
 ## Browser Compatibility
 
@@ -94,7 +94,7 @@ I've tested my deployed project on multiple devices.
 
 I've tested my deployed project using the Lighthouse Audit tool.
 
-### Website App Templates - Mobile Testing
+### Mobile Testing
 | Page | Size | Screenshot | Notes |
 | --- | --- | --- | --- |
 | Home | Mobile | ![screenshot](readme-img/validation/light-mb-home.png) | Some minor performance warnings |
@@ -110,7 +110,7 @@ I've tested my deployed project using the Lighthouse Audit tool.
 | Custom Error 404 | Mobile | ![screenshot](readme-img/validation/) | Some minor performance warnings |
 | Custom Error 500 | Mobile | ![screenshot](readme-img/validation/) | Some minor performance warnings |
 
-### Website App Templates - Desktop Testing
+### Desktop Testing
 | Page | Size | Screenshot | Notes |
 | --- | --- | --- | --- |
 | Home | Desktop | ![screenshot](readme-img/validation/light-pc-home.png) | Some minor performance warnings |
@@ -125,29 +125,6 @@ I've tested my deployed project using the Lighthouse Audit tool.
 | Custom Error 404 | Desktop | ![screenshot](readme-img/validation/) | Some minor performance warnings |
 | Custom Error 500 | Desktop | ![screenshot](readme-img/validation/) | Some minor performance warnings |
 
-### Users App Templates - Mobile Testing
-| Page | Size | Screenshot | Notes |
-| --- | --- | --- | --- |
-| Login | Mobile | ![screenshot](readme-img/validation/) | Some minor performance warnings |
-| Logout | Mobile | ![screenshot](readme-img/validation/light-mb-logout.png) | Some minor performance warnings |
-| Register | Mobile | ![screenshot](readme-img/validation/) | Some minor performance warnings |
-| Profile | Mobile | ![screenshot](readme-img/validation/) | Some minor performance warnings |
-| Password reset | Mobile | ![screenshot](readme-img/validation/) | Some minor performance warnings |
-| Password reset-done | Mobile | ![screenshot](readme-img/validation/) | Some minor performance warnings |
-| Password reset-confirm | Mobile | ![screenshot](readme-img/validation/) | Some minor performance warnings |
-| Password reset-complete | Mobile | ![screenshot](readme-img/validation/) | Some minor performance warnings |
-
-### Users App Templates - Desktop Testing
-| Page | Size | Screenshot | Notes |
-| --- | --- | --- | --- |
-| Login | Desktop | ![screenshot](readme-img/validation/) | Some minor performance warnings |
-| Logout | Desktop | ![screenshot](readme-img/validation/light-pc-logout.png) | Some minor performance warnings |
-| Register | Desktop | ![screenshot](readme-img/validation/) | Some minor performance warnings |
-| Profile | Desktop | ![screenshot](readme-img/validation/) | Some minor performance warnings |
-| Password reset | Desktop | ![screenshot](readme-img/validation/) | Some minor performance warnings |
-| Password reset-done | Desktop | ![screenshot](readme-img/validation/) | Some minor performance warnings |
-| Password reset-confirm | Desktop | ![screenshot](readme-img/validation/) | Some minor performance warnings |
-| Password reset-complete | Desktop | ![screenshot](readme-img/validation/) | Some minor performance warnings |
 
 ## Defensive Programming
 

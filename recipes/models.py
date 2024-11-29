@@ -11,11 +11,16 @@ class Recipe(models.Model):
     Also for average rating  :model:`Rating`
     """
     user = models.ForeignKey(
-        User, related_name="recipe_owner", on_delete=models.CASCADE, default='0'
+        User, related_name="recipe_owner",
+        on_delete=models.CASCADE, default='0'
     )
-    title = models.CharField(max_length=100, unique=True, null=False, blank=False)
+    title = models.CharField(
+        max_length=100, unique=True, null=False, blank=False
+    )
     slug = models.SlugField()
-    description = models.TextField(max_length=500, null=False, blank=True)
+    description = models.TextField(
+        max_length=500, null=False, blank=True
+    )
     prep_time = models.CharField(max_length=50)
     cook_time = models.CharField(max_length=50)
     ingredients = models.TextField(
@@ -24,12 +29,14 @@ class Recipe(models.Model):
     instructions = models.TextField(
         max_length=10000, null=False, blank=False, default=""
     )
+    defalt = 'https://res.cloudinary.com/dulfdtcut/image/upload/'\
+        'v1/recipes/recipe-image-placeholder_upjwg0'
     image = ResizedImageField(
         size=[400, None],
         quality=75,
         upload_to="recipes/",
         force_format="WEBP",
-        default='https://res.cloudinary.com/dulfdtcut/image/upload/v1/recipes/recipe-image-placeholder_upjwg0'
+        default=defalt
     )
     image_alt = models.CharField(max_length=100)
     posted_date = models.DateTimeField(auto_now=True)
@@ -52,31 +59,32 @@ class Recipe(models.Model):
     nutfree = models.BooleanField(default=False, help_text='All kind of Nuts.\
         Not include seeds: sesame, sunflower pumpkin, macadamia nut, pine nut')
 
-    # This average was calculated using an Aggregate from the specific recipe in Rating.
+    # Average was calculated using Aggregate from specific recipe in Rating
     def average_rating(self) -> float:
-        return Rating.objects.filter(recipe=self).aggregate(Avg("rating"))["rating__avg"] or 0
+        return Rating.objects.filter(
+            recipe=self).aggregate(Avg("rating"))["rating__avg"] or 0
 
     class Meta:
         ordering = ["-posted_date"]
 
     def __str__(self):
         return f" {self.title}"
-        
-    def save(self,*args,**kwargs):
-        self.slug=slugify(self.title)
-        self.image_alt=self.title
-        super(Recipe,self).save(*args,**kwargs)
+
+    def save(self, *args, **kwargs):
+        self.slug = slugify(self.title)
+        self.image_alt = self.title
+        super(Recipe, self).save(*args, **kwargs)
 
 
 class Rating(models.Model):
     """
     Stores a star rating entry related to :modl:`auth.User`
-    and :model:`recipes.Recipe`. 
+    and :model:`recipes.Recipe`.
     """
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     recipe = models.ForeignKey(Recipe, on_delete=models.CASCADE)
     rating = models.IntegerField(default=0)
-    
+
     def __str__(self):
         return f"{self.recipe.title}: {self.rating}"
 
@@ -84,10 +92,13 @@ class Rating(models.Model):
 class RecipeComment(models.Model):
     """
     Stores a single comment entry related to :modl:`auth.User`
-    and :model:`recipes.Recipe`. 
+    and :model:`recipes.Recipe`.
     """
-    recipe = models.ForeignKey(Recipe, on_delete=models.CASCADE, related_name="comments")
+    recipe = models.ForeignKey(
+        Recipe, on_delete=models.CASCADE, related_name="comments"
+    )
     comment_body = models.CharField(max_length=500)
-    commenter = models.ForeignKey(User, on_delete=models.CASCADE, related_name="commenter")
+    commenter = models.ForeignKey(
+        User, on_delete=models.CASCADE, related_name="commenter"
+    )
     posted_date = models.DateTimeField(auto_now=True)
-

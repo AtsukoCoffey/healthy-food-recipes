@@ -28,7 +28,7 @@ class AddRecipe(LoginRequiredMixin, SuccessMessageMixin, CreateView):
     def form_valid(self, form):
         form.instance.user = self.request.user
         return super(AddRecipe, self).form_valid(form)
-    
+
     def get_success_message(self, cleaned_data):
         return self.success_message % dict(
             cleaned_data,
@@ -42,7 +42,7 @@ def get_user_rating(user, recipe):
     if user.is_authenticated:
         rating = Rating.objects.filter(recipe=recipe, user=user).first()
         return rating.rating if rating else 0
-    else: 
+    else:
         return 0
 
 
@@ -57,7 +57,7 @@ def RecipeDetail(request: HttpRequest, slug) -> HttpResponse:
     recipe = get_object_or_404(Recipe.objects.all(), slug=slug)
     # Call user rating function : ->move to outside of this function view
     user_rating = get_user_rating(request.user, recipe)
-    # get comment data using the related_name 
+    # get comment data using the related_name
     comments = recipe.comments.all().order_by("-posted_date")
 
     if request.method == "POST":
@@ -75,23 +75,24 @@ def RecipeDetail(request: HttpRequest, slug) -> HttpResponse:
 
         # Update or create the rating for this unique user and recipe
         rate_value = request.POST.get("rate")
-        if rate_value == None:
+        if rate_value is None:
             rate_value = 0
         Rating.objects.update_or_create(
             recipe=recipe,
             user=request.user,
-            defaults={"rating": rate_value}  # rating is the field of rating model
+            defaults={"rating": rate_value}
         )
         if rate_value != 0:
-            messages.add_message(request, messages.SUCCESS, 'Thank you for your rating!')
+            messages.add_message(
+                request, messages.SUCCESS, 'Thank you for your rating!')
         # Call user rating function again
         user_rating = get_user_rating(request.user, recipe)
         # Redirect to avoid form resubmission
         return redirect('recipe_detail', slug=slug)
-    
+
     comment_form = RecipeCommentForm()
     return render(
-        request, 
+        request,
         "recipes/recipe_detail.html",
         {
             'recipe': recipe,
@@ -102,9 +103,11 @@ def RecipeDetail(request: HttpRequest, slug) -> HttpResponse:
     )
 
 
-class EditRecipe(LoginRequiredMixin, UserPassesTestMixin, SuccessMessageMixin, UpdateView):
+class EditRecipe(
+    LoginRequiredMixin, UserPassesTestMixin, SuccessMessageMixin, UpdateView
+):
     """Edit a recipe"""
-    template_name ='recipes/edit_recipe.html'
+    template_name = 'recipes/edit_recipe.html'
     model = Recipe
     form_class = RecipeForm
     success_message = "Recipe was updated successfully"
@@ -114,13 +117,15 @@ class EditRecipe(LoginRequiredMixin, UserPassesTestMixin, SuccessMessageMixin, U
 
     # Return to the detail's page using 'get_success_url' and 'reverse'
     def get_success_url(self, **kwargs):
-        if self.object.id != None:
+        if self.object.id is not None:
             return reverse('recipe_detail', args=[self.object.slug])
         else:
             return reverse('home')
 
 
-class DeleteRecipe(LoginRequiredMixin, UserPassesTestMixin, SuccessMessageMixin, DeleteView):
+class DeleteRecipe(
+    LoginRequiredMixin, UserPassesTestMixin, SuccessMessageMixin, DeleteView
+):
     """Delete a recipe"""
     model = Recipe
     success_url = '/'
@@ -147,12 +152,14 @@ def comment_edit(request, slug, comment_id):
         recipe = get_object_or_404(recipes, slug=slug)
         comment = get_object_or_404(RecipeComment, pk=comment_id)
         comment_form = RecipeCommentForm(data=request.POST, instance=comment)
-        # form validation and "user = commenter" check 
+        # form validation and "user = commenter" check
         if comment_form.is_valid() and comment.commenter == request.user:
             comment = comment_form.save(commit=False)
             comment.recipe = recipe
             comment.save()
-            messages.add_message(request, messages.SUCCESS, 'Comment Updated!')
+            messages.add_message(
+                request, messages.SUCCESS, 'Comment Updated!'
+            )
         else:
             messages.add_message(
                 request, messages.ERROR, 'Error updating comment!')
@@ -173,10 +180,12 @@ def comment_delete(request, slug, comment_id):
     recipe = get_object_or_404(recipes, slug=slug)
     comment = get_object_or_404(RecipeComment, pk=comment_id)
 
-    #  "user = commenter" check 
+    #  "user = commenter" check
     if comment.commenter == request.user:
         comment.delete()
-        messages.add_message(request, messages.SUCCESS, 'Your comment deleted!')
+        messages.add_message(
+            request, messages.SUCCESS, 'Your comment deleted!'
+        )
     else:
         messages.add_message(
             request, messages.ERROR, 'You can only delete your own comments!')

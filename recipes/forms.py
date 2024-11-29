@@ -44,32 +44,39 @@ class RecipeForm(forms.ModelForm):
                 css_class='flex-row-form'
             ),
             Div(
-                Submit('submit', 'Save', wrapper_class='flex-row-form', css_class='btn btn-success col-4'),
+                Submit(
+                    'submit',
+                    'Save',
+                    wrapper_class='flex-row-form',
+                    css_class='btn btn-success col-4'
+                ),
                 css_class='text-center'
             )
         )
-        
+
     class Meta:
         model = Recipe
-        fields = ["title",
-                "description",
-                "ingredients",
-                "instructions",
-                "image",
-                "prep_time",
-                "cook_time",
-                'lowsugar',
-                'glutenfree',
-                'dairyfree',
-                'vegan',
-                'vegitarian',
-                'highfiber',
-                'highprotein',
-                'nutfree',] 
+        fields = [
+            "title",
+            "description",
+            "ingredients",
+            "instructions",
+            "image",
+            "prep_time",
+            "cook_time",
+            'lowsugar',
+            'glutenfree',
+            'dairyfree',
+            'vegan',
+            'vegitarian',
+            'highfiber',
+            'highprotein',
+            'nutfree',
+            ]
         widgets = {
-          'description': forms.Textarea(attrs={'rows':4}),
+            'description': forms.Textarea(attrs={'rows': 4}),
         }
-        
+
 
 class RecipeCommentForm(forms.ModelForm):
     """
@@ -79,5 +86,5 @@ class RecipeCommentForm(forms.ModelForm):
         model = RecipeComment
         fields = ('comment_body',)
         widgets = {
-          'comment_body': forms.Textarea(attrs={'rows':3}),
+            'comment_body': forms.Textarea(attrs={'rows': 3}),
         }

@@ -13,7 +13,7 @@ import os
 from pathlib import Path
 import dj_database_url
 from django.contrib.messages import constants as messages
-if os.path.exists('env.py'): 
+if os.path.exists('env.py'):
     import env
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -29,7 +29,10 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = 'DEVELOPMENT' in os.environ
 
-ALLOWED_HOSTS = ['8000-atsukocoffe-healthyfood-qnzedz86ujk.ws.codeinstitute-ide.net', '.herokuapp.com']
+ALLOWED_HOSTS = [
+    '8000-atsukocoffe-healthyfood-qnzedz86ujk.ws.codeinstitute-ide.net',
+    '.herokuapp.com'
+]
 
 
 # Application definition
@@ -45,25 +48,25 @@ INSTALLED_APPS = [
     'django.contrib.sites',
     'allauth',
     'allauth.account',
-    'allauth.socialaccount', 
+    'allauth.socialaccount',
 
     # Apps
     'home',
     'recipes',
     'posts',
 
-    #Other
+    # Other
     'crispy_forms',
     'crispy_bootstrap5',
     'cloudinary',
     'django_summernote',
 ]
 
-SITE_ID = 1 
-LOGIN_REDIRECT_URL = '/' 
+SITE_ID = 1
+LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
 
-CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5" 
+CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
 CRISPY_TEMPLATE_PACK = "bootstrap5"
 
 MIDDLEWARE = [
@@ -126,16 +129,21 @@ CSRF_TRUSTED_ORIGINS = [
 
 AUTH_PASSWORD_VALIDATORS = [
     {
-        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
+        'NAME':
+        'django.contrib.auth.password_validation.UserAttributeSimilarityValid\
+            ator',
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
+        'NAME':
+        'django.contrib.auth.password_validation.MinimumLengthValidator',
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
+        'NAME':
+        'django.contrib.auth.password_validation.CommonPasswordValidator',
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
+        'NAME':
+        'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
 
@@ -170,7 +178,7 @@ DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 CLOUDINARY_URL = os.environ.get('CLOUDINARY_URL')
 
 # SUMMERNOTE_CONFIG
-SUMMERNOTE_THEME = 'bs4' 
+SUMMERNOTE_THEME = 'bs4'
 SUMMERNOTE_CONFIG = {
     # Using SummernoteWidget - iframe mode, default
     'iframe': True,
@@ -202,7 +210,7 @@ SUMMERNOTE_CONFIG = {
         'codemirror': {
             'mode': 'htmlmixed',
             'lineNumbers': 'true',
-            # You have to include theme file in 'css' or 'css_for_inplace' before using it.
+            # You have to include theme file in 'css' or 'css_for_inplace'
             'theme': 'monokai',
         },
     },

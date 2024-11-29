@@ -3,6 +3,7 @@ from django_summernote.admin import SummernoteModelAdmin
 
 from .models import Recipe, Rating, RecipeComment
 
+
 @admin.register(Recipe)
 class RecipeAdmin(SummernoteModelAdmin):
     list_display = (

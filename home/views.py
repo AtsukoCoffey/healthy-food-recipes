@@ -36,8 +36,9 @@ class Index(ListView):
         context['query_string'] = query_params.urlencode()
         # All user's data
         context['all_users'] = User.objects.all()
-        # Post articles - Slice 3 objects from newest order 
-        context['posts3'] = Post.objects.filter(approved=True).order_by('-posted_date')[:3]
+        # Post articles - Slice 3 objects from newest order
+        context['posts3'] = Post.objects.filter(
+            approved=True).order_by('-posted_date')[:3]
         return context
 
     def get_queryset(self, **kwargs):

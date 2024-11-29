@@ -39,7 +39,7 @@
         <div class="col-md-8 p-3">
             <h4><i class="fa-solid fa-comment-dots"></i> Comments</h4>
             <hr>
-            <div class="card-body">
+            <div>
                 <!-- for loop inside the empty control tags to iterate through each comment in recipe comments -->
                 {% for comment in comments %}
                 <div class="p-2">
@@ -62,7 +62,7 @@
         </div>
         <!-- Comment form for authenticated user -->
         <div class="col-md-4 p-3">
-            <div class="card-body">
+            <div>
                 <h4><i class="fa-solid fa-comment-dots"></i> Leave a comment</h4>
                 <hr>
                 {% if user.is_authenticated %}
@@ -105,5 +105,5 @@
 {% endblock %}
 
 {% block extras %}
-<script src="{% static 'js/post-comment.js' %}"></script>
+<script src="{% static 'js/comment.js' %}"></script>
 {% endblock %}
