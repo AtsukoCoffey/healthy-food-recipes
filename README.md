@@ -304,6 +304,33 @@ Declare `web: gunicorn my_project.wsgi`
 9. Add the Python version you copied from the list of supported runtimes to runtime.txt file
 
 ## Heroku
+0. For prevent Heroku from uploading static files, click on the Settings tab and reveal the config vars, `DISABLE_COLLECTSTATIC` and value of `1`
+ click "Add"
+### Create Heroku app
+1. Click "New" in the top-right corner of drop down list in Dashboard page, and select "Create new app"
+2. Decide the App name (it must be only lowercase letters, numbers and dashes), and then choose a region "Europe"
+3. Click the "Settings" to go Setting page
+4. Goes to "Config Vars". We are using confidential credentials, so copy the contents of the credentials in json file and paste into the Config Variables. Also set the value of KEY to `"PORT"`, and the value to `"8000"` then select Add
+5. Underneath `"Config Vars"` there is `"Buildpacks"`. Add the buildpack (The order of the buildpacks is important)
+
+### Manual deploy and Automatic deploys  
+1. Click on the Deploy tab, click connect to "GitHub" 
+2. Click on "Deploy Branch" to start a manual deployment of the main branch
+3. Click on "Automatic deploys" and "Manual deploy" so that it deploys automatically evertime GitHub pushing
+
+# Forking  
+>A fork is a new repository that shares code and visibility settings with the original “upstream” repository. Forks are often used to iterate on ideas or changes before they are proposed back to the upstream repository, such as in open source projects or when a user does not have write access to the upstream repository. [Quote from GitHub Docs](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/fork-a-repo)  
+
+We can make a copy of someone's original repository on our GitHub account, so we can make changes without affecting the original repository.  
+
+1. Locate the objective repository using my Github account (I can’t fork my own repository),
+top-right of the Repository (not top of page) just right hand side of the repository title, click the "Fork" Button.  
+![Forking (1)](readme/dep-fork-1.png "Forking (1)") 
+
+2. Input available new repository name and click “Create fork”. Now there is a copy of the original repository in my own GitHub account.
+![Forking (2)](readme/dep-fork-2.png "Forking (2)") <a id="credit-ins"></a>
+
+
 
 
 # CREDIT
