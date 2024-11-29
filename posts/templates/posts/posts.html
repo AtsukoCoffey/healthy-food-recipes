@@ -65,6 +65,7 @@
 {% endif %}
 
 <!-- Unapproved post - display only the post's author -->
+{% if user.is_authenticated %}
 <section class="container flex-column">
   <!-- Section Title and Search Button -> trigger modal -->
   <div class="search-button">
@@ -72,7 +73,6 @@
   </div>
   <hr>
   <div class="recipe-cont">
-    {% if user.is_authenticated %}
     {% for pos in unapproved %}
     {% if pos.user == user %}
     <a href="{% url 'post_detail' pos.slug %}" class="post-container" aria-label="Click to view {{pos.title}}">
@@ -85,10 +85,10 @@
       </div>
     </a>
     {% endif %}
-    {% endfor %}
-    {% endif %}
+    {% endfor %}    
   </div>
 </section>
+{% endif %}
 
 <!-- Modal - for Post search options -->
 <div class="modal fade" id="PostSearchModal" tabindex="-1" aria-labelledby="PostSearchModal" aria-hidden="true">

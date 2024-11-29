@@ -51,8 +51,8 @@
             <!-- If recipe's user display Edit/Delete button -->
             {% if request.user == recipe.user %}
             <div class="text-center">
-                <a href="{% url 'edit_recipe' recipe.id %}" class="btn btn-warning w-25">Edit</a>
-                <a href="{% url 'delete_recipe' recipe.id %}" class="btn btn-danger w-25">Delete</a>
+                <a href="{% url 'edit_recipe' recipe.id %}" class="btn btn-warning">Edit</a>
+                <a href="{% url 'delete_recipe' recipe.id %}" class="btn btn-danger">Delete</a>
             </div>
             {% endif %}
         </div>
@@ -108,9 +108,10 @@
             <p>To be fair, it is not permitted to rate your own recipe. Please rate other members recipes and help
                 everyone with your feedback!</p>
             {% else %}
-            <p>Or you're not Logged in? <a href="/accounts/login" aria-label="Log-in link" title="Log-in"><button><i
-                        class="fa-solid fa-right-to-bracket"></i>Log-in</button></a> to rate this recipe, or <a
-                    href="/accounts/signup" aria-label="Sign-Up link" title="Sign-up"><i
+            <p>Or you're not Logged in?</p>
+            <p><a href="/accounts/login" class="btn btn-success p-1 mb-1" aria-label="Log-in link" title="Log-in"><i
+                        class="fa-solid fa-right-to-bracket"></i> Log-in</a> to rate this recipe, or <a
+                    href="/accounts/signup" class="btn btn-success p-1 mb-1" aria-label="Sign-Up link" title="Sign-up"><i
                         class="fa-solid fa-user-pen"></i> Sign-up</a></p>
             {% endif %}
         </div>
@@ -152,10 +153,11 @@
                     <button id="submitButton" type="submit" class="btn btn-signup btn-success">Submit</button>
                 </form>
                 {% else %}
-                <p>Log in to leave a comment.<a href="/accounts/login" aria-label="Log-in link" title="Log-in"><button><i
-                    class="fa-solid fa-right-to-bracket"></i>Log-in</button></a>, or join our community <a
-                href="/accounts/signup" aria-label="Sign-Up link" title="Sign-up"><i
-                    class="fa-solid fa-user-pen"></i> Sign-up</a></p>
+                    <p>Log in to leave a comment.</p>
+                    <p><a href="/accounts/login" class="btn btn-success p-1 mb-1" aria-label="Log-in link" title="Log-in"><i
+                                class="fa-solid fa-right-to-bracket"></i> Log-in</a> to rate this recipe, or <a
+                            href="/accounts/signup" class="btn btn-success p-1 mb-1" aria-label="Sign-Up link" title="Sign-up"><i
+                                class="fa-solid fa-user-pen"></i> Sign-up</a></p>
                 {% endif %}
             </div>
 
