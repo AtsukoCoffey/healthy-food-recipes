@@ -9,7 +9,9 @@ class PostForm(forms.ModelForm):
     """
     form to create a post with summernote
     """
+
     post_body = forms.CharField(widget=SummernoteWidget())
+
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.helper = FormHelper()
@@ -22,13 +24,17 @@ class PostForm(forms.ModelForm):
                 'post_body',
             ),
             Div(
-                Submit('submit', 'Save', wrapper_class='flex-row-form', css_class='btn btn-success col-4'),
+                Submit(
+                    'submit', 'Save', wrapper_class='flex-row-form',
+                    css_class='btn btn-success col-4'
+                ),
                 css_class='text-center'
             )
         )
+
     class Meta:
         model = Post
-        fields = ['title', 'image', 'post_body',]
+        fields = ['title', 'image', 'post_body', ]
 
 
 class PostCommentForm(forms.ModelForm):
@@ -39,5 +45,5 @@ class PostCommentForm(forms.ModelForm):
         model = PostComment
         fields = ('comment_body',)
         widgets = {
-          'comment_body': forms.Textarea(attrs={'rows':6}),
+          'comment_body': forms.Textarea(attrs={'rows': 6}),
         }

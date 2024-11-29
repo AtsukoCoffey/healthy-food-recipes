@@ -45,7 +45,7 @@ I have used the recommended [PEP8 CI Python Linter](https://pep8ci.herokuapp.com
 | urls.py | [PEP8 CI]() | ![screenshot](readme-img/validation/pep8cipy-urls.png) | Pass: No Errors |
 | wsgi.py | [PEP8 CI]() | ![screenshot](readme-img/validation/pep8cilpy-wsgi.png) | Pass: No Errors |
 
-#### Validation For Home App
+#### Validation For home App
 | File | CI URL | Screenshot | Notes |
 | --- | --- | --- | --- |
 | apps.py | [PEP8 CI]() | ![screenshot](readme-img/validation/pep8-home-app.png) | Pass: No Errors |
@@ -61,8 +61,20 @@ I have used the recommended [PEP8 CI Python Linter](https://pep8ci.herokuapp.com
 | forms.py | [PEP8 CI]() | ![screenshot](readme-img/validation/pep8-recipe-forms.png) | Pass: No Errors |
 | models.py | [PEP8 CI]() | ![screenshot](readme-img/validation/pep8-recipe-models.png) | Pass: No Errors |
 | tests.py | [PEP8 CI]() | ![screenshot](readme-img/validation/pep8) | Pass: No Errors |
-| urls.py | [PEP8 CI]() | ![screenshot](readme-img/validation/pep8-recipe-urls.png.) | Pass: No Errors |
-| views.py | [PEP8 CI]() | ![screenshot](readme-img/validation/pep8-recipe-views) | Pass: No Errors |
+| urls.py | [PEP8 CI]() | ![screenshot](readme-img/validation/pep8-recipe-urls.png) | Pass: No Errors |
+| views.py | [PEP8 CI]() | ![screenshot](readme-img/validation/pep8-recipe-views.png) | Pass: No Errors |
+
+#### Validation For posts App
+| File | CI URL | Screenshot | Notes |
+| --- | --- | --- | --- |
+| admin.py | [PEP8 CI]() | ![screenshot](readme-img/validation/pep8-posts-admin.png) | Pass: No Errors |
+| apps.py | [PEP8 CI]() | ![screenshot](readme-img/validation/pep8-posts-app.png) | Pass: No Errors |
+| forms.py | [PEP8 CI]() | ![screenshot](readme-img/validation/pep8-posts-forms.png) | Pass: No Errors |
+| models.py | [PEP8 CI]() | ![screenshot](readme-img/validation/pep8-posts-models.png) | Pass: No Errors |
+| tests.py | [PEP8 CI]() | ![screenshot](readme-img/validation/pep8-post) | Pass: No Errors |
+| urls.py | [PEP8 CI]() | ![screenshot](readme-img/validation/pep8-posts-urls.png.) | Pass: No Errors |
+| views.py | [PEP8 CI]() | ![screenshot](readme-img/validation/pep8-posts-views) | Pass: No Errors |
+
 
 ## Browser Compatibility
 
