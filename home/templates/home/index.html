@@ -8,9 +8,9 @@
   <div class="container p-2" id="hero-text">
     <!-- Change the welcome message depend on the user's status - authenticated -->
     {% if user.is_authenticated %}
-    <h2 class="main-title mt-4 mx-auto">Welcome back {{ user.username }}!</h2>
+      <h2 class="main-title mt-4 mx-auto">Welcome back {{ user.username }}!</h2>
     {% else %}
-    <h2 class="main-title mt-4 mx-auto">Welcome to the Community of Healthy Food Recipe!</h2>
+      <h2 class="main-title mt-4 mx-auto">Welcome to the Community of Healthy Food Recipe!</h2>
     {% endif %}
     <p class="pt-2">This is where we share healthy recipes, information and tips & tricks for a better food
       lifestyle.<br> We aim to generate positive discussion for all those interested in becoming more aware of what we
@@ -30,24 +30,29 @@
     </div>
     <hr>
     <div class="recipe-cont">
-      <!-- Display recipes list - 9 par 1 page with pagination -->
-      {% for recipe in page_obj %}
-      <a href="{% url 'recipe_detail' recipe.slug %}" class="img-container" aria-label="Click to view {{recipe.title}}">
-        <img src="{{recipe.image.url}}" alt="{{recipe.image_alt}}" style="width: 100%">
-        <div class="centerd">
-          <p class="stars">
-            <span class="fa fa-star {% if recipe.average_rating > 0 %} checked {% endif %}"></span>
-            <span class="fa fa-star {% if recipe.average_rating > 1 %} checked {% endif %}"></span>
-            <span class="fa fa-star {% if recipe.average_rating > 2 %} checked {% endif %}"></span>
-            <span class="fa fa-star {% if recipe.average_rating > 3 %} checked {% endif %}"></span>
-            <span class="fa fa-star {% if recipe.average_rating > 4 %} checked {% endif %}"></span>
-          </p>
-        </div>
-        <h4 class="mt-2">{{recipe.title|truncatechars:50}}</h4>
-        <p>{{recipe.user}}</p>
-        <p class="datetime pb-2">{{recipe.posted_date}}</p>
-      </a>
-      {% endfor %}
+      <!-- if statement : In case of no recipes data, message -->
+      {% if page_obj %}
+        <!-- Display recipes list - 9 par 1 page with pagination -->
+        {% for recipe in page_obj %}
+        <a href="{% url 'recipe_detail' recipe.slug %}" class="img-container" aria-label="Click to view {{recipe.title}}">
+          <img src="{{recipe.image.url}}" alt="{{recipe.image_alt}}" style="width: 100%">
+          <div class="centerd">
+            <p class="stars">
+              <span class="fa fa-star {% if recipe.average_rating > 0 %} checked {% endif %}"></span>
+              <span class="fa fa-star {% if recipe.average_rating > 1 %} checked {% endif %}"></span>
+              <span class="fa fa-star {% if recipe.average_rating > 2 %} checked {% endif %}"></span>
+              <span class="fa fa-star {% if recipe.average_rating > 3 %} checked {% endif %}"></span>
+              <span class="fa fa-star {% if recipe.average_rating > 4 %} checked {% endif %}"></span>
+            </p>
+          </div>
+          <h4 class="mt-2">{{recipe.title|truncatechars:50}}</h4>
+          <p>{{recipe.user}}</p>
+          <p class="datetime pb-2">{{recipe.posted_date}}</p>
+        </a>
+        {% endfor %}
+      {% else %}
+        <p>Sorry, there are no matching posts. Please try again.</p>
+      {% endif %}
     </div>
   </section>
   <article class="col-lg-3">
@@ -75,18 +80,18 @@
     </div>
   </article>
   {% if is_paginated %}
-  <nav aria-label="Page navigation">
-    <ul class="pagination justify-content-center">
-      {% if page_obj.has_previous %}
-      <li><a href="?page={{ page_obj.previous_page_number }}&{{ query_string }}" class="page-link">&laquo; PREV </a>
-      </li>
-      {% endif %}
-      {% if page_obj.has_next %}
-      <li><a href="?page={{ page_obj.next_page_number }}&{{ query_string }}" class="page-link"> NEXT &raquo;</a>
-        {{page.num_pages}}</li>
-      {% endif %}
-    </ul>
-  </nav>
+    <nav aria-label="Page navigation">
+      <ul class="pagination justify-content-center">
+        {% if page_obj.has_previous %}
+          <li><a href="?page={{ page_obj.previous_page_number }}&{{ query_string }}" class="page-link">&laquo; PREV </a>
+          </li>
+        {% endif %}
+        {% if page_obj.has_next %}
+          <li><a href="?page={{ page_obj.next_page_number }}&{{ query_string }}" class="page-link"> NEXT &raquo;</a>
+            {{page.num_pages}}</li>
+        {% endif %}
+      </ul>
+    </nav>
   {% endif %}
 </div>
 <!-- Modal - for search options -->
