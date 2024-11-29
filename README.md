@@ -201,16 +201,37 @@ For testing I created `README-TEST.md` file
 
 # Bugs
 
+## Pagination for the query data  
+When I was working at the option search, the query result recipes displayed correctly, however pagiination links are resetting the
+query list and I could never see the 2nd page with that same query data. The view was made by CBV and the pagination is default setting in the view. I couldn't find anything Django docs. After looking for around 2 days I finally asked to the tutor support.   
+The tutor Rebecca found the article about pagination with FBV view pages but I explained it did't work and my view is CBV. Then she quickly found the "ListView" doesn't take the parameter from `GET request` so she write the this code below for me. - [Solution](#pagination)
 
-- Bug title.
+This `copy()` method returns a copy of the page_obj, then `pop()` method removed the `page` part of the parameter, so it's duplicated in the GET request. The `urlencode()` function will encode the GET parameters to format it for the URL. Then, in the template, add the `query_string` after the pagination tag. `href="?page={{ page_obj.previous_page_number }}&{{ query_string }}"` 
+I could never solve this issue by my self, great thank you for tutor Rebecca. <a id="pagination"></a>
 
-    ![screenshot](readme-img/)
+- Solution 
+```
+def get_context_data(self, **kwargs):
+context = super().get_context_data(**kwargs)
 
-    - To fix this, ....
+# Add GET parameters to context
+query_params = self.request.GET.copy()
+if 'page' in query_params:
+    query_params.pop('page') 
+context['query_string'] = query_params.urlencode()
+```
+
+## `slug=slug`   
+When I was working on `get_context_data` I was straggling to set the kwargs "comments" ( all the relavant comments to the specific post) into  `get_context_data` `kwargs`, in PostDetail CBV view. I wanted to write something like this familier way "slug=slug" but slug was not defind inside the function. I was looking for how to get the global variable into the function only but those were not even close. After looking everywhere I found this article, he’s writing like `Project.objects.get(slug=self.kwargs['slug'])` Then finally realised that inside `get_context_data` I could access the kwargs it self. I thought that must be the one that I wanted to do it. 
+![screenshot](readme-img/bug-code-self.kwargs-slug.png)
+
+- Solution -  And it worked. `slug=self.kwargs["slug"]`
+
+I still have a lot of bug reports but I don't have time to record everything. 
 
 ## Unfixed Bugs
 
-There are no remaining bugs that I am aware of.
+<!-- There are no remaining bugs that I am aware of. -->
 
 # DEPLOYMENT
 ## Preparation
@@ -325,10 +346,7 @@ We can make a copy of someone's original repository on our GitHub account, so we
 
 1. Locate the objective repository using my Github account (I can’t fork my own repository),
 top-right of the Repository (not top of page) just right hand side of the repository title, click the "Fork" Button.  
-![Forking (1)](readme/dep-fork-1.png "Forking (1)") 
-
 2. Input available new repository name and click “Create fork”. Now there is a copy of the original repository in my own GitHub account.
-![Forking (2)](readme/dep-fork-2.png "Forking (2)") <a id="credit-ins"></a>
 
 
 
