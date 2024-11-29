@@ -100,12 +100,13 @@ I've tested my deployed project using the Lighthouse Audit tool.
 | Home | Mobile | ![screenshot](readme-img/validation/light-mb-home.png) | Some minor performance warnings |
 | Recipe create | Mobile | ![screenshot](readme-img/validation/light-mb-recipes-add.png) | Accessibility points were deducted by this error `<frame> or <iframe> elements do not have a title` This caused by summernote and outof my controll |
 | Recipe detail | Mobile | ![screenshot](readme-img/validation/light-mb-recipes-detail.png) | Some minor performance warnings |
-| Recipe edit | Mobile | ![screenshot](readme-img/validation/) | Some minor performance warnings |
-| Recipe delete | Mobile | ![screenshot](readme-img/validation/) | Some minor performance warnings |
+| Recipe edit | Mobile | ![screenshot](readme-img/validation/light-mb-recipe-edit.png) | Some minor performance warnings |
+| Recipe delete | Mobile | ![screenshot](readme-img/validation/light-mb-recipe-delete.png) | Some minor performance warnings |
 | Posts | Mobile | ![screenshot](readme-img/validation/light-mb-posts.png) | Some minor performance warnings |
-| Posts detail | Mobile | ![screenshot](readme-img/validation/light-mb-posts-details.png) | Some minor performance warnings |
-| Custom Error 400 | Mobile | ![screenshot](readme-img/validation/) | Some minor performance warnings |
-| Custom Error 403 | Mobile | ![screenshot](readme-img/validation/) | Some minor performance warnings |
+| Posts detail | Mobile | ![screenshot](readme-img/validation/light-mb-posts-detail.png) | Some minor performance warnings |
+| Posts create | Mobile | Mobile | ![screenshot](readme-img/validation/) | Some minor performance warnings |
+| Posts edit | Mobile | ![screenshot](readme-img/validation/) | Some minor performance warnings |
+| Posts delete | Mobile | ![screenshot](readme-img/validation/) | Some minor performance warnings |
 | Custom Error 404 | Mobile | ![screenshot](readme-img/validation/) | Some minor performance warnings |
 | Custom Error 500 | Mobile | ![screenshot](readme-img/validation/) | Some minor performance warnings |
 
@@ -115,10 +116,10 @@ I've tested my deployed project using the Lighthouse Audit tool.
 | Home | Desktop | ![screenshot](readme-img/validation/light-pc-home.png) | Some minor performance warnings |
 | Recipe detail | Desktop | ![screenshot](readme-img/validation/light-pc-recipes-detail.png) | Some minor performance warnings |
 | Recipe create | Desktop | ![screenshot](readme-img/validation/light-pc-recipes-add.png) | Some minor performance warnings |
-| Recipe edit | Desktop | ![screenshot](readme-img/validation/) | Some minor performance warnings |
-| Recipe delete | Desktop | ![screenshot](readme-img/validation/) | Some minor performance warnings |
+| Recipe edit | Desktop | ![screenshot](readme-img/validation/light-pc-recipe-edit.png) | Some minor performance warnings |
+| Recipe delete | Desktop | ![screenshot](readme-img/validation/light-pc-recipe-delete.png) | Some minor performance warnings |
 | Posts | Desktop | ![screenshot](readme-img/validation/light-pc-posts.png) | Some minor performance warnings |
-| Posts detail | Desktop | ![screenshot](readme-img/validation/light-pc-posts-details.png) | Some minor performance warnings |
+| Posts detail | Desktop | ![screenshot](readme-img/validation/light-pc-posts-detail.png) | Some minor performance warnings |
 | Custom Error 400 | Desktop | ![screenshot](readme-img/validation/) | Some minor performance warnings |
 | Custom Error 403 | Desktop | ![screenshot](readme-img/validation/) | Some minor performance warnings |
 | Custom Error 404 | Desktop | ![screenshot](readme-img/validation/) | Some minor performance warnings |
