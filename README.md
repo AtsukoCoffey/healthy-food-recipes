@@ -13,32 +13,33 @@ I hope that these activities will inspire all of us to make better food and life
   
 **[Heroku deployed site - Healthy Food Recipe](https://healthy-food-c44b0f8f09a5.herokuapp.com/ "Heroku deployed site - Healthy Food Recipe")**  
 
-## 1. Strategy Plane
-### Target users 
+## UX DESIGN
+### 1. Strategy Plane
+#### Target users 
 1.	Everyone who cares about food additives, health and simply enjoys cooking.
 2.	Specially who already has some health issues, to give them easy search options.
 3.  Young people who are about to start living independently, as well as their parents.
-### User value 
+#### User value 
 1.	Users can find a community which promotes everyone’s health through healthy recipe sharing, posts and discussions.
 2.	Users can access and learn crucial information that could have an impact on their health and well-being by the community activities.
 3.	Users can learn alternative cooking knowledge to avoid potentially dangerous food additives and unnaturally excessively processed food.
-### Difference from competitors and substitutions
+#### Difference from competitors and substitutions
 1.  The "Healthy Food Recipe" is not just recipes, but has more emphasis on learning and communication.
 
-## 2. Scope Plane 
-### First time visitor
+### 2. Scope Plane 
+#### First time visitor
 *	As a user, I want to clearly understand what services are offered on this website.
 *	As a user, I want to be able to easily navigate through to find contents.
 *	As a user, I want the website to work on different devices and formats that I use.
 *	As a user, I want the forms are simple and want some feedbacks about my actions.
 *	As a user, I want to see articles that offer a variety of perspectives on health to increase my awareness and knowledge.
-### Returning and frequent visitor
+#### Returning and frequent visitor
 *	As a user, I want to share my favorite recipes with easy and intuitive form inputs.
 *   As a user, I want to share my thoughts by posting the articles.
 *   As a user, I want to communicate with other members by the comment feature.
 *   As a user, I want the useful search options to look for my needs.
 *   As a user, I want to see the rating score by other members about recipes.
-### The website owner stories
+#### The website owner stories
 *	As a site owner, I want to encourage people for joining the healthy eathing community.
 *	As a site owner, I want to convey clearly who we are and our purpose, to give users a sense of trust and confidence.
 *	As a site owner, I want the users to share their favorite recipes, thoughts and useful information about healthy eating.
@@ -47,7 +48,7 @@ I hope that these activities will inspire all of us to make better food and life
 *	As a site owner, I want to provide inspiration for alternative cooking ideas by search options in the recipes.  
 *	As a site owner, I want to convey clearly that the "Healthy Food Recipe" is not only about recipes.  
 
-## 3. Structure Plane
+### 3. Structure Plane
 *   The website should have a Navigation menu that is consistent across all pages.
 *   The website should have breadcrumbs to help users feel a strong sense of place and also give access to previous pages when it expands to become a larger website.
 *	The website should have hover interaction for links, abbreviation, and tooltips with additional information to enhance user experience.
@@ -55,19 +56,17 @@ I hope that these activities will inspire all of us to make better food and life
 *   Burger icon is commonly used on smaller screens, so using this convention suits users' expectations.
 *   The link buttons, form buttons should be clearly visible and interactive. 
 
-## 4. Skeleton Plane  
+### 4. Skeleton Plane  
 
-### Structure diagram
+#### Structure diagram
 
 ![Database relationship diagram](readme-img/ux-structure-diagram.png "Database relationship diagram")
 
-<details open>
-<summary>Database relationship diagram</summary>
+#### Database relationship diagram
 
 ![Database relationship diagram](readme-img/ux-db-diagram.jpg "Database relationship diagram")
-</details>  
 
-### Wireframes
+#### Wireframes
 This website was originally planned as part of a previous project, but midway through my development my standup teacher advised me that it would be better to make it a standalone project separate from the previous one to avoid confusion. Therefore, I have made some design changes. 
 
 <details open>
@@ -82,17 +81,14 @@ This website was originally planned as part of a previous project, but midway th
 ![For authenticated user - tablet and PC monitor](readme-img/wireframe/pc-top.webp "For authenticated user - tablet and PC monitor")
 </details>
 
-## 5. Surface Plane
+### 5. Surface Plane
 
-### Colour
+#### Colour
 The color scheme that was originally planned has been changed to one that is more neutral and calming. [CREDITS Content References - Adobe Color API](#credits-content) 
   
-<!-- ![Colour scheme](readme-img/colour-scheme1.png "Colour scheme") -->
-  
-<!-- ![Colour scheme 2](readme-img/colour-scheme2.png "Colour scheme 2") -->
+![Colour scheme](readme-img/ux-colour.png "Colour scheme")
 
-
-### Typography
+#### Typography
 
 I selected "Poiret One" for the Logo from Google font API. It is attractive and has sharp features and it’s not too heavy.  
 For the site's basic font, I was considering using "Quicksand" for the best readability, however our target users are young people and since it’s not a huge business website so a little bit unique font like "Josefin Sans" might appeal well to this unique community. [TECHNOLOGY USED - Google Fonts](#tech)  
@@ -104,9 +100,9 @@ For the site's basic font, I was considering using "Quicksand" for the best read
 
 <a id="features"></a>
 
-# EXISTING FEATURES  
-- [] 
-## Top page - Home  
+## EXISTING FEATURES  
+
+### Top page - Home  
 * Header and navigation - First time visiter  
 ![Header and navigation - First time visiter](readme-img/feat-home-header2.png "Header and navigation - First time visiter")   
 * Header and navigation - Authenticated user  
@@ -126,7 +122,7 @@ For the site's basic font, I was considering using "Quicksand" for the best read
 * Recipes search options modal  
 ![ Recipes search options modal ](readme-img/feat-recipesearch.png " Recipes search options modal ")  
 
-## Posts list page  
+### Posts list page  
 * Lead sentense - First time visiter  
 ![ Lead sentense - First time visiter](readme-img/feat-posts-intro.webp " Lead sentense - First time visiter")   
 
@@ -142,7 +138,7 @@ For the site's basic font, I was considering using "Quicksand" for the best read
 * Posts search options modal  
 ![ Posts search options modal ](readme-img/feat-postssearch.png " Posts search options modal ")  
 
-## Authentication pages  
+### Authentication pages  
 
 * Sign-up  
 ![ Sign-up ](readme-img/feat-a-signup.png " Sign-up ")  
@@ -153,7 +149,7 @@ For the site's basic font, I was considering using "Quicksand" for the best read
 * Log-out  
 ![ Log-out ](readme-img/feat-a-logout.png " Log-out ")  
 
-## Recipes CRUD pages
+### Recipes CRUD pages
 
 * Create recipe form page  
 ![ Create recipe form page ](readme-img/feat-recipe-add.webp " Create recipe form page ")  
@@ -164,7 +160,7 @@ For the site's basic font, I was considering using "Quicksand" for the best read
 * Delete recipe confirmation page  
 ![ Delete recipe confirmation page ](readme-img/feat-recipe-delete.png " Delete recipe confirmation page ")   
 
-## Posts CRUD pages
+### Posts CRUD pages
 
 * Create post form page  
 ![ Create post form page ](readme-img/feat-posts-add.png " Create post form page ")  
@@ -175,7 +171,7 @@ For the site's basic font, I was considering using "Quicksand" for the best read
 * Delete post confirmation page  
 ![ Delete post confirmation page ](readme-img/feat-posts-delete.png " Delete post confirmation page ")  
 
-## Other parts
+### Other parts
 
 * Star rating  
 ![ Star rating ](readme-img/feat-starrating.webp " Star rating ")  
@@ -189,19 +185,42 @@ This breadcrumb is for a Post's single page's edit page.
 The hierarchy is in this order:　Top page > List Page > Single post page > Edit 　
 The recipe's app doesn't have it's own list page as the Home (Top) page is working as a recipe's list page.
 
-
-# Future features
+## FUTURE FEATURES
 
 Any open issues can be tracked [here](https://github.com/users/AtsukoCoffey/projects/6). These are the "Won't Have" for this project that will not be included in this projct submission. These may be revisited and added in the future. I stopped development at this point because the website already had enough functionality for an MVP.
+<a id="tech"></a>
 
-# Tests
+## TECHNOLOGY USED
+* HTML, CSS used for structure my webpages and layout   
+* JavaScript used for a part of the comment functionality. Programming language.
+* Python used for all functionality. Programming language.
+* Gitpod used as a cloud-based IDE for development.
+* Git used for recording changes. A version control system.
+* GitHub Used for our project's platformused for secure online code storage.
+* Heroku Used for our project's platform. The deployed site.
+
+* Font Awesome used for all the icons in this project  
+* Google Fonts used for all the fonts used in this project and to compare potential fonts.  
+
+* tinipng - Smart WebP, PNG and JPEG Compression for Faster Websites used for compress all the image files
+* Am I Responsive? used for creating responsivity example image
+* favicon.io used for creating an original favicon icon
+
+<a id="testing"></a>
+
+# TESTING
+> I performed most of the testing myself and had some support from family members with different mobile devices.
+
+### coolors
+[Colour schme generator](https://coolors.co/232018-4b483d-758761-bfe077-f1eddb "Colour schme generator")
+
+## TESTING
 For testing I created `README-TEST.md` file
 [Tests- README-TEST](/README-TEST.md "Tests- README-TEST")
-</details>  
 
-# Bugs
+## BUGS
 
-## Pagination for the query data  
+### Pagination for the query data  
 When I was working at the option search, the query result recipes displayed correctly, however pagiination links are resetting the
 query list and I could never see the 2nd page with that same query data. The view was made by CBV and the pagination is default setting in the view. I couldn't find anything Django docs. After looking for around 2 days I finally asked to the tutor support.   
 The tutor Rebecca found the article about pagination with FBV view pages but I explained it did't work and my view is CBV. Then she quickly found the "ListView" doesn't take the parameter from `GET request` so she write the this code below for me. - [Solution](#pagination)
@@ -221,15 +240,15 @@ if 'page' in query_params:
 context['query_string'] = query_params.urlencode()
 ```
 
-## `slug=slug`   
-When I was working on `get_context_data` I was straggling to set the kwargs "comments" ( all the relavant comments to the specific post) into  `get_context_data` `kwargs`, in PostDetail CBV view. I wanted to write something like this familier way "slug=slug" but slug was not defind inside the function. I was looking for how to get the global variable into the function only but those were not even close. After looking everywhere I found this article, he’s writing like `Project.objects.get(slug=self.kwargs['slug'])` Then finally realised that inside `get_context_data` I could access the kwargs it self. I thought that must be the one that I wanted to do it. 
+### `slug=slug`   
+When I was working on `get_context_data` I was straggling to set the kwargs "comments" ( all the relavant comments to the specific post) into  `get_context_data` `kwargs`, in PostDetail CBV view. I wanted to write something like this familier way "slug=slug" but slug was not defind inside the function. I was looking for how to get the global variable into the function only but those were not even close. After looking everywhere I found this article, he’s writing like `Project.objects.get(slug=self.kwargs['slug'])` Then finally realised that inside `get_context_data` I could access the kwargs it self. I thought that must be the one that I wanted to do it. [forun.djangoproject](https://forum.djangoproject.com/t/passing-slug-to-createview/4287/12)
 ![screenshot](readme-img/bug-code-self.kwargs-slug.png)
 
 - Solution -  And it worked. `slug=self.kwargs["slug"]`
 
 I still have a lot of bug reports but I don't have time to record everything. 
 
-## Another 500 error for sign up form
+### Another 500 error for sign up form
 This bug was found at the middle of the end-point reveiw. I had different 500 server error that took a long time to solve it so I broke out into my cold sweat. However the mentor gave me a great advice that this error is not coming from the logic error. So possibly from template or soemthing similar things. After the meeting, the DEBUG explained the issue was caused from the AllAuth's password validation. Then now I remember that I just did all the PEP8 linting and even settings.py.    
 
 - Solution -  Long lines generated by the system can be reverted and left as it was before.
@@ -237,13 +256,13 @@ This bug was found at the middle of the end-point reveiw. I had different 500 se
 **There were more than three bug reports, but I am writing only the ones that I clicked on.**
 
 
-## Unfixed Bugs
+### Unfixed Bugs
 
 <!-- There are no remaining bugs that I am aware of. -->
 
-# DEPLOYMENT
-## Preparation
-### Django
+## DEPLOYMENT
+### Preparation
+#### Django
 First we are using Django, so install Django:   
 1. Creating a Django project `django-admin startproject my_project .`
 2. Add `ALLOWED_HOSTS` to the settings.py 
@@ -253,7 +272,7 @@ Create `env` file and store `SECRET_KEY`, API key, `DATABASE_URL`, also for auto
 5. Create Django app `python3 manage.py startapp <app_name>`
 6. Add the app into the `INSTALLED_APPS ` settings.py
 
-### Connect Database
+#### Connect Database
 1. set the environment variable. `os.environ.setdefault("DATABASE_URL", "......")`
 2. install two packages `pip3 install dj-database-url~=0.5 psycopg2~=2.9` `pip3 freeze --local > requirements.txt`
 3. Connect settings.py to the env.py - import `dj_database_url ` into the settings.py and `if` statement  
@@ -265,7 +284,7 @@ Create `env` file and store `SECRET_KEY`, API key, `DATABASE_URL`, also for auto
 5. Create database table `python3 manage.py migrate`
 6. Superuser can be created using the `python3 manage.py createsuperuser`
 
-### Install modules - Crispy Forms and crispy-bootstrap
+#### Install modules - Crispy Forms and crispy-bootstrap
 1. install `pip3 install django-crispy-forms~=2.0 crispy-bootstrap5~=0.7`
 2. Add it to  `INSTALLED_APPS`
 3. Add `CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"` and `CRISPY_TEMPLATE_PACK = "bootstrap5"` into the settings.py
@@ -276,7 +295,7 @@ TEMPLATES = 'builtins': [
                 'crispy_forms.templatetags.crispy_forms_field'         ] 
 ```
 
-### Install modules - Django AllAuth
+#### Install modules - Django AllAuth
 1. `pip3 install django-allauth~=0.57.0`
 2. Add it to  `INSTALLED_APPS`
 3. Add `SITE_ID = 1 `, `LOGIN_REDIRECT_URL = '/' `, `LOGOUT_REDIRECT_URL = '/'`
@@ -286,20 +305,20 @@ TEMPLATES = 'builtins': [
 7. Add `urlpatterns` in project's urls `path("accounts/", include("allauth.urls")),`
 8. Collect Allauth template `pip3 show django-allauth` copy into templates folder `cp -r <Location>/allauth/templates/* ./templates/`
 
-### Install modules - Cloudinary
+#### Install modules - Cloudinary
 1. install `pip3 install cloudinary~=1.36.0 dj3-cloudinary-storage~=0.0.6 urllib3~=1.26.15`
 2. Set API key and URL into the `env.py`
 3. Add `'cloudinary_storage'` and `'cloudinary'` into `INSTALLED_APPS` 
 
-### Install modules - summernote
+#### Install modules - summernote
 1. Install `pip3 install django-summernote~=0.8.20.0`
 2. Add it to  `INSTALLED_APPS`
 3. For admin page, add `path('summernote/', include('django_summernote.urls')),` into the project's urls
 
 **After all the installation finished record this to `pip3 freeze --local > requirements.txt`**
 
-## Other settings
-### CSRF tokens Setting
+### Other settings
+#### CSRF tokens Setting
 set `CSRF_TRUSTED_ORIGINS` in settings.py ( CSRF stands for Cross-Site Request Forgery)
 ```Under the DATABASES
 CSRF_TRUSTED_ORIGINS = [
@@ -307,17 +326,17 @@ CSRF_TRUSTED_ORIGINS = [
     "https://*.herokuapp.com"
 ]
 ```
-### The base template
+#### The base template
 1. createa `TEMPLATES_DIR` constant to build a path for our subdirectory 'templates' in settings.py  
 `TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')`
 2. `TEMPLATES ` add `TEMPLATES_DIR` constant to the list of `DIR` - `'DIRS': [TEMPLATES_DIR],`
 3. Create `templates` directory at root top-level and `base.html `
 4. Create `index.html` to the existing app level template (app/template/app/index.html)
 
-### Path for static
+#### Path for static
 1. Link to files in the static directory from a template, add `STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static'), ]`
 
-## Deploy setting
+### Deploy setting
 1. install `gunicorn` for production-ready server
 `pip3 install gunicorn~=20.1`
 2. Create a file named Procfile (no file extension)  
@@ -332,22 +351,22 @@ Declare `web: gunicorn my_project.wsgi`
 8. Add a runtime.txt file to your app's root directory
 9. Add the Python version you copied from the list of supported runtimes to runtime.txt file
 
-## Heroku
+### Heroku
 0. For prevent Heroku from uploading static files, click on the Settings tab and reveal the config vars, `DISABLE_COLLECTSTATIC` and value of `1`
  click "Add"
-### Create Heroku app
+#### Create Heroku app
 1. Click "New" in the top-right corner of drop down list in Dashboard page, and select "Create new app"
 2. Decide the App name (it must be only lowercase letters, numbers and dashes), and then choose a region "Europe"
 3. Click the "Settings" to go Setting page
 4. Goes to "Config Vars". We are using confidential credentials, so copy the contents of the credentials in json file and paste into the Config Variables. Also set the value of KEY to `"PORT"`, and the value to `"8000"` then select Add
 5. Underneath `"Config Vars"` there is `"Buildpacks"`. Add the buildpack (The order of the buildpacks is important)
 
-### Manual deploy and Automatic deploys  
+#### Manual deploy and Automatic deploys  
 1. Click on the Deploy tab, click connect to "GitHub" 
 2. Click on "Deploy Branch" to start a manual deployment of the main branch
 3. Click on "Automatic deploys" and "Manual deploy" so that it deploys automatically evertime GitHub pushing
 
-# Forking  
+## Forking  
 >A fork is a new repository that shares code and visibility settings with the original “upstream” repository. Forks are often used to iterate on ideas or changes before they are proposed back to the upstream repository, such as in open source projects or when a user does not have write access to the upstream repository. [Quote from GitHub Docs](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/fork-a-repo)  
 
 We can make a copy of someone's original repository on our GitHub account, so we can make changes without affecting the original repository.  
@@ -356,12 +375,9 @@ We can make a copy of someone's original repository on our GitHub account, so we
 top-right of the Repository (not top of page) just right hand side of the repository title, click the "Fork" Button.  
 2. Input available new repository name and click “Create fork”. Now there is a copy of the original repository in my own GitHub account.
 
+## CREDIT
 
-
-
-# CREDIT
-
-## Code References 
+### CREDITS - Code references
 * Bootstrap Navbar toggle screen beakpoint `navbar-expand`  
 Adjustment the size that screen's breakpoint. Default was `-lg` change into `-md`  
  ![Bootstrap Navbar expand](readme-img/credit-code-css-navbar-expand.png "Bootstrap Navbar expand")  
@@ -414,6 +430,22 @@ After the editing the recipe, I wanted to go back to the detail's page, so that 
 I found the function `get_success_url` and using this `reverse` 
 [Setting `success_url` in the UpdateView](readme-img/credit-code-setting-successurl.png "Setting `success_url` in the UpdateView")
 
+### CREDITS - Content References
+Refind oil article
+https://latourangelle.com/blogs/general/refined-vs-unrefined-oils?srsltid=AfmBOoqtQU2k4U2or4hnRSGHYO3Ce8dc4TT4DziozTaKUYa0mq6G554O
+
+https://www.reddit.com/
+
+
+
+### CREDITS - Imagery
+Egg - Pexels - Antoni Shkraba 
+Photo by Kampus Production: https://www.pexels.com/photo/a-woman-deciding-on-what-to-buy-8422719/
+
+Image by <a href="https://pixabay.com/users/lincerta-689260/?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=1492258">Hrayr Movsisyan</a> from <a href="https://pixabay.com//?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=1492258">Pixabay</a>
+
+
+### CREDITS - Editing And Proofreading
 
 
 *
@@ -445,7 +477,8 @@ Credit referenced projects
 [NicoleJackson89 | pp4-recipe-share](https://github.com/NicoleJackson89/pp4-recipe-share "NicoleJackson89 | pp4-recipe-share")
 
 
-Technology
-* Mermaid
-[JavaScript-based diagramming and charting tool](https://github.com/mermaid-js/mermaid/blob/develop/README.md "JavaScript-based diagramming and charting tool")
+### ACKNOWLEDGEMENTS
+I would like to give great thanks to my mentor Gareth Mc Girr and cover session's mentor David Bowers for their exellent advice and support.
+Also my cohort facilitator Lewis Dillon for all the support and assistance.
 
+And great thanks to my family Sean Coffey and Dean Coffey for all the support.
