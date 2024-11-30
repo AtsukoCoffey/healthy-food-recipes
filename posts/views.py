@@ -1,6 +1,8 @@
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404
-from django.views.generic import CreateView, ListView, DetailView, UpdateView, DeleteView
+from django.views.generic import (
+    CreateView, ListView, DetailView, UpdateView, DeleteView
+)
 from django.db.models import Q
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.contrib.auth.decorators import login_required
@@ -41,7 +43,7 @@ class AddPost(LoginRequiredMixin, SuccessMessageMixin, CreateView):
 
     # Return to the detail's page using 'get_success_url' and 'reverse'
     def get_success_url(self, **kwargs):
-        if self.object.id != None:
+        if self.object.id is not None:
             return reverse('post_detail', args=[self.object.slug])
         else:
             return reverse('posts')
@@ -83,7 +85,7 @@ class Posts(ListView):
         include_query = self.request.GET.get('q-incl')
         owner_query = self.request.GET.get('q-owner')
 
-        # From queryset flter Avoid query 
+        # From queryset flter Avoid query
         if avoid_query:
             queryset = queryset.exclude(
                 Q(title__icontains=avoid_query) |
@@ -130,7 +132,7 @@ class PostDetail(SuccessMessageMixin, DetailView):
     # send the form_class to GET request
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['form'] = self.form_class()  
+        context['form'] = self.form_class()
         context['comments'] = self.get_queryset(
             # 'slug=self.kwargs['slug']' means similar to 'slug=slug'
             ).get(slug=self.kwargs['slug']).comments.all()
@@ -144,7 +146,7 @@ class PostDetail(SuccessMessageMixin, DetailView):
         try:  # In case of Non try and catch
             post = self.get_queryset().get(slug=slug)
         except Post.DoesNotExist:
-            raise Http404("There is no approved post yet. Post not found.")        
+            raise Http404("There is no approved post yet. Post not found.")
         # The model for the form is PostComment
         if form.is_valid():
             comment = form.save(commit=False)
@@ -154,7 +156,7 @@ class PostDetail(SuccessMessageMixin, DetailView):
             # Add success message manually
             messages.success(request, self.success_message)
             return HttpResponseRedirect(reverse('post_detail', args=[slug]))
-        # comments assign again 
+        # comments assign again
         comments = post.comments.all()
         return render(
             request,
@@ -186,7 +188,8 @@ class EditPost(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
 
 
 class DeletePost(
-    LoginRequiredMixin, UserPassesTestMixin, SuccessMessageMixin, DeleteView):
+    LoginRequiredMixin, UserPassesTestMixin, SuccessMessageMixin, DeleteView
+):
     """
     Delete a single post page :model:`posts.Post`
     **Context**
@@ -218,12 +221,14 @@ def comment_edit(request, slug, comment_id):
         post = get_object_or_404(posts, slug=slug)
         comment = get_object_or_404(PostComment, pk=comment_id)
         form = PostCommentForm(data=request.POST, instance=comment)
-        # form validation and "user = commenter" check 
+        # form validation and "user = commenter" check
         if form.is_valid() and comment.commenter == request.user:
             comment = form.save(commit=False)
             comment.post = post
             comment.save()
-            messages.add_message(request, messages.SUCCESS, 'Comment Updated!')
+            messages.add_message(
+                request, messages.SUCCESS, 'Comment Updated!'
+            )
         else:
             messages.add_message(
                 request, messages.ERROR, 'Error updating comment!')
@@ -244,10 +249,12 @@ def comment_delete(request, slug, comment_id):
     post = get_object_or_404(posts, slug=slug)
     comment = get_object_or_404(PostComment, pk=comment_id)
 
-    #  "user = commenter" check 
+    #  "user = commenter" check
     if comment.commenter == request.user:
         comment.delete()
-        messages.add_message(request, messages.SUCCESS, 'Your comment deleted!')
+        messages.add_message(
+            request, messages.SUCCESS, 'Your comment deleted!'
+        )
     else:
         messages.add_message(
             request, messages.ERROR, 'You can only delete your own comments!')

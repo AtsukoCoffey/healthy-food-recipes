@@ -84,7 +84,7 @@ This website was originally planned as part of a previous project, but midway th
 ### 5. Surface Plane
 
 #### Colour
-The color scheme that was originally planned has been changed to one that is more neutral and calming. [CREDITS Content References - Adobe Color API](#credits-content) 
+The color scheme that was originally planned has been changed to one that is more neutral and calming. [TECHNOLOGY - Coolor](#tech) 
   
 ![Colour scheme](readme-img/ux-colour.png "Colour scheme")
 
@@ -204,15 +204,13 @@ Any open issues can be tracked [here](https://github.com/users/AtsukoCoffey/proj
 
 * tinipng - Smart WebP, PNG and JPEG Compression for Faster Websites used for compress all the image files
 * Am I Responsive? used for creating responsivity example image
-* favicon.io used for creating an original favicon icon
+* [favicon.io](https://favicon.io/favicon-generator/ "favicon.io") used for creating an original favicon icon
+* [coolors](https://coolors.co/232018-4b483d-758761-bfe077-f1eddb "coolors") used for the formating of colour scheme
 
 <a id="testing"></a>
 
 # TESTING
 > I performed most of the testing myself and had some support from family members with different mobile devices.
-
-### coolors
-[Colour schme generator](https://coolors.co/232018-4b483d-758761-bfe077-f1eddb "Colour schme generator")
 
 ## TESTING
 For testing I created `README-TEST.md` file
@@ -431,8 +429,9 @@ I found the function `get_success_url` and using this `reverse`
 [Setting `success_url` in the UpdateView](readme-img/credit-code-setting-successurl.png "Setting `success_url` in the UpdateView")
 
 ### CREDITS - Content References
-Refind oil article
-https://latourangelle.com/blogs/general/refined-vs-unrefined-oils?srsltid=AfmBOoqtQU2k4U2or4hnRSGHYO3Ce8dc4TT4DziozTaKUYa0mq6G554O
+* [BBC Foods](https://www.bbc.co.uk/food/recipes/halloumi_salad_19294 "BBC Foods") I borrowed all the recipes from this BBC Food recipe website   
+* [Refind oil article](https://latourangelle.com/blogs/general/refined-vs-unrefined-oils?srsltid=AfmBOoqtQU2k4U2or4hnRSGHYO3Ce8dc4TT4DziozTaKUYa0mq6G554O "Refind oil article") 
+
 
 https://www.reddit.com/
 
