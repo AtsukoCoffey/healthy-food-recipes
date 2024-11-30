@@ -10,7 +10,7 @@
     {% if user.is_authenticated %}
       <h2 class="main-title mt-4 mx-auto">Welcome back {{ user.username }}!</h2>
     {% else %}
-      <h2 class="main-title mt-4 mx-auto">Welcome to the Community of Healthy Food Recipe!</h2>
+      <h2 class="main-title mt-4 mx-auto">Welcome to the Community of Healthy Food Recipes!</h2>
     {% endif %}
     <p class="pt-2">This is where we share healthy recipes, information and tips & tricks for a better food
       lifestyle.<br> We aim to generate positive discussion for all those interested in becoming more aware of what we
@@ -104,7 +104,7 @@
       </div>
       <div class="modal-body">
         <!-- Quick search by 8 categories -->
-        <form id="checkbox-filter" role="search" method="GET" action="{% url 'home' %}">
+        <form id="recipe-search" role="search" method="GET" action="{% url 'home' %}">
           <fieldset>
             <legend>Quick search</legend>
             <ul class="d-flex flex-wrap list-unstyled">
@@ -118,7 +118,7 @@
               <li><input type="checkbox" id="vegan" name="vegan"><label for="vegan" class="me-4"><i
                     class="fa-solid fa-carrot p-2" title="Vegan"></i> Vegan</label></li>
               <li><input type="checkbox" id="vegitarian" name="vegitarian"><label for="vegitarian" class="me-4"><i
-                    class="fa-solid fa-egg p-2" title="Vegitarian"></i> Vegitarian</label></li>
+                    class="fa-solid fa-egg p-2" title="Vegetarian"></i> Vegetarian</label></li>
               <li><input type="checkbox" id="highfiber" name="highfiber"><label for="highfiber" class="me-4"><i
                     class="fa-solid fa-apple-whole p-2" title="High-Fiber"></i> High-Fiber</label></li>
               <li><input type="checkbox" id="highprotein" name="highprotein"><label for="highprotein" class="me-4"><i
@@ -128,41 +128,35 @@
             </ul>
           </fieldset>
           <div class="modal-button pb-2 mb-2">
-            <button type="submit" class="btn btn-success" form="checkbox-filter">Search</button>
+            <button type="submit" class="btn btn-success" form="recipe-search">Search</button>
           </div>
-        </form>
         <!-- Ingredients search - avoid and/or include -->
-        <form id="ingre-search" role="search" method="GET" action="{% url 'home' %}">
           <fieldset>
-            <legend>Ingredients search</legend>
-            <label for="avoid-search">Avoid ingredients</label>
-            <input id="avoid-search" class="form-control me-2 p-2 mb-2" name="q-avoid" type="search"
-              placeholder="Ingredients to be avoided" aria-label="Input avoid ingredients">
+            <legend>Ingredients search</legend>            
             <label for="include-search">Include ingredients</label>
             <input id="include-search" class="form-control me-2 p-2 mb-2" name="q-incl" type="search"
               placeholder="Preferred ingredients" aria-label="Prefer ingredients">
+            <label for="avoid-search">Avoid ingredients</label>
+            <input id="avoid-search" class="form-control me-2 p-2 mb-2" name="q-avoid" type="search"
+              placeholder="Ingredients to be avoided" aria-label="Input avoid ingredients">
           </fieldset>
           <div class="modal-button pb-2 mb-2">
-            <button type="submit" class="btn btn-success" form="ingre-search">Search</button>
+            <button type="submit" class="btn btn-success" form="recipe-search">Search</button>
           </div>
-        </form>
         <!-- Free text search - look for in title, description and instruction field -->
-        <form id="free-search" role="search" method="GET" action="{% url 'home' %}">
           <label for="free-word-search" class="pt-3">Free search</label><br>
-          <input id="free-word-search" class="me-2 p-2" name="q-free" type="search" placeholder="Free Search"
+          <input id="free-word-search" class="p-2" name="q-free" type="search" placeholder="Free Search"
             aria-label="Free Search">
-          <button type="submit" class="btn btn-success" form="free-search">Search</button>
-        </form>
+          <button type="submit" class="btn btn-success" form="recipe-search">Search</button><br>
         <!-- Owner search - 'all_users' get the User model's ids and usernames -->
-        <form id="owner-search" role="search" method="GET" action="{% url 'home' %}">
-          <label for="owner-id-search" class="pt-3">Recipe's Owner search</label><br>
-          <select id="owner-id-search" name="q-owner" class="p-2" aria-label="Owner Search">
-            <option disabled="disabled" selected>Select recipe's owner from here! </option>
+          <label for="owner-id-search" class="pt-3">Recipe contributor search</label><br>
+          <select id="owner-id-search" name="q-owner" class="p-2" aria-label="Recipe's contributor Search">
+            <option disabled="disabled" selected>Select recipe contributor from here! </option>
             {% for owner in all_users %}
             <option value="{{ owner.id }}">{{ owner.username }}</option>
             {% endfor %}
           </select>
-          <button type="submit" class="btn btn-success" form="owner-search">Search</button>
+          <button type="submit" class="btn btn-success" form="recipe-search">Search</button>
         </form>
       </div>
       <div class="modal-footer">
@@ -184,20 +178,20 @@
         <form id="post-search" role="search" method="GET" action="{% url 'posts' %}">
           <fieldset>
             <legend>Words search</legend>
-            <label for="post-avoid-search">Avoid words</label>
-            <input id="post-avoid-search" class="form-control me-2 p-2 mb-2" name="q-avoid" type="search"
-              placeholder="Words to be avoided" aria-label="Words to be avoided">
             <label for="post-include-search">Include words</label>
             <input id="post-include-search" class="form-control me-2 p-2 mb-2" name="q-incl" type="search"
               placeholder="Include words" aria-label="Include words">
+            <label for="post-avoid-search">Avoid words</label>
+            <input id="post-avoid-search" class="form-control me-2 p-2 mb-2" name="q-avoid" type="search"
+              placeholder="Words to be avoided" aria-label="Words to be avoided">
           </fieldset>
           <div class="modal-button pb-2 mb-2">
             <button type="submit" class="btn btn-success" form="post-search">Search</button>
           </div>
           <!-- Owner search - 'all_users' get the User model's ids and usernames -->
-          <label for="post-owner-id-search" class="pt-3">Posts' Owner search</label><br>
+          <label for="post-owner-id-search" class="pt-3">Post contributor search</label><br>
           <select id="post-owner-id-search" name="q-owner" class="p-2" aria-label="Owner Search">
-            <option disabled="disabled" selected>Select posts' owner from here! </option>
+            <option disabled="disabled" selected>Select post contributor from here! </option>
             {% for owner in all_users %}
             <option value="{{ owner.id }}">{{ owner.username }}</option>
             {% endfor %}

@@ -154,8 +154,8 @@ a:active {
     text-align: right;
 }
 
-#free-search input,
-#owner-search select {
+#free-word-search,
+#owner-id-search {
     border-radius: 7px;
     border: solid 1px var(--star-gray);
     color: gray;

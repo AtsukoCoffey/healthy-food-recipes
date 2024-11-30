@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% load static %}
-{% block title %}Posts list-page{% endblock %}
+{% block title %}Latest Posts{% endblock %}
 
 {% block content %}
 <section class="text-center p-2" id="hero-image">
@@ -8,7 +8,7 @@
   <nav class="container" aria-label="breadcrumb">
     <ol class="breadcrumb">
       <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>
-      <li class="breadcrumb-item active" aria-current="page">Posts list-page</li>
+      <li class="breadcrumb-item active" aria-current="page">Latest Posts</li>
     </ol>
   </nav>
   <div class="container p-2" id="hero-text">
@@ -32,7 +32,7 @@
   </div>
   <hr>
   <div class="recipe-cont">
-    <!-- if statement : In case of no posts data, message -->
+    <!-- if statement : In case of no results data, message -->
     {% if posts %}
       {% for post in posts %}
       <a href="{% url 'post_detail' post.slug %}" class="post-container m-3" aria-label="Click to view {{post.title}}">
@@ -104,12 +104,12 @@
         <form id="words-search" role="search" method="GET" action="{% url 'posts'  %}">
           <fieldset>
             <legend>Words search</legend>
-            <label for="avoid-search">Avoid words</label>
-            <input id="avoid-search" class="form-control me-2 p-2 mb-2" name="q-avoid" type="search"
-              placeholder="Words to be avoided" aria-label="Words to be avoided">
             <label for="include-search">Include words</label>
             <input id="include-search" class="form-control me-2 p-2 mb-2" name="q-incl" type="search"
               placeholder="Include words" aria-label="Include words">
+            <label for="avoid-search">Avoid words</label>
+            <input id="avoid-search" class="form-control me-2 p-2 mb-2" name="q-avoid" type="search"
+              placeholder="Words to be avoided" aria-label="Words to be avoided">
           </fieldset>
           <div class="modal-button pb-2 mb-2">
             <button type="submit" class="btn btn-success" form="words-search">Search</button>

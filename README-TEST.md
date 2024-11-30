@@ -333,4 +333,6 @@ Defensive programming was manually tested with the below user acceptance testing
 | Load some Posts list into Home top-page #47 | As a Site User, I want to see some other contents beside recipes so that I can understand what this site is made for | Pass |
 | Pagination for the query data #35 | As a Site User, I want to use page navigation for query data so that I can view next page of the same query | Pass |
 | Breadcrumb #49 | As a Site User, I want to know where I am now and how to go back to other pages so that I can freely move around to the desired pages | Pass |
+| Create button - beside recipes title - Home list page #55 | As a Site User, I want to find a create button near by list section so that I can create a recipe easily | Pass |
+| Create button - beside posts title - Posts list page #56 | As a Site User, I want to find a create button near by list section so that I can create a post easily | Pass |
 

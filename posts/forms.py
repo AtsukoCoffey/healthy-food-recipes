@@ -18,7 +18,7 @@ class PostForm(forms.ModelForm):
         self.helper.form_method = 'post'
         self.helper.layout = Layout(
             Fieldset(
-                "Questions to members, news or anything healthy topics!!",
+                "News, Opinions or Questions on any healthy topics!!",
                 "title",
                 'image',
                 'post_body',
