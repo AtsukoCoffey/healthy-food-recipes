@@ -33,7 +33,7 @@ class RecipeForm(forms.ModelForm):
                 css_class='flex-row-form'
             ),
             Fieldset(
-                "Please select a category to make it easier for everyone to find",
+                "Select a category to make it easier for everyone to find",
                 'lowsugar',
                 'glutenfree',
                 'dairyfree',

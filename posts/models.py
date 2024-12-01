@@ -15,6 +15,7 @@ class Post(models.Model):
         User, related_name="post_owner", on_delete=models.CASCADE, default='0'
     )
     slug = models.SlugField()
+    # Default image in cloudinary
     CLOUDINARY = "https://res.cloudinary.com/dulfdtcut/image/upload/"\
         "v1732624989/posts/oils_byapkh.webp"
     image = ResizedImageField(
@@ -36,6 +37,7 @@ class Post(models.Model):
         return f" {self.title}"
 
     def save(self, *args, **kwargs):
+        # To limit the text length use [0:20] * Credit
         self.slug = slugify(self.title[0:20])
         self.image_alt = self.title[0:40]
         super(Post, self).save(*args, **kwargs)

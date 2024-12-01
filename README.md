@@ -469,6 +469,15 @@ I wanted to fill the slug field automatically with title value. These links are 
 [How to generate slug based on title](https://stackoverflow.com/questions/64374947/how-to-generate-slug-based-on-title-of-post-in-django "How to generate slug based on title")   
 ![How to generate slug based on title](readme-img/credit-code-slug-generate-from-title.png "How to generate slug based on titl")  
 
+* How to extract Substring from String  
+After I could save the title value into the slug field successfully, I found that some title's values are too long, and got an error.
+These is a techniques I found how to reduce the strings value.
+[How to extract Substring from String](readme-img/credit-code-extract-string.png "How to extract Substring from String")
+
+* How to get Get request for class based viws  
+I needed to find out to how to use class based views. 
+[How to get Get request for class based viws](readme-img/credit-code-cbv-post-get%20request.png "How to get Get request for class based viws")
+
 * How to Get the Current URL within a Django Template  
 [How to Get the Current URL within a Django Template](https://medium.com/@iamalisaleh/how-to-get-the-current-url-within-a-django-template-8270b977f280 "How to Get the Current URL within a Django Template")  
 
@@ -494,6 +503,9 @@ Using `with`, we can hold the complex variables under the simple names.
 * using `aggregation`   
 [Django-Aggregation](https://docs.djangoproject.com/en/5.0/topics/db/aggregation/ "Django-Aggregation")   
 
+* using `update_or_create()`   
+[using update_or_create](readme-img/credit-code-update_or_create.png "using update_or_create")  
+
 * django-crispy-forms Layouts  
 This website is showing how to layout the crispy forms  
 [django-crispy-forms Layouts](https://django-crispy-forms.readthedocs.io/en/latest/layouts.html "django-crispy-forms Layouts")   
@@ -503,13 +515,6 @@ https://django-crispy-forms.readthedocs.io/en/latest/layouts.html
 I think this is really important information for security.  
 ![Encoding format](readme-img/credit-code-encoding-format1.png "Encoding format")  
 ![Encoding format2](readme-img/credit-code-encoding-format2.png "Encoding format2")  
-
-Credit referenced projects
-* Django Recipe Sharing | Dee Mc - Youtube tutorial
-[Django Recipe Sharing | Dee Mc](https://www.youtube.com/watch?v=dCvkAVN5uas&list=PLXuTq6OsqZjYSa-lrjd5wMGl23zpnhvln "Django Recipe Sharing | Dee Mc")
-
-* NicoleJackson89 | pp4-recipe-share
-[NicoleJackson89 | pp4-recipe-share](https://github.com/NicoleJackson89/pp4-recipe-share "NicoleJackson89 | pp4-recipe-share")
 
 * Bootstrap Navbar toggle screen beakpoint `navbar-expand`  
 This is handy tip to adjust the size that screen's breakpoint. Default was `-lg` change into `-md`  
@@ -555,11 +560,9 @@ Image by <a href="https://pixabay.com/users/lincerta-689260/?utm_source=link-att
 * EvitaKnits / hitch-hound     
 [EvitaKnits / hitch-hound](https://github.com/users/EvitaKnits/projects/2 "EvitaKnits / hitch-hound")
 
-### CREDITS - Editing And Proofreading
-
 
 ### ACKNOWLEDGEMENTS
-I would like to give great thanks to my mentor Gareth Mc Girr and cover session's mentor David Bowers for their exellent advice and support.
-Also my cohort facilitator Lewis Dillon for all the support and assistance.
-
+I would like to give great thanks to my mentor Gareth Mc Girr and cover session's mentor David Bowers for their exellent advice and support.  
+Also my cohort facilitator Lewis Dillon for all the support and assistance.  
+I have contacted CI Tutor support a few times, including with database issues, and I really appreciate the support from Rebecca and CI Database Maker.   
 And great thanks to my family Sean Coffey and Dean Coffey for all the support.
