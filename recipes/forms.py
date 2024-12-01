@@ -32,7 +32,8 @@ class RecipeForm(forms.ModelForm):
                 "cook_time",
                 css_class='flex-row-form'
             ),
-            Div(
+            Fieldset(
+                "Please select a category to make it easier for everyone to find",
                 'lowsugar',
                 'glutenfree',
                 'dairyfree',
