@@ -67,7 +67,7 @@ I hope that these activities will inspire all of us to make better food and life
 ![Database relationship diagram](readme-img/ux-db-diagram.jpg "Database relationship diagram")
 
 #### Wireframes
-This website was originally planned as part of a previous project, but midway through my development my standup teacher advised me that it would be better to make it a standalone project separate from the previous one to avoid confusion. Therefore, I have made some design changes. 
+This website was originally planned as part of a previous project, but midway through my development, my cohort facilitator Lewis advised for me that it would be better to make it a standalone project separate from the previous one to avoid confusion. Therefore, I have made some design & colour changes from this wireframs though I couldn't have time to create another wireframes. 
 
 <details open>
 <summary>For first time visitor - tablet and PC monitor</summary>
@@ -102,45 +102,9 @@ For the site's basic font, I was considering using "Quicksand" for the best read
 
 ## EXISTING FEATURES  
 
-### Top page - Home  
-* Header and navigation - First time visiter  
-![Header and navigation - First time visiter](readme-img/feat-home-header2.png "Header and navigation - First time visiter")   
-* Header and navigation - Authenticated user  
-![Header and navigation - Authenticated user](readme-img/feat-home-header.png "Header and navigation - Authenticated user")   
-
-* Welcome message - First time visiter  
-![ Welcome message - First time visiter](readme-img/feat-home-intro2.png " Welcome message - First time visiter")   
-*  Welcome message - Authenticated user  
-![ Welcome message - Authenticated user](readme-img/feat-home-intro.png " Welcome message - Authenticated user")  
-
-* Home content - Recipes list  
-![ Home content - Recipes list](readme-img/feat-home-content.webp " Home content - Recipes list")   
-
-* Footer  
-![ Footer ](readme-img/feat-home-footer.png " Footer ")  
-
-* Recipes search options modal  
-![ Recipes search options modal ](readme-img/feat-recipesearch.png " Recipes search options modal ")  
-
-### Posts list page  
-* Lead sentense - First time visiter  
-![ Lead sentense - First time visiter](readme-img/feat-posts-intro.webp " Lead sentense - First time visiter")   
-
-* Lead sentense - Authenticated user  
-![ Lead sentense - Authenticated user](readme-img/feat-posts-intro2.webp " Lead sentense - Authenticated user")  
-
-* Posts list - Approved  
-![ Posts list - Approved](readme-img/feat-posts-content1.png " Posts list - Approved")   
-
-* Posts list - Waiting to be approved  
-![ Posts list - Waiting to be approved](readme-img/feat-posts-content2.png " Posts list - Waiting to be approved")  
-
-* Posts search options modal  
-![ Posts search options modal ](readme-img/feat-postssearch.png " Posts search options modal ")  
-
 ### Authentication pages  
 
-* Sign-up  
+* Sign-up - AllAuth default settings and validations are applied   
 ![ Sign-up ](readme-img/feat-a-signup.png " Sign-up ")  
 
 * Log-in  
@@ -149,16 +113,71 @@ For the site's basic font, I was considering using "Quicksand" for the best read
 * Log-out  
 ![ Log-out ](readme-img/feat-a-logout.png " Log-out ")  
 
+### Top page - Home  
+* Header and navigation - Unauthenticated user can see Sign-up and Log-in link  
+![Header and navigation - Unauthenticated user](readme-img/feat-home-header2.png "Header and navigation - First time visiter")   
+* Header and navigation - Authenticated user can see only Log-out link  
+![Header and navigation - Authenticated user](readme-img/feat-home-header.png "Header and navigation - Authenticated user")   
+
+* Welcome message - Unauthenticated user  
+![ Welcome message - Unauthenticated user](readme-img/feat-home-intro2.png " Welcome message - First time visiter")   
+*  Welcome message - Authenticated user can see their name on the message 
+![ Welcome message - Authenticated user](readme-img/feat-home-intro.png " Welcome message - Authenticated user")  
+
+* Home content - A list of Recipes in the main section and A list of Posts are in the article section. We have both search option buttons. Authenticated users can rate other user's recipes, and the average rating score is displayed on the recipe image. 
+![ Home content - Recipes list](readme-img/feat-home-content.webp " Home content - Recipes list")   
+Only Authenticated user can see the + button (Create recipe) beside the list title.   
+![ Home content - Recipes list](readme-img/feat-home-contenta.png " Home content - Recipes list")  
+
+* Footer  
+![ Footer ](readme-img/feat-home-footer.png " Footer ")  
+
+* Recipes search options modal - The main feature of this website is this optional search funstion that can filter by 8 categories and include words and avoid words search and more.  
+![ Recipes search options modal ](readme-img/feat-recipesearch.png " Recipes search options modal ")  
+
+* Posts search options modal -   
+![ Posts search options modal ](readme-img/feat-postssearch.png " Posts search options modal ")  
+
+### Recipe detail page
+* Detail content - A selected recipes' details are displayed. Authenticated users can rate other user's recipes, and the averaged rating score will be displayed. When I was working on this page, I didn't know how to use CBV with POST request, so build with FBV.
+![ Home content - Recipes list](readme-img/feat-detail-content.png " Home content - Recipes list")   
+Only Authenticated user and the recipes' owner can see the "Edit" / "Delete" buttons   
+![ Home content - Recipes list](readme-img/feat-detail-edit-delete-button.png " Home content - Recipes list")  
+The star rating button and comment function, those functions are NOT displyed for unauthenticated users, they can find the links to Sign-up and Log-in   
+![ Home content - Recipes list](readme-img/feat-detail-content-unauth.png " Home content - Recipes list")  
+
+
 ### Recipes CRUD pages
 
-* Create recipe form page  
+* Create recipe page - This page is constructed by CBV (CreateView) and `LoginRequiredMixin` is used for preventing unauthenticated users.
+I choose summernote for user's rich text editor though I found a lot of nested tags and unnecessary tags, those were produced by automatically. For future project, I guess I should research more about better rich text editors. Here I'm using image resizing, setting to 400 px width.
 ![ Create recipe form page ](readme-img/feat-recipe-add.webp " Create recipe form page ")  
 
-* Edit recipe form page  
+* Edit recipe form page - This Edit page has `LoginRequiredMixin, UserPassesTestMixin,` both mixin for preventing other users can access there pages.  
 ![ Edit recipe form page ](readme-img/feat-recipe-edit.png " Edit recipe form page ")   
 
-* Delete recipe confirmation page  
+* Delete recipe confirmation page - This Delete page is same as Edit page, using `LoginRequiredMixin, UserPassesTestMixin,` for security 
 ![ Delete recipe confirmation page ](readme-img/feat-recipe-delete.png " Delete recipe confirmation page ")   
+
+### Posts list page  
+* Lead sentense - Unauthenticated user  
+![ Lead sentense - Unauthenticated user](readme-img/feat-posts-intro.webp " Lead sentense - First time visiter")    
+
+* Lead sentense - Authenticated user can see their name on the message  
+![ Lead sentense - Authenticated user](readme-img/feat-posts-intro2.webp " Lead sentense - Authenticated user")   
+
+* Posts list Approved - These posts are not published until approved. Only authenticatted user can see the + button     
+![ Posts list - Approved](readme-img/feat-posts-content1.png " Posts list - Approved")    
+Only Authenticated user can see the + button (Create post) beside the list title.    
+![ Posts list - Approved](readme-img/feat-posts-content1a.png " Posts list - Approved")    
+
+* Posts list Waiting to be approved - Only Aithenticated and the post author can see thier unapproved posts here. The font colours are faded to imply not approved 
+![ Posts list - Waiting to be approved](readme-img/feat-posts-content2.png " Posts list - Waiting to be approved")  
+
+### Posts detail page
+Post detail content - A selected post details are displayed. Authenticated users can comment on the other user's recipes, When I was working on this page, I didn't know how to use CBV with POST request, so build with FBV.
+* Create post form page  
+![ Create post form page ](readme-img/feat-posts-add.png " Create post form page ")  
 
 ### Posts CRUD pages
 
@@ -173,7 +192,7 @@ For the site's basic font, I was considering using "Quicksand" for the best read
 
 ### Other parts
 
-* Star rating  
+* Star rating - Only authenticated users can rate other members recipes. Each ratings are averaged using the aggregate() clouse.  In recipe detail page, left bottom part of the page 
 ![ Star rating ](readme-img/feat-starrating.webp " Star rating ")  
 
 * Message  
@@ -202,7 +221,7 @@ Any open issues can be tracked [here](https://github.com/users/AtsukoCoffey/proj
 * Font Awesome used for all the icons in this project  
 * Google Fonts used for all the fonts used in this project and to compare potential fonts.  
 
-* tinipng - Smart WebP, PNG and JPEG Compression for Faster Websites used for compress all the image files
+* [tinipng](https://tinypng.com/ "tinipng") - Smart WebP, PNG and JPEG Compression for Faster Websites
 * Am I Responsive? used for creating responsivity example image
 * [favicon.io](https://favicon.io/favicon-generator/ "favicon.io") used for creating an original favicon icon
 * [coolors](https://coolors.co/232018-4b483d-758761-bfe077-f1eddb "coolors") used for the formating of colour scheme
@@ -210,13 +229,15 @@ Any open issues can be tracked [here](https://github.com/users/AtsukoCoffey/proj
 <a id="testing"></a>
 
 # TESTING
-> I performed most of the testing myself and had some support from family members with different mobile devices.
+I performed most of the testing myself and had some support from family members with different mobile devices.
 
 ## TESTING
 For testing I created `README-TEST.md` file
 [Tests- README-TEST](/README-TEST.md "Tests- README-TEST")
 
 ## BUGS
+I had a lot of bugs and difficulties through the developement procedure. However can't write everything. 
+The bugs that I mention here are something I felt clicked. 
 
 ### Pagination for the query data  
 When I was working at the option search, the query result recipes displayed correctly, however pagiination links are resetting the
@@ -244,7 +265,6 @@ When I was working on `get_context_data` I was straggling to set the kwargs "com
 
 - Solution -  And it worked. `slug=self.kwargs["slug"]`
 
-I still have a lot of bug reports but I don't have time to record everything. 
 
 ### Another 500 error for sign up form
 This bug was found at the middle of the end-point reveiw. I had different 500 server error that took a long time to solve it so I broke out into my cold sweat. However the mentor gave me a great advice that this error is not coming from the logic error. So possibly from template or soemthing similar things. After the meeting, the DEBUG explained the issue was caused from the AllAuth's password validation. Then now I remember that I just did all the PEP8 linting and even settings.py.    
@@ -252,7 +272,6 @@ This bug was found at the middle of the end-point reveiw. I had different 500 se
 - Solution -  Long lines generated by the system can be reverted and left as it was before.
 
 **There were more than three bug reports, but I am writing only the ones that I clicked on.**
-
 
 ### Unfixed Bugs
 

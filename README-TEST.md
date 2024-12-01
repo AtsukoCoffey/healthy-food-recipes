@@ -154,6 +154,7 @@ Defensive programming was manually tested with the below user acceptance testing
 | | Hover all the link objects | Response changeing colour except star rating | Pass | |
 | | Click on pagination links (default) | Redirection to next/previous page order by descending dates | Pass | |
 | | Click on pagination links (search results) | Redirection to next/previous page of results | Pass | |
+| Authenticated user only | Click on + "Create recipe" button | Redirection to Create Recipe page | Pass | |
 
 | Home Page | User Action | Expected Result | Pass/Fail | Comments |
 | --- | --- | --- | --- | --- |
@@ -261,6 +262,7 @@ Defensive programming was manually tested with the below user acceptance testing
 | | Click on pagination links (default) | Redirection to next/previous page order by descending dates | Pass | |
 | | Click on pagination links (search results) | Redirection to next/previous page of results | Pass | |
 | Authenticated and owner only | Click on one of the unauthorised recipes | Redirection to the recipes' detail page | Pass | |
+| Authenticated user only | Click on + "Create post" button | Redirection to Create Post page | Pass | |
 
 | Posts detail's Page | User Action | Expected Result | Pass/Fail | Comments |
 | --- | --- | --- | --- | --- |

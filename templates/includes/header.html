@@ -16,23 +16,23 @@
             <!-- Navigation bar -->
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto mb-2">
-                    <li class="nav-item">
+                    <li class="nav-item me-2">
                         <a class="nav-link{% if url_name == 'home' %} active" aria-current="page{% endif %}"
                             href="{% url 'home' %}" aria-label="Home (Top-page)" title="Home"><i
                                 class="fa-solid fa-house"></i> Recipes</a>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item me-2">
                         <a class="nav-link{% if url_name == 'posts' %} active" aria-current="page{% endif %}"
                             href="{% url 'posts' %}" aria-label="Posts list page" title="Posts"><i
                                 class="fa-solid fa-newspaper"></i> Posts</a>
                     </li>
-                    <li class="nav-item dropdown">
+                    <li class="nav-item dropdown me-2">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
                             aria-expanded="false" aria-label="New Create (Recipe or Post)"
                             title="New Create Recipe, Post">
                             <i class="fa-regular fa-square-plus"></i> NEW
                         </a>
-                        <ul class="dropdown-menu">
+                        <ul class="dropdown-menu me-2">
                             <li><a class="dropdown-item{% if url_name == 'add_recipe' %} active"
                                     aria-current="page{% endif %}" href="{% url 'add_recipe' %}"
                                     aria-label="Create Recipe" title="Create Recipe"> Create Recipe</a></li>
@@ -42,19 +42,19 @@
                         </ul>
                     </li>
                     {% if request.user.is_authenticated %}
-                    <li class="nav-item">
+                    <li class="nav-item me-2">
                         <a class="nav-link{% if url_name == 'account_logout' %} active" aria-current="page{% endif %}"
                             href="/accounts/logout" aria-label="Log-out button" title="Log-out"><i
                                 class="fa-solid fa-right-from-bracket"></i>
                             Log-out</a>
                     </li>
                     {% else %}
-                    <li class="nav-item">
+                    <li class="nav-item me-2">
                         <a class="nav-link{% if url_name == 'account_signup' %} active" aria-current="page{% endif %}"
                             href="/accounts/signup" aria-label="Sign-Up button" title="Sign-up"><i
                                 class="fa-solid fa-user-pen"></i> Sign-up</a>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item me-2">
                         <a class="nav-link{% if url_name == 'account_login' %} active" aria-current="page{% endif %}"
                             href="/accounts/login" aria-label="Log-in button" title="Log-in"><i
                                 class="fa-solid fa-right-to-bracket"></i>

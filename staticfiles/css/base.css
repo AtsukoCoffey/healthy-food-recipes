@@ -155,10 +155,11 @@ a:active {
 }
 
 #free-word-search,
-#owner-id-search {
+#owner-id-search,
+#post-owner-id-search {
     border-radius: 7px;
-    border: solid 1px var(--star-gray);
-    color: gray;
+    border: solid 1px rgba(170, 168, 168, 0.514);
+    color: rgb(88, 86, 86);
 }
 
 #checkbox-filter i {
