@@ -304,8 +304,8 @@ This bug was found at the middle of the end-point reveiw. I had different 500 se
 **There were more than three bug reports, but I am writing only the ones that I clicked on.**
 
 ### Unfixed Bugs
-
-<!-- There are no remaining bugs that I am aware of. -->
+In the last minuts, I found default image in create Post variable wasn't working so change back and comment out #noqa
+![screenshot](readme-img/error.png)
 
 ## DEPLOYMENT
 ### Preparation

@@ -15,15 +15,12 @@ class Post(models.Model):
         User, related_name="post_owner", on_delete=models.CASCADE, default='0'
     )
     slug = models.SlugField()
-    # Default image in cloudinary
-    CLOUDINARY = "https://res.cloudinary.com/dulfdtcut/image/upload/"\
-        "v1732624989/posts/oils_byapkh.webp"
     image = ResizedImageField(
         size=[400, None],
         quality=75,
         upload_to="posts/",
         force_format="WEBP",
-        default='CLOUDINARY'
+        default="https://res.cloudinary.com/dulfdtcut/image/upload/v1732624989/posts/oils_byapkh.webp"  # noqa
     )
     image_alt = models.CharField(max_length=50)
     post_body = models.TextField(max_length=3000, null=False, blank=True)
