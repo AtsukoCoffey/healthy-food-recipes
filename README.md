@@ -1,4 +1,4 @@
-# Healthy Food Recipe
+# Healthy Food Recipes
 This website aims to raise awareness of health and wellness by sharing recipes with an emphasis on good and safe ingredients.   
   
 The target users are people looking for healthier living and recipes, especially those with health issues such as diabetes or allergies.  
